@@ -1,12 +1,9 @@
 ---
 layout: post
-title:  "Basic-Syntax-Java"
+title:  "자바 기본 문법"
 date:   2025-03-04
 categories: jekyll update
 ---
-* toc
-{:toc .large-only}
-
 # 자바 기본 문법
 
 ## 프로그램의 기본 구조 vs 자바 프로그램의 기본 구조
@@ -35,13 +32,14 @@ Java는 **Write Once, Run Anywhere(WORA)** 개념을 따릅니다. 이는 Java �
 ## 자바 프로그램의 기본 구조
 
 ### 소스 파일 구성요소
-| 구성요소 | 설명 | 예시 |
-|----------|------|------|
-| **소스 파일** | 자바 코드가 저장된 파일 | `Main.java` |
-| **패키지(Package)** | 관련 클래스들을 그룹화 | `package com.example.myapp;` |
-| **임포트(Import)** | 다른 패키지의 클래스 사용 선언 | `import java.util.ArrayList;` |
-| **클래스(Class)** | 객체의 설계도 | `public class ClassName {...}` |
-| **메서드(Method)** | 클래스 내의 기능 구현 | `public void methodName() {...}` |
+
+구성요소 | 설명 | 예시
+---------|------|------
+**소스 파일** | 자바 코드가 저장된 파일 | `Main.java`
+**패키지(Package)** | 관련 클래스들을 그룹화 | `package com.example.myapp;`
+**임포트(Import)** | 다른 패키지의 클래스 사용 선언 | `import java.util.ArrayList;`
+**클래스(Class)** | 객체의 설계도 | `public class ClassName {...}`
+**메서드(Method)** | 클래스 내의 기능 구현 | `public void methodName() {...}`
 
 ### 패키지(Package) 선언
 ```java
@@ -79,35 +77,32 @@ public class ClassName {
 ```
 
 ## 주석(Comments)
-- **한 줄 주석**: `// 주석 내용`
-- **여러 줄 주석**: `/* 주석 내용 */`
-- **문서화 주석(JavaDoc)**:
-  ```java
-  /**
-   * 클래스 또는 메서드에 대한 설명
-   * @param 매개변수명 매개변수 설명
-   * @return 반환값 설명
-   * @author 작성자
-   */
-  ```
+
+주석 유형 | 문법 | 용도
+---------|------|------
+**한 줄 주석** | `// 주석 내용` | 간단한 설명이나 임시 코드 비활성화
+**여러 줄 주석** | `/* 주석 내용 */` | 여러 줄에 걸친 설명이나 코드 블록 비활성화
+**문서화 주석** | `/** 주석 내용 */` | JavaDoc 도구로 API 문서 자동 생성용
 
 ## 명명 규칙(Naming Conventions)
 
-| 대상 | 규칙 | 예시 |
-|------|------|------|
-| **클래스** | 파스칼 케이스(PascalCase), 명사 | `StudentManager`, `BankAccount` |
-| **인터페이스** | 파스칼 케이스, 형용사 | `Runnable`, `Comparable` |
-| **메서드** | 카멜 케이스(camelCase), 동사 | `calculateTotal()`, `sendEmail()` |
-| **변수** | 카멜 케이스, 명사 | `studentCount`, `firstName` |
-| **상수** | 대문자 스네이크 케이스 | `MAX_SIZE`, `DEFAULT_TIMEOUT` |
-| **패키지** | 모두 소문자, 도메인 역순 | `com.company.project` |
+대상 | 규칙 | 예시
+------|------|------
+**클래스** | 파스칼 케이스(PascalCase), 명사 | `StudentManager`, `BankAccount`
+**인터페이스** | 파스칼 케이스, 형용사 | `Runnable`, `Comparable`
+**메서드** | 카멜 케이스(camelCase), 동사 | `calculateTotal()`, `sendEmail()`
+**변수** | 카멜 케이스, 명사 | `studentCount`, `firstName`
+**상수** | 대문자 스네이크 케이스 | `MAX_SIZE`, `DEFAULT_TIMEOUT`
+**패키지** | 모두 소문자, 도메인 역순 | `com.company.project`
 
 ## 식별자 규칙
 
-- ✓ 영문자, 숫자, `$`, `_`만 사용 가능
-- ✓ 대소문자 구분
-- ✗ 숫자로 시작 불가능
-- ✗ 예약어 사용 불가능
+허용 | 규칙
+-----|------
+✓ | 영문자, 숫자, `$`, `_`만 사용 가능
+✓ | 대소문자 구분
+✗ | 숫자로 시작 불가능
+✗ | 예약어 사용 불가능
 
 ## 예약어 목록
 ```
