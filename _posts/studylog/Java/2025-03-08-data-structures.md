@@ -1,8 +1,14 @@
 ---
 layout: post
+related_posts:
+    - /studylog/java
 title:  "자바의 자료구조에 대해서"
 date:   2025-03-08
-categories: jekyll update
+categories:
+  - studylog
+  - java
+description: >
+  'Java의 자료구조에 대한 간단한 설명과 특징 및 단점'
 ---
 * toc
 {:toc .large-only}

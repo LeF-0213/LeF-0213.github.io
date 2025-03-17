@@ -48,8 +48,20 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Posts
-    url:               /posts/
+  - title:             Study Log
+    url:               /studylog/
+    submenu:
+      - title:         Java
+        url:           /java/
+      - title:         JavaScript
+        url:           /javascript/
+  - title:             CodingTest
+    url:               /codingtest/
+    submenu:
+      - title:         Concept
+        url:           /concept/
+      - title:         Programmers
+        url:           /programmers/
   - title:             Documentation
     url:               /docs/
   - title:             About

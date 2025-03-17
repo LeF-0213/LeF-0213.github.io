@@ -1,8 +1,14 @@
 ---
 layout: post
+related_posts:
+    - /studylog/java
 title:  "자바 접근 제어자"
 date:   2025-03-14
-categories: jekyll update
+categories:
+  - studylog
+  - java
+description: >
+  'Java의 접근 제어자의 종류와 개념'
 ---
 * toc
 {:toc .large-only}

@@ -1,9 +1,18 @@
 ---
 layout: post
+related_posts:
+  - /studylog/java
 title:  "자바 기본 문법"
 date:   2025-03-04
-categories: jekyll update
+categories:
+  - studylog
+  - java
+description: >
+  'Java의 기본 문법'
 ---
+* toc
+{:toc .large-only}
+
 # 자바 기본 문법
 
 ## 프로그램의 기본 구조 vs 자바 프로그램의 기본 구조
