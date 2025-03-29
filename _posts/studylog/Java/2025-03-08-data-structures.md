@@ -8,7 +8,7 @@ categories:
   - studylog
   - java
 description: >
-  'Java의 자료구조에 대한 간단한 설명과 특징 및 단점'
+  Java의 자료구조에 대한 간단한 설명과 특징 및 단점
 ---
 * toc
 {:toc .large-only}

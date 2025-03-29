@@ -8,7 +8,7 @@ categories:
   - studylog
   - java
 description: >
-  '웹소켓의 개념과 활용법'
+  웹소켓의 개념과 활용법
 ---
 * toc
 {:toc .large-only}

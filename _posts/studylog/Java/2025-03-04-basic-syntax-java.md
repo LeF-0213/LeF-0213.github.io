@@ -8,7 +8,7 @@ categories:
   - studylog
   - java
 description: >
-  'Java의 기본 문법'
+  Java의 기본 문법
 ---
 * toc
 {:toc .large-only}

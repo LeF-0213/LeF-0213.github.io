@@ -8,7 +8,7 @@ categories:
   - studylog
   - java
 description: >
-  'Java의 접근 제어자의 종류와 개념'
+  Java의 접근 제어자의 종류와 개념
 ---
 * toc
 {:toc .large-only}
@@ -24,4 +24,11 @@ description: >
 4. **private**: 동일 클래스 내에서만 접근 가능
 
 ## 접근 제어자 적용 가능 요소
-* 클래스: public, default
+* 클래스(Class): public, default
+* 멤버 변수(Field): public, protected, default, private
+* 메서드(Method): public, protected, default, private
+* 생성자(Constructor): public, protected, default, private
+* 지역 변수(Local Variable): 접근 제어자 적용 불가
+
+### 접근 범위 비교
+

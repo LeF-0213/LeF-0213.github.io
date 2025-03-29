@@ -55,11 +55,13 @@ menu:
         url:           /java/
       - title:         JavaScript
         url:           /javascript/
+      - title:         Alogorithm
+        url:           /algorithm/
+      - title:         DB
+        url:           /db/
   - title:             CodingTest
     url:               /codingtest/
     submenu:
-      - title:         Concept
-        url:           /concept/
       - title:         Programmers
         url:           /programmers/
   - title:             Documentation
