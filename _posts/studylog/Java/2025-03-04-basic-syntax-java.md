@@ -85,8 +85,28 @@ public class ClassName {
 }
 ```
 
-## 주석(Comments)
+### 형식지정자
+| 형식   | 설명                 | 예시 값     |
+| ---- | ------------------ | -------- |
+| `%d` | 10진수 정수 출력         | 10       |
+| `%f` | 실수 출력 (기본 소수점 6자리) | 3.141593 |
+| `%s` | 문자열 출력             | "hello"  |
+| `%c` | 문자 출력              | 'A'      |
+| `%b` | boolean 출력         | true     |
+| `%%` | `%` 문자 출력          | %        |
+| `%n` | 줄바꿈 (OS에 맞게 처리됨)   | -        |
+* **사용예시**
+```java
+  int num = 42;
+  double pi = 3.14159;
+  String name = "Lef";
 
+  System.out.printf("정수: %d\n", num);           // 정수: 42
+  System.out.printf("실수: %.2f\n", pi);         // 실수: 3.14
+  System.out.printf("문자열: %s\n", name);       // 문자열: Lef
+```
+
+## 주석(Comments)
 주석 유형 | 문법 | 용도
 ---------|------|------
 **한 줄 주석** | `// 주석 내용` | 간단한 설명이나 임시 코드 비활성화
@@ -94,7 +114,6 @@ public class ClassName {
 **문서화 주석** | `/** 주석 내용 */` | JavaDoc 도구로 API 문서 자동 생성용
 
 ## 명명 규칙(Naming Conventions)
-
 대상 | 규칙 | 예시
 ------|------|------
 **클래스** | 파스칼 케이스(PascalCase), 명사 | `StudentManager`, `BankAccount`
@@ -105,7 +124,6 @@ public class ClassName {
 **패키지** | 모두 소문자, 도메인 역순 | `com.company.project`
 
 ## 식별자 규칙
-
 허용 | 규칙
 -----|------
 ✓ | 영문자, 숫자, `$`, `_`만 사용 가능

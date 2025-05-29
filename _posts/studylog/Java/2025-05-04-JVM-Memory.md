@@ -4,7 +4,7 @@ related_posts:
     - /studylog/java
     - /studylog/java/2025-03-08-data-structures
 title:  "JVM 메모리 영역(JVM Runtime Data Area)"
-date:   2025-03-22
+date:   2025-05-04
 categories:
   - studylog
   - java

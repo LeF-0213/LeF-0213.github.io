@@ -4,7 +4,7 @@ related_posts:
     - /studylog/java
     - /studylog/java/2025-03-08-data-structures
 title:  "Array vs Arrays vs ArrayList"
-date:   2025-03-22
+date:   2025-04-20
 categories:
   - studylog
   - java
