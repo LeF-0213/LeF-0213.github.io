@@ -59,11 +59,11 @@ menu:
         url:           /algorithm/
       - title:         DB
         url:           /db/
-  - title:             CodingTest
-    url:               /codingtest/
+  - title:             Programmers
+    url:               /programmers/
     submenu:
-      - title:         Programmers
-        url:           /programmers/
+      - title:         Basic
+        url:           /basic/
   - title:             Documentation
     url:               /docs/
   - title:             About
