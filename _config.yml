@@ -55,10 +55,12 @@ menu:
         url:           /java/
       - title:         JavaScript
         url:           /javascript/
+      - title:         Spring
+        url:           /spring/
       - title:         Alogorithm
         url:           /algorithm/
-      - title:         DB
-        url:           /db/
+      - title:         DBMS
+        url:           /dbms/
   - title:             Programmers
     url:               /programmers/
     submenu:

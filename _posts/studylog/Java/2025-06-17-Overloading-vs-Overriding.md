@@ -2,7 +2,7 @@
 layout: post
 related_posts:
     - /studylog/java
-title:  "오버로딩(+ 생성자) VS 오버라이딩(업캐스팅 VS 다운캐스팅)"
+title:  "오버로딩(+ 생성자) VS 오버라이딩(업캐스팅 VS 다운캐스팅, Wrapper 클래스)"
 date:   2025-06-17
 categories:
   - studylog
@@ -85,3 +85,50 @@ instanceof 연산자
 
 	ex) ec1 instanceof ElecCar
 	    ec1 instanceof HybridCar
+
+```java
+	public static void main(String[] args) {
+		int a = 10;
+		int b = 10;
+		Integer c = new Integer(10);
+		Integer d = new Integer(10);
+		
+		// c라는 객체가 10으로 unboxing 된 후에 비교가 되고 있다.
+		System.out.println(a == c);
+		
+		// a --> Integer타입으로 boxing --> Object 타입으로 업캐스팅
+		System.out.println(c.equals(a));
+		
+		// == 연산자는 객체와 객체를 비교할 때 
+		// 서로 물리적으로 동일한 위치에 있는 객체인지 비교한다.
+		System.out.println(c == d); // c와 d는 물리적으로 다른 객체이기 때문에 false
+		
+		// 논리적으로 10을 사용 못하니, 10이 들어있는 객체를 만든 것이고,
+		// 논리적으로 10이 들어있는 두 객체는 동일한지 검사하고 싶을 때는 equals 메소드를 사용한다.
+		System.out.println(c.equals(d));
+	}
+```
+Wrapper 클래스
+    기본자료형이 아니니 클래스형 객체를 사용해야만 하는 경우가 있다.
+	따라서 기본자료형에 해당하는 Wrapper클래스를 JAVA에서는 제공을 한다.
+	기본 타입(클래스 형 타입을 제외한 타입, int double char boolean)이 아닌
+	반드시 클래스형 타입을 사용해야 하는 경우 존재
+	기본타입을 감싸는 Wrapper 클래스 제공
+	ex) int --> Integer, double --> Double, char --> Character
+
+boxing 
+	기본자료형 -> Wrapper 클래스 타입으로 변환
+	생성자를 사용하면 기본자료형 값이 들어있는 객체가 만들어진다.
+	ex) new Integer(10); --> 10이 요소로 들어있는 Integer타입 객체
+	보통 생성자를 사용하는 것이 생략된 형태로 auto boxing이 일어난다.
+	ex) Integer a = 10;
+unboxing
+	Wrapper 클래스타입 -> 기본자료형으로 변환
+	객체안에 있는 값을 return하는 메소드를 사용한다.
+	ex) Integer객체.intValue(); --> int값이 return됨
+	보통 메소드를 사용하는 것이 생략된 형태로 auto unboxing이 일어난다
+	ex) int b = a;
+
+객체의 비교
+	== 을 통해 두 객체를 비교하면, 두 객체의 물리적인 위치가 같은지를 비교한다.
+	두 객체의 논리적인 의미가 같은지를 비교하고자 한다면 .equals메소드를 사용한다.
