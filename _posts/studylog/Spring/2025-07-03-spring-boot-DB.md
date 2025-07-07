@@ -7,7 +7,6 @@ date:   2025-06-25
 categories:
   - studylog
   - spring
-  - db
 description: >
   MySQL을 spring boot와 연결하는 방법
 ---
