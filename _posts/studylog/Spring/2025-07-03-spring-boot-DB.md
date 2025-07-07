@@ -1,12 +1,13 @@
 ---
 layout: post
 related_posts:
-    - /studylog/dbms
+    - /studylog/spring
 title:  "spring boot에 DB 연결하기(MySQL)"
 date:   2025-06-25
 categories:
   - studylog
   - spring
+  - db
 description: >
   MySQL을 spring boot와 연결하는 방법
 ---

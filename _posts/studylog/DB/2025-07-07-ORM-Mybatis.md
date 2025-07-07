@@ -6,7 +6,8 @@ title:  "MyBatis 매핑구문"
 date:   2025-07-02
 categories:
   - studylog
-  - spring,
+  - spring
+  - db
 description: >
   Mybatis의 매핑구문
 ---

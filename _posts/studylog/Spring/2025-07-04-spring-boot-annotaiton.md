@@ -1,7 +1,7 @@
 ---
 layout: post
 related_posts:
-    - /studylog/dbms
+    - /studylog/spring
 title:  "spring boot에서 사용하는 annotaion"
 date:   2025-06-25
 categories:

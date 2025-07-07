@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /studylog/spring
 title:  "eclipse에서의 Springboot 설치와 설정"
 date:   2025-06-30
 categories:
   - studylog
-  - java
+  - spring
 description: >
   eclipse에서의 Springboot 설치와 설정
 ---
