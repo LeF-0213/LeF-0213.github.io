@@ -1,7 +1,7 @@
 ---
 layout: post
 related_posts:
-    - /studylog/dbms
+    - /studylog/spring
 title:  "spring boot의 MVC 패턴과 디렉터리 구조(계층형 vs 도메인형)"
 date:   2025-07-05
 categories:
