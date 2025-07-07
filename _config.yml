@@ -57,10 +57,10 @@ menu:
         url:           /javascript/
       - title:         Spring
         url:           /spring/
-      - title:         Alogorithm
-        url:           /algorithm/
       - title:         DB
         url:           /db/
+      - title:         Alogorithm
+        url:           /algorithm/
   - title:             Programmers
     url:               /programmers/
     submenu:
