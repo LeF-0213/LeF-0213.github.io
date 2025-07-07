@@ -55,10 +55,12 @@ menu:
         url:           /java/
       - title:         JavaScript
         url:           /javascript/
-      - title:         Alogorithm
-        url:           /algorithm/
+      - title:         Spring
+        url:           /spring/
       - title:         DB
         url:           /db/
+      - title:         Alogorithm
+        url:           /algorithm/
   - title:             CodingTest
     url:               /codingtest/
     submenu:
