@@ -59,8 +59,8 @@ menu:
         url:           /spring/
       - title:         Alogorithm
         url:           /algorithm/
-      - title:         DBMS
-        url:           /dbms/
+      - title:         DB
+        url:           /db/
   - title:             Programmers
     url:               /programmers/
     submenu:
