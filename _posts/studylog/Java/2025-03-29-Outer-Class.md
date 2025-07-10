@@ -5,7 +5,7 @@ related_posts:
     - /studylog/java/2025-03-14-Access-Modifiers
     - /studylog/java/2025-03-29-Inner-Class
 title:  "자바 외부 클래스"
-date:   2025-03-22
+date:   2025-03-29
 categories:
   - studylog
   - java

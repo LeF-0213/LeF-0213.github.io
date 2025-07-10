@@ -178,7 +178,7 @@ HashSet과 유사하지만 **요소의 삽입 순서를 유지**한다.
 `Queue 인터페이스`를 구현한 `이중 연결 리스트(Doubly Linked List)`이다.
 ```java
     Queue<String> queue = new LinkedList<>();
-    queue.offer("Apple");   // 요소 추가
+    queue.add("Apple");   // 요소 추가
     queue.poll();           // 첫 요소 제거 및 반환
     queue.peek();           // 첫 요소 조회
 ```
@@ -186,18 +186,19 @@ HashSet과 유사하지만 **요소의 삽입 순서를 유지**한다.
   * FIFO 구조
   * 빠른 삽입/삭제
 * **단점**:
+  * `offer`도 사용가능하나 연산을 한 번 더 하므로 추천하지 않음
 
 #### PriorityQueue
 요소가 우선순위에 따라 정렬되는 큐(Queue)이다.
 ```java
     PriorityQueue<Integer> pq = new PriorityQueue<>();  // 기본 최소 힙
-    pq.offer(3);
-    pq.offer(1);
+    pq.add(3);
+    pq.add(1);
     pq.poll();      // 최솟값(1) 반환
 
     PriorityQueue<Integer> maxPQ = new PriorityQueue<>(Collections.reverseOrder()); // 최대 힙
-    maxPQ.offer(3);
-    maxPQ.offer(1);
+    maxPQ.add(3);
+    maxPQ.add(1);
     maxPQ.poll();   // 최대값(3) 반환
 ```
 * **특징**:
@@ -208,7 +209,7 @@ HashSet과 유사하지만 **요소의 삽입 순서를 유지**한다.
   * 요소 삽입시마다 재정렬되므로 인덱스 접근 불가능
   * 정렬 유지로 인한 약간의 오버헤드
 
-#### ArrayDeque
+#### ArrayDeque(Array Double Ended Queue)
 **양반향 큐(Deque)** 구현체로, 스택이나 큐로 사용 가능하며 **양쪽 끝에서 빠르게 요소를 추가하고 제거할 수 있다.**
 ```java
     ArrayDeque<String> deque = new ArrayDeque<>();

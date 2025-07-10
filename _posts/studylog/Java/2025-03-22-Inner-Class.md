@@ -16,9 +16,7 @@ description: >
 {:toc .large-only}
 
 # 내부 클래스 (Inner Class)
-* 다른 클래스 내부에 정의된 클래스
-* 외부 클래스의 멤버에 쉽게 접근 할 수 있으며, 논리적으로 그룹화된 클래스를 만들때 유용
-* 코드의 **가독성, 캡슐화, 유지보수성**을 높이는 데 도움
+클래스 내부에 선언된 또다른 클래스
 ```java
     class OuterClass {
         private int outerField = 10;
@@ -30,6 +28,9 @@ description: >
         }
     }
 ```
+* 다른 클래스 내부에 정의된 클래스
+* 외부 클래스의 멤버에 쉽게 접근 할 수 있으며, 논리적으로 그룹화된 클래스를 만들때 유용
+* 코드의 **가독성, 캡슐화, 유지보수성**을 높이는 데 도움
 
 ## 멤버 중첩 클래스(Member Nested Classes)
 ### 인스턴스 멤버 클래스(Instance Member Class)
@@ -59,11 +60,11 @@ description: >
     }
 ```
 **특징:**
-  * 외부 클래스의 인스턴스가 있어야 생성 가능
-  * 외부 클래스의 모든 멤버(private 포함)에 접근 가능
-  * `static` 멤버를 가질 수 없음
-  * 외부에서 생성 시: `OuterClass.IntanceInnerClass inner = outerInstance.new InstanceInnerClass();`
-  * 내부 클래스 내에서 `OuterClass.this`를 통해 외부 클래스 인스턴스 참조 가능
+* 외부 클래스의 인스턴스가 있어야 생성 가능
+* 외부 클래스의 모든 멤버(private 포함)에 접근 가능
+* `static` 멤버를 가질 수 없음
+* 외부에서 생성 시: `OuterClass.IntanceInnerClass inner = outerInstance.new InstanceInnerClass();`
+* 내부 클래스 내에서 `OuterClass.this`를 통해 외부 클래스 인스턴스 참조 가능
 
 ### 정적 멤버 클래스(Static Member Class)
 외부 클래스에 바로 접근할 수 있는 내부 클래스(정적 멤버 클래스)
@@ -92,13 +93,13 @@ description: >
     }
 ```
 **특징:**
-    * 외부 클래스의 인스턴스 없이 생성 가능
-    * 외부 클래스의 `static`멤버만 접근 가능
-    * `static`멤버를 가질 수 있음
-    * 엄밀히 말하면 '내부 클래스'가 아닌 '중첩 클래스'
-    * 외부에서 생성 시: `OuterClass.StaticNestedClass nestedInstance = new OuterClass.StaticNestedClass();`
+* 외부 클래스의 인스턴스 없이 생성 가능
+* 외부 클래스의 `static`멤버만 접근 가능
+* `static`멤버를 가질 수 있음
+* 엄밀히 말하면 '내부 클래스'가 아닌 '중첩 클래스'
+* 외부에서 생성 시: `OuterClass.StaticNestedClass nestedInstance = new OuterClass.StaticNestedClass();`
 
-### 지역 내부 클래스(Local Inner Class)
+## 지역 중첩 클래스(Local Nested Class)
 메소드나 특정 블록 내에서 정의되는 클래스(메소드가 실행될 때만 지역 내부 클래스 사용)
 ```java
     class OuterClass {
@@ -132,13 +133,13 @@ description: >
     }
 ```
 **특징:**
-    * 선언된 블록 내에서만 사용 가능
-    * 외부 클래스의 모든 멤버와 final(또는 effectively final)지역 변수/매개변수에 접근 가능
-    * 접근 제한자(public, private 등) 사용 불가
-    * `static`멤버를 가질 수 없음
-    * 지역 변수 캡처 시 해당 변수는 final 또는 effectively final이어야 함
+* 선언된 블록 내에서만 사용 가능
+* 외부 클래스의 모든 멤버와 final(또는 effectively final)지역 변수/매개변수에 접근 가능
+* 접근 제한자(public, private 등) 사용 불가
+* `static`멤버를 가질 수 없음
+* 지역 변수 캡처 시 해당 변수는 final 또는 effectively final이어야 함
 
-### 익명 내부 클래스(Anonymous Inner Class)
+## 익명 내부 클래스(Anonymous Inner Class)
 이름이 없는 지역 클래스로, 선언과 동시에 객체를 생성한다.
 ```java
     interface Clickable {
@@ -209,7 +210,7 @@ description: >
 * 자바 8부터는 함수형 인터페이스의 경우 람다 표현식으로 대체 가능
 * 메소드를 추가할 수 있지만, 선언된 타입의 메소드만 외부에서 접근 가능
 
-** 내부 클래스 사용의 장점
+## 내부 클래스 사용의 장점
 * **캡슐화 강화**: 내부 클래스를 외부 클래스의 멤버처럼 선언하여 외부에서 접근을 제한
 * **코드의 논리적 그룹화**: 논리적으로 연관된 클래스를 함께 유지
 * **외부 클래스 멤버에 쉬운 접근**: 내부 클래스에서 외부 클래스의 private 멤버에도 접근 가능 
