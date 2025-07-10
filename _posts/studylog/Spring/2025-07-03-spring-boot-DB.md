@@ -7,6 +7,7 @@ date:   2025-06-25
 categories:
   - studylog
   - spring
+  - db
 description: >
   MySQL을 spring boot와 연결하는 방법
 ---
@@ -127,3 +128,7 @@ https://github.com/mybatis/spring-boot-starter/releases를 통해 확인해서 �
 ### `Error creating bean with name 'sqlSessionFactory' defined in class path resource`
 xml 파일에서 <mapper> 태그에 namespace로 경로를 지정해주면 해결된다.
 `<mapper namespace="com.example.mapper.EmployeeMapper"></mapper>`
+
+## `mybatis.configuration.map-underscore-to-camel-case=true`
+application.properties에 추가해주지 않으면
+데이터베이스에서 join_date와 같이 자바의 카멜표기법과 달라서 매칭이 되지 않고 null이 출력될 수 있다.

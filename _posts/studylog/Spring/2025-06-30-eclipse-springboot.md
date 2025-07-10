@@ -51,7 +51,7 @@ src/main/java 폴더
 	기본으로 만들어져있는 NeflixApplication.java는 main 메소드를 갖고 있다.
 	application 실행을 클릭하면 해당 main메소드가 실행되고, 오류가 나지 않는 이상 꺼지지 않는다.
 
-    encoding 설정
+  encoding 설정
 	프로젝트 오른쪽 클릭 -> Properties -> Resource
 	-> encoding을 UTF-8로 설정 -> Apply & Close
 
