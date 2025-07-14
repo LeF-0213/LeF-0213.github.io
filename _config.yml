@@ -61,6 +61,8 @@ menu:
         url:           /db/
       - title:         Alogorithm
         url:           /algorithm/
+      - title:         ErrorLog
+        url:           /errorLog/
   - title:             Programmers
     url:               /programmers/
     submenu:
