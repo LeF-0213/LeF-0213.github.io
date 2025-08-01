@@ -265,18 +265,34 @@ for i in range(0, 3, 1):
     # 2: 처음 해보는 파이썬
     # 3: 처음 해보는 파이썬
 ```
+range(시작값, 끝값, 증가값)
+파이썬은 무조건 범위가 `시작값 <= i < 끝값`이다.
 
-한줄에 쓰고 싶을 때
+**한줄에 쓰고 싶을 때**
 ```python
 for i in range (1, 6):
     print(i, end = " "); # 1, 2, 3, 4, 5
 ```
 
-문제 사용자가 입력한 정수까지의 합을 구하는 코드를 작성하시요
-    1부터 입력한 값까지의 합을 구하는 코드를 작성
-    for구문을 이용하여 작성
+### 활용 예시
+```python
+start = int(input("시작값 입력 : "));
+end = int(input("끝값 입력 : "));
+inc = int(input("증가값 입력 : "));
+sum = 0;
 
-    출력 예) 값을 입력해주세요 : 200
-          1부터 200까지의 합은 : 0000입니다.
+for i in range(start, end + 1, inc):
+    sum += i;
+print("%d에서 %d까지 %d씩 증가한 값의 합은 : %d" % (start, end, inc, sum));
+```
 
-문제 500부터 1000 사이의 홀수의 합을 구하는 코드를 작성하시오.
+구구단(이중 for문)
+```python
+for i in range(0, 10, 1):
+    for k in range(2, 10, 1):
+        if(i == 0):
+            print("  < %d단 > " % k, end = "\t")
+        else:
+            print("%d X %d = %2d" % (k, i, (i * k)), end = "\t");
+    print();
+```

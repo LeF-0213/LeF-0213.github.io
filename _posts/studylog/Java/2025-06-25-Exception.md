@@ -13,36 +13,38 @@ description: >
 * toc
 {:toc .large-only}
 
-main에 throws를 사용해도 예외처리 불가(main은 컴퓨터가 실행하는 것이라 throws를 써주어도 예외가 실행될 수 없음)
 ```java
-  try {
-    main()
-  } catch(Exception e) {
-    // 처리 불가
-  }
-```
-```java
-  public class ThrowsTest {
-    public static void rest() 
-        throws InterruptedException,
-        NumberFormatException,
-        ArrayIndexOutOfBoundsException,
-        ArithmeticException {
-      System.out.println("시작");
-      Thread.sleep(3000);
-      System.out.println("끝");
-    }
-    
-    public static void main(String[] args) throws NumberFormatException, ArrayIndexOutOfBoundsException, ArithmeticException, InterruptedException {
-      ThrowsTest.rest();
-    }
-  }
+public class ThrowsTest {
+	public static void rest() 
+			throws InterruptedException,
+			NumberFormatException,
+			ArrayIndexOutOfBoundsException,
+			ArithmeticException {
+		System.out.println("시작");
+		Thread.sleep(3000);
+		System.out.println("끝");
+	}
+	
+	public static void main(String[] args) throws NumberFormatException, ArrayIndexOutOfBoundsException, ArithmeticException, InterruptedException {
+		ThrowsTest.rest();
+	}
+}
 ```
 
-try catch 구문
-	java에서 예외를 처리할 때 사용하는 문법
-	java에서는 예외가 Exception이라는 클래스로 만들어져있다.
-	Exception 타입의 객체가 생성되고, 이 객체가 throw되면 오류가 발생하는 원리
+**main**에 `throws`를 사용해도 예외처리 불가(**main은 컴퓨터가 실행하는 것이라 throws를 써주어도 예외가 실행될 수 없음**)
+```java
+try {
+	main()
+} catch(Exception e) {
+	// 처리 불가
+}
+```
+
+
+## try catch 구문
+java에서 예외를 처리할 때 사용하는 문법
+java에서는 예외가 Exception이라는 클래스로 만들어져있다.
+Exception 타입의 객체가 생성되고, 이 객체가 throw되면 오류가 발생하는 원리
 
 Exception
 	IOException
