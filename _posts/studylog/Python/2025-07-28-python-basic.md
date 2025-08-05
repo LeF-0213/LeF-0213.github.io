@@ -8,17 +8,23 @@ categories:
   - studylog
   - python
 description: >
-  
+  파이썬의 기초 개념부터 변수, 함수, 연산자, 조건문, 반복문까지 기본 내용을 정리
 ---
 * toc
 {:toc .large-only}
+
+# 파이썬이란?
+풍부한 표준라이브러리, 
 
 ## 언어
 - 절차적언어
 - 객체지향언어
 => 
+다목적 언어
+인터프리터 언어
 
-## 자동형변환
+
+## 자동형변환(동적타이핑)
 데이터형(type)
 정수(byte, int) 실수(float, double) 문자(char) 문자열(String)
 ```python
