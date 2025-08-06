@@ -63,6 +63,8 @@ menu:
         url:           /db/
       - title:         Alogorithm
         url:           /algorithm/
+      - title:         AI
+        url:           /ai/
       - title:         ErrorLog
         url:           /errorLog/
   - title:             Programmers
