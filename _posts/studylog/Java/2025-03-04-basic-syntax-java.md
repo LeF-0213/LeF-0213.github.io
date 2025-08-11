@@ -84,6 +84,20 @@ public class ClassName {
 }
 ```
 
+#### 예시
+```java
+public class FristTest {
+  public static void main(String[] args) {
+    System.out.print("First Test");
+  }
+}
+```
+* class : 클래스를 나타내는 키워드
+* FristTest : 클래스명
+* static : 정적 초기화
+* void : 리턴 타입(반환되는 값이 없다)
+* main(String[] args) : 이 프로그램의 컴트롤 타워
+
 ## 값의 타입(기본 타입, Primitive Type)
 타입        | 크기     | 설명                          | 예시                  
 -----------|----------|-------------------------------|-----------------------
@@ -142,17 +156,3 @@ public class ClassName {
 ✓ | 대소문자 구분
 ✗ | 숫자로 시작 불가능
 ✗ | 예약어 사용 불가능
-
-## 예약어 목록
-```
-abstract   continue   for         new         switch
-assert     default    goto        package     synchronized
-boolean    do         if          private     this
-break      double     implements  protected   throw
-byte       else       import      public      throws
-case       enum       instanceof  return      transient
-catch      extends    int         short       try
-char       final      interface   static      void
-class      finally    long        strictfp    volatile
-const      float      native      super       while
-```

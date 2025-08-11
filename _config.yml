@@ -70,8 +70,8 @@ menu:
   - title:             Programmers
     url:               /programmers/
     submenu:
-      - title:         Basic
-        url:           /basic/
+      - title:         Lv1
+        url:           /lv1/
   - title:             Documentation
     url:               /docs/
   - title:             About

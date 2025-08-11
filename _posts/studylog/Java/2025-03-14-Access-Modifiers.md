@@ -39,6 +39,14 @@ description: >
 | default    | ✓          | ✓          | ✗          | ✗          |
 | private    | ✓          | ✗          | ✗          | ✗          |
 
+```java
+  Phone 객체  = new Phone(); // 객체를 초기화(생성자)
+
+  Phone p1 = new Phone(); // 디폴트 생성자
+  Phone p2 = new Phone("test");
+  Phone p3 = new Phone(10);
+```
+
 
 ## 접근 제어자의 특징과 용도
 * **캡슐화(Encapsulation)**: 객체의 내부 상태를 외부로부터 보호하여 데이터 무결성 유지

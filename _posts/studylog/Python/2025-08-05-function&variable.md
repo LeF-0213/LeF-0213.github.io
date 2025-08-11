@@ -2,7 +2,7 @@
 layout: post
 related_posts:
     - /studylog/python
-title:  "함수"
+title:  "함수와 변수"
 date:   2025-08-05
 categories:
   - studylog
