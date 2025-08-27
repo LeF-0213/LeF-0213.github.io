@@ -494,6 +494,30 @@ def solution(card1, card2, goal):
     return 'No' 
 ```
 
+```python
+import math
+
+def solution(progresses, speeds):
+  answer = []
+  n = len(progresses)
+
+  days_left = [math.ceil((100 - progresses[i]) / speeds[i]) for i in rage(n)]
+
+  count = 0
+  max_day = days_left[0]
+
+  for i in range(n):
+    if days_left[i] <= max_day:
+      count += 1
+    else:
+      answer.append(count)
+      count = 1
+      max_day = days_left[i]
+  
+  answer.append(count)
+  return answer
+```
+
 ## Tree
 데이터를 저장하고 탐색하기에 가장 유용한 구조를 가지고 있다.
 
@@ -521,3 +545,110 @@ root
 이진 트리에서 가장 중요한 점은 탐색을 효율적으로 할 수 있도록 트리를 구축하는 방법
 (데이터를 잘 정리하면 탐색이 빠르고 쉽다)
 예를 들어 데이터가 3 -> 4 -> 2 -> 8 -> 9 -> 7 -> 1
+
+이진 탐색 트리
+
+기준 => root
+종료 기준 => 찾고자하는 데이터를 찾으면 종료
+
+작으면 왼쪽 크면 오른쪽
+
+평양 이진 트리 
+균형 이진 트리 => 레드-블랙, AVL 트리
+
+그래프, 트리 => 비선형 자료구조 공통점이다.
+그래프 => 순회, 트리 => 순회(X)
+
+방향 그래프, 무방향 그래프(양방향)
+노드(vertex), 간선(Edge), 가중치
+
+데이터를 담고 있는 저장소 -> 노드(정점)
+노드를 잇는 것 -> 간선(Edge)
+간선의 방향 -> 무방향(양방향), 단방향
+노드와 노드 사이의 값 -> 가중치
+
+그래프의 구현 방식
+1. 인접 행렬(2차원 배열)
+2. 인접 리스트(linked)
+
+그래프 탐색
+깊이 우선 탐색
+더 이상 탐색 할 노드가 없을 때까지 탐색(일단 한 방향으로)
+너비 우선 탐색
+현재 노드를 기준으로 가장 가까운 노드부터 모두 방문하고 다음 노드로 이동
+
+깊이 우선 탐색(DFS) => 스택 방식에 의해 구현
+너비 우선 탐색(BFS) => 큐 방식에 의해 구현
+완전 탐색(모든 노드를 방문)
+
+## DFS(깊이 우선 탐색)
+탐색 시작 노드를 스택에 삽입하고 방문 처리 한다.
+스택의 최상단 노드 중 방문하지 않은 인접 노드가 있으면 그 인접 노드를 스택에 삽입하고 방문 처리
+2번의 과정을 더  방문할 노드가 없을 때까지 반복
+
+1. 스택을 생성한다.(빈 스택)
+stack = []
+노드 중에서 가장 작은 데이터를 잡는다.
+2. 방문 노드를 기준으로 방문하지 않는 인접 노드를 탐색
+(그 중 노드 값이 작은 노드를 스택에 삽입 후 방문 처리)
+3. 마지막으로 방문한 노드를 기준
+인접 노드 중 방문하지 않은 노드를 스택에 삽입하고 방문 처리
+
+위의 방식으로 탐색 한 순서는
+1 -> 2 -> 7 -> 6 -> 8 -> 3 -> 4 -> 5
+
+```python
+def dfs(graph, v, visited):
+  visited[v] = True     # 현재 노드 v를 방문 처리
+  print(v, end = '')    # 방문한 노드 출력
+
+  for i in graph[v]:    # 현재 노드 v와 연결된 노드들을 확인
+    if not visited[i]:  # 아직 방문하지 않았다면
+      dfs(graph, i, visited)  # 재귀적으로 방문
+```
+매개변수 의미
+* **graph**: 인접 리스트
+* **V**: 현재 방문할 노드 번호
+* **visited**: 방문 여부를 저장하는 리스트
+
+## BFS(너비 우선 탐색)
+가까운 노드부터 탐색하는 알고리즘
+
+```python
+from collections import deque
+
+def bfs(graph, start, visited):
+  queue = deque([start])
+  visited[start] = True
+
+  while queue:
+    v = queue.popleft()
+    print(v, end = '')
+    for i in graph[v]:
+      if not visited[i]:
+        queue.append(i)
+        visited[i] = True
+```
+
+정수 배열 num이 주어진다. 이 num에서 서로 다른 인덱스에 있는 2개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 반환하는 함수를 작성하시오(함수 이름은 solution()이다.) (중복 값은 허용하지 않는다.)
+
+num = [2, 1, 3, 4, 1]
+num = [5, 0, 2, 7]
+
+```python
+def sol(num):
+  result = []
+
+  for i in range(len(num)):
+    for j in range(i + 1, len(num)):
+      result.append(num[i] + num[j])
+  
+  result = sorted(set(result))
+  return result
+```
+
+정렬 -> 모든 데이터를 나열하는 것을 의미(사용자가 정의한 순서대로)
+-> 오른차순/ 내림차순
+-> 데이터를 쉽게 탐색하기 위해서
+
+1. 삽입 정렬 => 데이터의 전체 영역에서 정렬된 영역과 
