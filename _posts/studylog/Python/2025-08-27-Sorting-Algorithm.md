@@ -1,0 +1,144 @@
+---
+layout: post
+related_posts:
+    - /studylog/python
+title:  "정렬 알고리즘"
+date:   2025-08-27
+categories:
+  - studylog
+  - python
+description: >
+  
+---
+* toc
+{:toc .large-only}
+
+정렬 -> 모든 데이터를 나열하는 것을 의미(사용자가 정의한 순서대로)
+-> 오른차순/ 내림차순
+-> 데이터를 쉽게 탐색하기 위해서
+
+### 삽입 정렬(Insertion Sort) 
+=> 데이터의 전체 영역에서 정렬된 영역과 정렬되지 않은 영역을
+![InsertionSort](https://miro.medium.com/v2/resize:fit:1326/format:webp/1*GzjS6_EJkOcHkdwJdzS8oQ.png)
+
+### 병합 정렬(분할 정렬)
+오름차순 기준으로 정렬
+![MergeSortImg](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FyPTS3%2FbtrIseBpDC3%2FAAAAAAAAAAAAAAAAAAAAANHWEYdT7KzY7r6aiGmEz52q8AxePIqk6dvyfyjPTklC%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D%252BvHsVKCKdn2CpDPC1zAJuljH09c%253D)
+
+![MergeSort](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FtgijT%2FbtrItuxkweb%2FAAAAAAAAAAAAAAAAAAAAAN0573M9idS_pWAXNLhUcpmZLWU92hPSy0687NUMzHpv%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DyR7PnlKAV4oZ6wj2A6vaQ963FeE%253D)
+
+### 위상정렬
+![](https://i.namu.wiki/i/tT6qrk-SMO0AWqodFY5xp_uB34oIwXpgwyWXVsW3F8A4TjGAu3qf58eQww3VBOoH2cVZLBer9s4OME-Yw67BEikkH16_oyU75fZuDvXz-PdqejmM1MyhPhd5GOc5clb_LqT4MLSd7JGdD4s4j_8sJA.webp)
+일의 순서가 있는 작업을 순서에 맞춰 정렬하는 방식
+
+위상 정렬은 자신을 향한 화살표의 개수를 진입차수로 정의하여 진행
+
+진입 차수가 0이라고 하면 자신을 향한 화살표가 (X)
+이 의미는 선행 작업이 필요 없다.
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbNIvtI%2FbtsHbs2o1NQ%2FAAAAAAAAAAAAAAAAAAAAAEjvKF5unz3WURsvRpkr2y5NXpIcqD6UK7vO0Wz0n_CJ%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DLyKJaREmwJjqeCwtRAmLIyQNsf0%253D)
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FrSlwE%2FbtsHaWQxjoh%2FAAAAAAAAAAAAAAAAAAAAAMXqW8KsGHnVohcTneMO98PKIgiuqeM2RaxJ-3hzED1p%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DzLEl%252BLfCZbUdvjRMEey%252BjrBT7nY%253D)
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FsXtfx%2FbtsHbeDlL0v%2FAAAAAAAAAAAAAAAAAAAAAIXjMXE_f03P1p9tM5ry0jzj5BGv-wSoCv2rXl4ws25J%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DoIR6MlSNuO7FMMe3Led9YEQkVe4%253D)
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbeG1ln%2FbtsHd8aiRYn%2FAAAAAAAAAAAAAAAAAAAAABOfp0yKMnkyszWkT6tiDeQP37daVGgJatG2LgWtfiDg%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D8nt0Rfrf5HkHx48MfmuGacONHDc%253D)
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbvwhzi%2FbtsHa0L8sTi%2FAAAAAAAAAAAAAAAAAAAAAHH4SV5F3rNMSau3Aj6Qh-k0wm6JHTJAxPXv9BG2qDlG%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D9w%252B22%252BfIrbu%252B6Me6w24prhcBM7I%253D)
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbh2MyI%2FbtsHdvwOhme%2FAAAAAAAAAAAAAAAAAAAAAMl4YuokvLILNadkUxDgB7rBnwdPbm6ISpeq-YMdN3kM%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DtjbvYeZItjPPMKGEp9gdUcwbvRs%253D)
+
+### 계수 정렬
+데이터에 의존하는 정렬 방법(데이터와 빈도수)    
+* **특징**: 시간복잡도
+* **딘점**:
+
+![](https://velog.velcdn.com/images%2Fluvlik207%2Fpost%2F0f5454ab-b88d-4e1f-8a49-80b5d88e6f30%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-24%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.03.27.png)
+
+![](https://velog.velcdn.com/images%2Fluvlik207%2Fpost%2Fc7b1d9e9-c8ad-4f95-a786-b378c36c5f38%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-24%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.05.11.png)
+
+문제1]
+정렬된 두 배열 arr1, arr2가 존재한다.
+이 두 배열을 병합하여 하나의 정렬로 나타내는 코드 작성(오름 차순)
+
+예를 들어 arr1 = [1, 3, 5] arr2 = [2, 4, 6]
+=> [1, 2, 3, 4, 5, 6]
+
+```python
+arr1 = [1, 3, 4]
+arr2 = [2, 5, 6]
+
+def solution(arr1, arr2):
+    answer = []
+
+    i = 0
+    j = 0
+
+    while (i != len(arr1) and j != len(arr2)):
+        if(arr1[i] < arr2[j]):
+            answer.append(arr1[i])
+            i += 1
+            print("if구문 i", i)
+        else:
+            answer.append(arr2[j])
+            j += 1
+            print("if구문 j", j)
+
+    while i < len(arr1):
+        answer.append(arr1[i])
+        i += 1
+
+    while j < len(arr2):
+        answer.append(arr2[j])
+        j += 1
+
+    return answer
+    
+
+print(solution(arr1, arr2))
+```
+
+문제2] 정수 n을 받아서 내림차순으로 정렬한
+새로운 정수를 반환하는 코드를 작성하시오
+n = 1187567
+result = 8776511
+```python
+n = 1187567
+
+def solution(n):
+    answer = ""
+    dig = list(str(n))
+    dig.sort(reverse = True)
+    answer = int("".join(dig))
+    
+    return answer
+
+print(solution(n))
+```
+
+문제3] 배열 arr의 i번째 숫자부터 j번째 숫자까지 자르고 
+정렬했을 때 k번째에 있는 숫자 구하는 코드를 작성
+
+arr = [1, 3, 7, 2, 4, 6, 8]
+i = 2, j = 5, k = 3
+
+3, 7, 2, 4를 뽑아내고 정렬 2, 3, 4, 7
+-> 결과는 4
+```python
+arr = [1, 3, 7, 2, 4, 6, 8]
+i = 2
+j = 5
+k = 3
+
+def solution(arr, i, j, k):
+    ar = []
+    for x in range(len(arr)):
+        if(x >= i - 1 and x < j):
+            ar.append(arr[x])
+    ar.sort()
+    answer = ar[k - 1]
+    return answer
+
+print(solution(arr, i, j, k))
+```
+
