@@ -72,6 +72,8 @@ menu:
     submenu:
       - title:         Lv1
         url:           /lv1/
+      - title:         Lv2
+        url:           /lv2/
   - title:             Documentation
     url:               /docs/
   - title:             About
