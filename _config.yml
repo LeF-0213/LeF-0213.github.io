@@ -55,8 +55,8 @@ menu:
         url:           /java/
       - title:         Python
         url:           /python/
-      - title:         JavaScript
-        url:           /javascript/
+      - title:         Frontend
+        url:           /frontend/
       - title:         Spring
         url:           /spring/
       - title:         DB
