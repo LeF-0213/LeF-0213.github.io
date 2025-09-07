@@ -302,3 +302,75 @@ for i in range(0, 10, 1):
             print("%d X %d = %2d" % (k, i, (i * k)), end = "\t");
     print();
 ```
+
+## 변수
+파이썬에서 변수는 데이터를 저장하기 위한 이름표와 같은 역할을 합니다. 변수에 값을 할당하면, 그 값은 컴퓨터 메모리에 저장되고 변수 이름은 그 값을 가리키게 됩니다. 파이썬은 동적 타입 언어이기 때문에, 변수를 선언할 때 자료형을 명시하지 않아도 되며, 한 번 정해진 변수에 다른 자료형의 값을 다시 저장할 수도 있습니다.
+```python
+name = '김사과'
+age = 20
+
+print(name)
+print(age)
+```
+
+### 리터럴 공유(객체 캐싱)
+리터럴 공유는 동일한 값을 가진 불변 객체가 여러 곳에서 사용될 때, 새로운 객체를 만들지 않고 기존 객체를 재사용하는 방식입니다. 이를 통해 파이썬은 메모리 사용을 최적화할 수 있습니다.
+```python
+a = 200
+b = 200
+print(a)
+print(b)
+```
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbnojEK%2FbtsJ9njyXf2%2FAAAAAAAAAAAAAAAAAAAAAADUZKeupRfBbZWCOOT_JVOURYE2KlaiCeXC3M4srYSy%2Fimg.webp%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DC6VexxEJr8YlEAXNvXYIXh009qo%253D)
+
+
+0.399999999 -> 부동 소수형 데이터를 이진법
+sys.float_info.epsilon
+
+Collection
+여러 값을 담는 데이터 타입을 이야기한다.
+대표적인 것이 리스트, 튜플, 딕셔너리, 셋, 문자열 등이 존재
+이것들이 수정 여부에 따라 변경할 수 있는 것(mutable 객체), 변경하지 못하는 것(immutable 객체)
+
+mutable 객체 => 리스트, 딕셔너리, 셋 <- 코테에서 모든 결과값은
+
+리스트(배열)
+1. ArrayList
+2. LinkedList
+
+슬라이싱
+컴프리핸션 => 반복문 조건문을 사용하여 리스트를 생성할 수 있는 문법
+객체를 순환
+
+딕셔너리(자료구조) => 해시 테이블
+
+set => 해시테이블 기반으로 구현으로 자료구조(집합 UNION)
+set 초기화 => {}
+
+클래스 
+사용자가 정의하는 새로운 데이터 타입
+
+## 자료구조 
+1. 선형 => 리스트[]. (), {}, 스택(FILO), 큐(FIFO)
+2. 비선형 => 트리(힙), 그래프
++ 알고리즘
+
+### 리스트(List)
+* 파이썬에서 기본적으로 제공해주는 자료구조
+* 리스트 == 배열(순차적으로 나열되어 있다)
+* 두 가지로 나누어서 이야기 한다. (1. 배열 리스트 2. 연결리스트)
+
+1. 빈 리스트 생성 (num = [])
+2. 리스트에 데이터(요소, item) 삽입
+insert(), put(), add(), append() => 모든 자료구조의 명령어는 ADT(추상형 데이터)
+삭제 함수 pop(), remove(), clear() 현재 마지막 데이터를 삭제
+pop(index) => num
+
+### 연결 리스트
+가장 배열의 공간 낭비를 피할 수 있는 자료구조이다.
+데이터를 추가될 때마다 공간을 할당 받아서 사용한다(동적 할당)
+
+Node data, item(요소) next, link(주소)
+노드의 존재 의미는 데이터
+노드는 데이터를 가지지 않을 수 있다 => 헤더(dummy)
+
