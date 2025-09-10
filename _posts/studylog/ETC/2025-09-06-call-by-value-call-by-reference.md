@@ -65,6 +65,18 @@ public class Main {
   }
 }
 ```
+```java
+public class Main {
+  public static void main(String[] args) {
+    int[] original = {1, 2, 3};
+    int[] copy = new int[original.length];
+
+    for (int i = 0; i < original.length; i++) {
+        copy[i] = original[i];
+    }
+  }
+}
+```
 
 ## 값 타입(Value Type) vs 참조 타입(Reference Type)
 ### 값 타입(Value Type)

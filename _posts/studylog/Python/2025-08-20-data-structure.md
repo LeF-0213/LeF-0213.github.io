@@ -56,6 +56,139 @@ Node(데이터의 저장 장소, 오직 하나의 데이터만을 저장)
 **장점**: 무한대로 늘어남
 **단점**: 비효율적이다.(느림)
 
+리스트(배열)
+1. ArrayList
+2. LinkedList
+
+슬라이싱
+컴프리핸션 => 반복문 조건문을 사용하여 리스트를 생성할 수 있는 문법
+객체를 순환
+
+딕셔너리(자료구조) => 해시 테이블
+
+set => 해시테이블 기반으로 구현으로 자료구조(집합 UNION)
+set 초기화 => {}
+
+클래스 
+사용자가 정의하는 새로운 데이터 타입
+
+## 자료구조 
+1. 선형 => 리스트[]. (), {}, 스택(FILO), 큐(FIFO)
+2. 비선형 => 트리(힙), 그래프
++ 알고리즘
+
+### 리스트(List)
+* 파이썬에서 기본적으로 제공해주는 자료구조
+* 리스트 == 배열(순차적으로 나열되어 있다)
+* 두 가지로 나누어서 이야기 한다. (1. 배열 리스트 2. 연결리스트)
+
+1. 빈 리스트 생성 (num = [])
+2. 리스트에 데이터(요소, item) 삽입
+insert(), put(), add(), append() => 모든 자료구조의 명령어는 ADT(추상형 데이터)
+삭제 함수 pop(), remove(), clear() 현재 마지막 데이터를 삭제
+pop(index) => num
+
+### 연결 리스트
+가장 배열의 공간 낭비를 피할 수 있는 자료구조이다.
+데이터를 추가될 때마다 공간을 할당 받아서 사용한다(동적 할당)
+
+Node data, item(요소) next, link(주소)
+노드의 존재 의미는 데이터
+노드는 데이터를 가지지 않을 수 있다 => 헤더(dummy)
+
+연결 리스트 => 요소를 삽입하는 위치 3가지
+1. 맨 앞 
+2. 맨 뒤 
+3. 중간
+
+x => 요소(데이터)
+newNode.item = x
+newNode.next = prev.next
+prev.next = newNode
+
+newNode.next = head
+head = newNode? -> head는 item 값 없음 link만 존재
+
+```python
+if i == 0:
+    newNode.item = x
+    newNode.next = _head
+    _head = newNode
+else:
+    newNode.item = x
+    newNode.next = prev.next
+    prev.next = newNode
+```
+
+리스트 일반적인 방법 arr = [0,0,0,0,0,0] == arr = [0] * 6
+리스트 생성자(초기화) 사용법 arr = list(range(6)) # [0, 1, 2, 3, 4, 5]
+리스트 컴프리핸션 사용 방법 arr = [0 for i in range(6)] # [0,0,0,0,0,0]
+
+1차원 배열 => 행만 존재
+2차원 배열 => 행, 열 
+arr = [[1, 2, 3, 4],
+       [5, 6, 7, 8],
+       [9, 10, 11, 12]]
+
+배열의 크기가 3*4인 리스트 선언
+arr = [[i] * 3 for _ in range(4)]
+
+정수 배열을 오름차순으로 정렬해서 반환하는 함수를 작성
+[1, -3, 2, 5, 3]
+
+원본을 바꿀때
+```python
+def solution(arr):
+    arr.sort()
+    return arr
+```
+원본을 바꾸지 않을 때
+```python
+def solution(arr):
+    new_list = sorted(arr)
+    return new_list
+```
+
+```python
+def solution(arr):
+    new_list = list(set(arr))
+    new_list.sort(reverse = True)
+    return new_list
+```
+
+```python
+def solution(arr):
+    new_list = sorted(set(arr), reverse = True)
+    return new_list
+```
+
+배열 num에서 서로 다른 인덱스에 있는 2개의 수를 뽑아서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 반환하는 함수를 작성
+
+```python
+def solution(arr):
+    new_set = set()
+    for i in range(len(arr)):
+        for j in range (i + 1, len(arr)):
+            new_set.append(arr[i] + arr[j])
+
+    new_set = sorted(new_set)
+    return new_set        
+```
+
+https://school.programmers.co.kr/learn/courses/30/lessons/42840 
+https://school.programmers.co.kr/learn/courses/30/lessons/12949
+
+
+```python
+num1 = int(input())  
+num2 = int(input())
+
+result = num1 + num2
+print(result)
+```
+
+`input()` 함수는 입력되는 모든 값을 문자열로 인식한다.
+
 ## stack(FILO)
 데이터 삭제 => pop()
 현재 데이터를 가리키는 변수 => top
