@@ -236,14 +236,14 @@ print(a >> 2)  # 15, 즉 1111
 # 조건문
 실행하기 위해서는 실행할 수 있는 구간이 필요 `{}`  
 파이썬은 `{}`아닌 `:`을 사용하여 블럭문을 표시한다
-### if문
+## if문
 ```python
 if num > 100:
     print("참입니다.")
 else:
     print("거짓입니다.")
 ```
-### 중첩if문
+## 중첩if문
 ```python
 if num > 90:
     print("A 학점")
@@ -255,7 +255,7 @@ else:
     print("D 학점")
 ```
 ## Walrus Operator(x := expression)
-expression을 계산한 값을 x에 할당하고, 동시에 그 값을 사용
+`expression`을 계산한 값을 `x`에 할당하고, 동시에 그 값을 사용
 ```python
 text = input("아이디를 입력하세요: ")
 
@@ -264,7 +264,7 @@ if (length := len(text)) < 3:
 else:
     print(f"아이디 '{text}'는 사용 가능합니다.")
 ```
-### 조건부 표현식
+## 조건부 표현식
 ```python
 # if~else로 작성
 num = int(input('숫자를 입력하세요: '))
@@ -276,6 +276,58 @@ else:
 # 조건부 표현식으로 작성
 num = int(input('숫자를 입력하세요: '))
 print('짝수') if num % 2 == 0 else print('홀수')
+```
+## 구조적 패턴 매칭(`match - case`)
+```python
+match 값:
+    case 패턴1:
+        실행할 코드1
+    case 패턴2:
+        실행할 코드2
+    case _:
+        기본 실행 코드 (default)
+```
+### 얘시 1 - 월별 일수 확인
+```python
+month = int(input("월을 입력하세요 (1~12): "))
+
+match month:
+    case 1 | 3 | 5 | 7 | 8 | 10 | 12:
+        print(f"{month}월은 31일까지 있습니다.")
+    case 4 | 6 | 9 | 11:
+        print(f"{month}월은 30일까지 있습니다.")
+    case 2:
+        print("2월은 28일 또는 윤년이면 29일까지 있습니다.")
+    case _:
+        print("잘못된 월입니다. 1~12 사이의 숫자를 입력해주세요.")
+```
+### 예시 2 - 사용자 연령 분류
+```python
+user = ("김사과", 20)
+
+match user:
+    case (name, age) if age > 19:
+        print(f"{name}님은 성인입니다.")
+    case (name, age) if age > 15:
+        print(f"{name}님은 청소년입니다.")
+    case (name, age) if age > 6:
+        print(f"{name}님은 어린이입니다.")
+    case _:
+        print(f'{name}님은 유아입니다.')
+```
+### 예시 3 - 자료구조 패턴 매칭
+```python
+# scores = [95, 88, 76]
+# scores = (95, 88, 76, 100)
+scores = {"국어":95, "영어":88, "수학":76}
+
+match scores:
+    case [korean, english, math]:
+        print(f"1. 국어: {korean}, 영어: {english}, 수학: {math}")
+    case (korean, _, math, computher):
+        print(f"2. 국어: {korean}, 수학: {math}, 컴퓨터: {computer}")
+    case {"국어": korean, "영어": english, "수학": math}:
+        print(f"3. 국어: {korean}, 영어: {english}, 수학: {math}")
 ```
 
 ### 활용예시 - 계산기
@@ -306,8 +358,8 @@ print("%d %s %d = %d입니다." % (num1, operator, num2, result));
 ```
 
 # 반복문
+파이썬의 `range()`는 시작값 ≤ i < 끝값 범위에서 동작한다.
 range(시작값, 끝값, 증가값)
-파이썬은 무조건 범위가 `시작값 <= i < 끝값`이다.
 ```python
 for i in range(0, 3, 1):
     print("%d: 처음 해보는 파이썬" % (i + 1));
@@ -320,6 +372,7 @@ for i in range(0, 3, 1):
 for i in range (1, 6):
     print(i, end = " "); # 1, 2, 3, 4, 5
 ```
+
 ### 활용 예시 - 구구단
 ```python
 start = int(input("시작값 입력 : "));
@@ -343,18 +396,120 @@ for i in range(0, 10, 1):
     print();
 ```
 
+## enumerate() 함수
+반복문에서 **인덱스와 값을 함께** 가져올 때 사용.
+```python
+enumerate(iterable, [start=0])
+```
+### 예시 1
+```python
+for e in enumerate('hello', 0):
+    print(e)
+"""
+(0, 'h')
+(1, 'e')
+(2, 'l')
+(3, 'l')
+(4, 'o')
+"""
+```
+### 예시 2
+```python
+list1 = [10, 20, 30, 40]
+
+for i, v in enumerate(list1):
+    print(f'인덱스:{i}, 값:{v}')
+"""
+인덱스:0, 값:10
+인덱스:1, 값:20
+인덱스:2, 값:30
+인덱스:3, 값:40
+"""
+```
+
+## Iterable & Iterator
+### Iterable(이터러블)
+* for문에서 **반복 가능한 객체**를 의미
+* 리스트, 튜플, 문자열, 딕셔너리, 세트(set) 등이 모두 이터러블
+* 특징: `iter()`를 적용할 수 있다.
+* **순서가 있는 것**(list, tuple, str)도 있고, **순서 없는 것**(set, dict.keys())도 있다.
+```python
+numbers = [10, 20, 30]  # 리스트는 이터러블
+for n in numbers:
+    print(n)
+```
+### Iterator(이터레이터)
+* 이터러블 객체를 `iter()` 함수로 변환하면 만들어지는 객체
+* `next()` 함수를 사용해 값을 하나씩 꺼낼 수 있다.
+* 값을 다 꺼낸 후 더 `next()` 를 호출하면 **Stoplteration 예외**가 발생한다. 
+```python
+numbers = [10, 20, 30]
+
+# 이터러블 → 이터레이터로 변환
+iterator = iter(numbers)
+
+print(next(iterator))  # 10
+print(next(iterator))  # 20
+print(next(iterator))  # 30
+# print(next(iterator))  # StopIteration 발생
+```
+
+## zip() 함수
+여러 시퀀스를 묶어서 반복 처리 가능.
+### 예시 1(기본 range() 함수)
+```python
+li1 = [10, 20, 30]
+li2 = ['apple', 'banana', 'orange']
+
+for i in range(len(li1)):
+    print((li1[i], li2[i]))
+"""
+(10, 'apple')
+(20, 'banana')
+(30, 'orange')
+"""
+```
+### 예시 2
+```python
+li1 = [10, 20, 30, 40, 50]
+li2 = ['apple', 'banana', 'orange']
+
+for l1, l2 in zip(li1, li2):
+    print(l1, l2)
+"""
+10 apple
+20 banana
+30 orange
+"""
+```
+### 예시 3(튜플 반환)
+```python
+li1 = [10, 20, 30]
+li2 = ['apple', 'banana', 'orange']
+
+for li in zip(li1, li2):
+    print(li)
+"""
+(10, 'apple')
+(20, 'banana')
+(30, 'orange')
+"""
+```
+
 ## 알아두면 좋은 게냠
 ### 부동소수점 오차
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FdIvD5n%2FbtsKpllrAUz%2FAAAAAAAAAAAAAAAAAAAAAPyW2WWUgkEBN3AMLucwS24KXgcBV79-0_GFRUjKYhhC%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DtD03NE3kMe%252BIAXe8AFhe9kgmlwY%253D)
 ```python
 print(1.1 + 0.1 == 1.2)  # False
 ```
-컴퓨터는 **10진수를 2진수로 변환하여 계산**하는데, `1.1`과 `0.1`은 2진수로 정확히 표현되지 않아서 미세한 오차가 발생한다. `1.1`과 `0.1` 같은 10진수를 이진수로 변환할 때, 컴퓨터는 이를 **무한 소수**로 처리한다. 이진수 표현에서는 특정 소수를 정확히 표현하지 못하고 근사값으로 저장한다. 따라서 `1.1 + 0.1`의 결과는 `1.2`에 아주 가까운 값이지만, 정확히 `1.2`와는 다르기 때문에 `False`가 반환된다.
+* 컴퓨터는 10진수를 2진수로 변환하여 계산한다.
+* 하지만 `0.1`, `1.1` 같은 값은 2진수로 무한 소수가 되기 때문에, 메모리에 근사값으로 저장된다.
+* 따라서 `1.1 + 0.1`은 `1.2`와 거의 같지만, 정확히 같지 않아서 `False`가 나온다.
 
 ### sys.float_info.epsilon
-파이썬의 float는 64비트(배정밀도, double precision) 를 사용.
-epsilon 값은 1과 1.0 사이에서 구분 가능한 최소 차이를 뜻한다.
-즉, 이 값보다 작은 차이는 float에서는 동일한 값으로 처리된다고 볼 수 있다.
+* 파이썬의 `float`는 **64비트 배정밀도(Double precision, IEEE 754)** 를 사용한다.
+* `epsilon`은 **1과 1.0 사이에서 구분 가능한 가장 작은 차이값**이다.
+* 즉, 이 값보다 작은 차이는 float 연산에서 동일한 값으로 처리된다.
 ```python
 import sys
 print(sys.float_info.epsilon)
