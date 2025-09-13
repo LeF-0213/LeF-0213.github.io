@@ -8,7 +8,7 @@ categories:
   - studylog
   - python
 description: >
-  파이썬의 기초 개념부터 변수, 함수, 연산자, 조건문, 반복문까지 기본 내용을 정리
+  파이썬의 기초 개념부터 변수, 함수, 연산자, 조건문, 반복문 등 예시를 활용한 기본 내용 정리
 ---
 * toc
 {:toc .large-only}
@@ -39,7 +39,7 @@ description: >
 * 모든 프로그램은 함수의 집합이다.
 * 함수는 특정 **기능을 수행하는 코드 블록**이다.
 ```python
-print("Hello Phthon")
+print("Hello Python")
 ```
 
 # 변수란?
