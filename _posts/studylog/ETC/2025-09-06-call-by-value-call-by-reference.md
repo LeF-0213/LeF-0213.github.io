@@ -82,7 +82,7 @@ public class Main {
 ### 값 타입(Value Type)
 * 기본 자료형(Primitive type): `int`, `double`, `boolean`, `char` 등
 * 메모리에 **실제 값 자체**가 저장됨
-* 함수에 전달될 때 값이 복사되므로, 온본 데이터에는 영향을 주지 않음
+* 함수에 전달될 때 값이 복사되므로, 원본 데이터에는 영향을 주지 않음
 
 ```java
 public class Main {
@@ -98,7 +98,7 @@ public class Main {
 ```
 
 ### 참조 타입(Reference Type)
-* 객체(Object), 배열(Array), 컬렉션(Collection) emd
+* 객체(Object), 배열(Array), 컬렉션(Collection) 등
 * 메모리에 **주소 값(참조)**이 저장됨
 * 함수에 전달될 때 주소 값이 복사되므로, 같은 객체를 바라보게 됨
 * 따라서 한쪽에서 값을 바꾸면 다른 쪽에도 영향을 미침

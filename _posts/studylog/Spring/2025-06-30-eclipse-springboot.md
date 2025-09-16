@@ -44,6 +44,14 @@ Java로 개발된 웹 애플리케이션을 만들기 쉽게 도와주는 프레
 			ex) 이 앱의 이름
 			    이 앱에서 사용하는 db는 뭔지
 			    이 앱에서 사용하는 모드는 뭔지(개발모드, 사용모드)
+					```aplication.properties
+					spring.application.name=netflix
+					server.port=8001
+
+					spring.datasource.url=
+					spring.datasource.username=
+					spring.datasource.password=
+					```
 
 src/main/java 폴더
 	해당 폴더 안에 자바 코드를 작성하게 된다.

@@ -56,8 +56,8 @@ MySQL 5.6 이전 버전과의 호환성을 위해 사용되는 설정입니다. 
 ```
 
 5. MyBatis 관련 설정을 application.properties 파일에 해준다
-  ```java
-    mybatis.mapper-locations=classpath:/mappers/**/*.xml
+  ```application.properties
+  mybatis.mapper-locations=classpath:/mappers/**/*.xml
   ```
   보통은 `src/main/resources` 안에 `mappers`라는 폴더를 새로 만들어 그 속에 저장한다. (`src/main/resources/mappers`)
 
