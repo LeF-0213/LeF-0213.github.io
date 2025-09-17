@@ -51,27 +51,27 @@ MySQL 5.6 이전 버전과의 호환성을 위해 사용되는 설정입니다. 
 **JPA**
 
 **MyBatis**
-```java
-  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+```build.gradle
+implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
 ```
 
 5. MyBatis 관련 설정을 application.properties 파일에 해준다
-  ```application.properties
-  mybatis.mapper-locations=classpath:/mappers/**/*.xml
-  ```
+```application.properties
+mybatis.mapper-locations=classpath:/mappers/**/*.xml
+```
   보통은 `src/main/resources` 안에 `mappers`라는 폴더를 새로 만들어 그 속에 저장한다. (`src/main/resources/mappers`)
 
 ## xml 파일
 태그로 정보를 전달하는 파일
 전달하고자 하는 값들이 태그 형식으로 이루어진 파일
 xml 파일의 맨 윗부분에는 해당 파일이 어떤 파일인지 알려주는 태그를 사용해야 한다.
-  ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-  ```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+```
 두번째 줄에는 문서의 종류를 작성해줘야 한다.
-  ```xml    
-    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MyBatis 3 Mapper//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  ```
+```xml    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD MyBatis 3 Mapper//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+```
 
 ### 🖍️ 발생 가능한 오류
 * `Downloading external resources is disabled. [DownloadResourceDisabled]` 
@@ -96,12 +96,12 @@ Attribute "id" is required and must be specified for element type "select". [MSG
 **문제 발생**
 build.gradle
 ```java 
-  id 'org.springframework.boot' version '3.4.7'
-  dependencies {
-    implementation 'mysql:mysql-connector-java:8.0.32'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
-  }
+id 'org.springframework.boot' version '3.4.7'
+dependencies {
+  implementation 'mysql:mysql-connector-java:8.0.32'
+  implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+}
 여기서 `Invalid value type for attribute 'factoryBeanObjectType': java.lang.String` 오류 발생
 
 **문제 원인**
@@ -112,8 +112,8 @@ spring boot 3버전부터는 mysql 연결하는 방식 변경
 spring boot 3버전부터는 mybatis로 mysql 연결하는 방식 변경되어 일어나는 문제이니
 3버전 이후부터는 `implementation 'mysql:mysql-connector-java:8.0.32'`에서 `runtimeOnly 'com.mysql-connector-j'`로 변경해주면 된다.
 ```java
-  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+runtimeOnly 'com.mysql:mysql-connector-j'
 ```
 
 다른 하나는 pring boot와 mybatis의 버전이 달라서 일어나는 문제이므로
