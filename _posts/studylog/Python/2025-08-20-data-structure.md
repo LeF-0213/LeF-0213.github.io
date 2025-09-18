@@ -3,7 +3,7 @@ layout: post
 related_posts:
     - /studylog/python
 title:  "자료구조"
-date:   2025-08-05
+date:   2025-08-20
 categories:
   - studylog
   - python
@@ -16,20 +16,93 @@ description: >
 Python 3(자료구조 + 알고리즘(DFS, BFS, 그리드 알고리즘) 구현 방법 설명
 
 # 자료구조(Data Structure)란?
-자료구조 => 데이터의 구조(저장) ==> 데이터를 탐색하기 위한 목적(빨리 찾기 위한 방법)
-기본 자료구조, 확장형 자료 구조
+* 데이터를 **저장**하고 **탐색**하기 위한 구조
+* 크게 두 가지로 나뉨:
+  * **선형 자료구조**: 배열, 연결리스트, 스택, 큐
+  * **비선형 자료구조**: 트리, 그래프
 
-## 선형 자료구조
+# 선형 자료구조
 **데이터의 저장방식**: 데이터를 정해진 순서대로 저장 및 탐색
-- 배열 
-- 연결리스트 
-- 스택 
-- 큐
+## 배열 리스트(Array List)
+
+## 연결 리스트(Linked List)
+
+## 스택(Stack, LIFO/FILO)
+* 정의: **마지막에 들어온 원서가 먼저 나감(Last In First Out/ Frist In Last Out)**
+### 스택의 ADT
+1. push()
+삽입
+1. pop()
+삭제
+
+3~5단계 => stack + DFS => list
+1~2단계 => stack(list)
+
+stack
+top = -1
+↓
+++top
+stack push(stack, 1)
+top = 0
+↓
+stack push(stack, 2)
+
+stack에서 마지막으로 들어온 데이터를 가리키는 변수
+=> int top = -1을 초기화한다
+
+스택의 ADT
+연산(함수), 속성(필드)
+  * boolean isFull() 파이썬은 동적이라 필요없음
+	* boolean isEmpty()
+  * void push(type, item)
+  * type pop()
+* 속성
+1. int top
+2. type data[max_size] 파이썬은 동적이라 필요없음
+
+3. 빈 스택 생성
+stack = []
+1. 스택 사이즈 설정
+max_size = 10
+1. 함수 선언
+```python
+def isFull(stack):
+  return len(stack) == max.size
+
+def isEmpty(stack):
+  return len(stack) == 0
+
+void push(stack, item):
+  if isFull(stack):
+    print("stack이 가득 찼습니다.")
+  else:
+    stack.append(item)
+
+void pop(stack):
+  if isEmpty(stack):
+    return None
+  else:
+    return append.pop()
+```
+↓
+```python
+stack = []
+
+def push(stack, item):
+  stack.append(item)
+
+def pop(stack):
+  if len(stack) == 0:
+    return None
+  else:
+    return stack.pop()
+```
 
 
-## 비선형 자료구조
+
+# 비선형 자료구조
 **데이터의 저장방식**: 데이터를 저장하는 순서가 정해져있지 않다. 
-- 트리 
+## 트리 
 - 그래프
 
 ### 그외
