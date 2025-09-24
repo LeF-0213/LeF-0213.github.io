@@ -74,6 +74,8 @@ menu:
         url:           /lv1/
       - title:         Lv2
         url:           /lv2/
+  - title:             Baekjoon
+    url:               /baekjoon/
   - title:             Documentation
     url:               /docs/
   - title:             About
