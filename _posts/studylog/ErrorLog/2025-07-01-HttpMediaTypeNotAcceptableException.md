@@ -1,7 +1,7 @@
 ---
 layout: post
 related_posts:
-    - /studylog/spring
+    - /studylog/errorLog
 title:  "HttpMediaTypeNotAcceptableException 예외 해결"
 date:   2025-06-25
 categories:
