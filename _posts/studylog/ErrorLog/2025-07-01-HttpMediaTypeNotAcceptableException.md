@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorLog
+    - /studylog/errorlog
 title:  "HttpMediaTypeNotAcceptableException 예외 해결"
 date:   2025-06-25
 categories:
   - studylog
-  - errorLog
+  - errorlog
   - spring
 description: >
   Generic의 개념과 List, Set, Map에서의 활용

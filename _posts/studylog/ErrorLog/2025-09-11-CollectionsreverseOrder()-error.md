@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorLog
+    - /studylog/errorlog
 title:  "error: no suitable method found for sort(int[],Comparator<Object>)"
 date:   2025-09-05
 categories:
   - studylog
-  - errorLog
+  - errorlog
   - java
 description: >
   Collections.reverseOrder() 사용시 타입 호환 에러

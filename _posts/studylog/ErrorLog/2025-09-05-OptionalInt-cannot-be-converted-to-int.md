@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorLog
+    - /studylog/errorlog
 title:  "incompatible types: OptionalInt cannot be converted to int"
 date:   2025-09-05
 categories:
   - studylog
-  - errorLog
+  - errorlog
   - java
 description: >
   [Vue.js] Parsing error: No Babel config file detected 에러 해결방법

@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorLog
+    - /studylog/errorlog
 title:  "error: cannot infer type arguments for HashSet<>"
 date:   2025-09-13
 categories:
   - studylog
-  - errorLog
+  - errorlog
   - java
 description: >
   Collections.reverseOrder() 사용시 타입 호환 에러
