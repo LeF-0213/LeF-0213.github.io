@@ -3,7 +3,7 @@ layout: post
 related_posts:
     - /studylog/python
 title:  "힙 정렬"
-date:   2025-08-29
+date:   2025-08-27
 categories:
   - studylog
   - python
@@ -14,12 +14,21 @@ description: >
 * toc
 {:toc .large-only}
 
-## Heap 정렬
+# Heap 정렬
 1. 주어진 데이터로 합을 구축해야 한다.(정렬이 되어있지 않은 데이터로 힙을 구축)
 2. 그 다음 힙정렬을 한다.
 
+데어터의 삽입과 동시에 빠르게 정렬할 수 있다.
+
 ## Heap이란?
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FlR7aO%2FbtqZSuVD2vb%2FAAAAAAAAAAAAAAAAAAAAAP4RP2moe9XAe3MSmP4fO98kxAr9SJZxiLWgCrSM97cU%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DWpwYT91PasP0nUO4xS%252BJjSXxLTw%253D)
+**최솟값** 또는 **최댓값**을 **빠르게** 찾아내기 위해 **완전이진트리** 형태로 만들어진 자료구조이다.
+![BinaryTree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FrxtPo%2FbtqZTU0RtIB%2FAAAAAAAAAAAAAAAAAAAAAEa-CfsKNKQgwvwtoNYdYAZeHybI8cksKZHOjdCJK6wk%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DFdyJtn68ITsDnQlx3yg0U7FVP90%253D)
+
+![MaxHeap&MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FlR7aO%2FbtqZSuVD2vb%2FAAAAAAAAAAAAAAAAAAAAAP4RP2moe9XAe3MSmP4fO98kxAr9SJZxiLWgCrSM97cU%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DuBAXwZEON8THrpfzJZDoaCH%252F%252F%252BA%253D)
+* 최대 힙: 부모 노드의 값(key 값) >= 자식 노드의 값(key 값)
+* 최소 힙: 부모 노드의 값(key 값) <= 자식 노드의 값(key 값)
+
+![MaxHeap&MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbaNi4n%2FbtqZ2csFHgz%2FAAAAAAAAAAAAAAAAAAAAABL6CYDeUa-Y5KmmgEwMQDXYxEwHLHG31Tpr_RgFltZ4%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DTGktBDy5FnF7TIcYVkyOIoOanH0%253D)
 특정 규칙이 있는 이진 트리, 이 규칙에 따라 최대 힙, 최소 힙으로 나누어진다.
 * 최대 힙: 부모 노드가 자식노드보다 크다.
 * 최소 힙: 부모노드가 자식노드보다 작다.
@@ -42,8 +51,10 @@ max.heapify(배열의 인덱스 값)
 힙 정렬 로직은 루트 노드를 제외하고, 힙을 다시 구축
 최대 힙에서 루트 노드는 가장 큰 값이므로 루트 노드를 제외하고 다시 힙을 구축했을 때의   
 루트 노드가 두번째로 큰 값이 된다는 성질을 이용하여 정렬
+![MaxHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbPuVM8%2FbtqZ0tCzTir%2FAAAAAAAAAAAAAAAAAAAAAFIQLWJtPoB3-htB63xIj379GLOgBTkEGGAfLOty-WwG%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DEwQVH2QE%252FXswFJhoWFrVKeggx9w%253D)
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FYKTQv%2FbtqZYl6oJFd%2FAAAAAAAAAAAAAAAAAAAAAKfM-3GZRYm0wte6HXHVRlFnibBIa6B97i2zCiW4p-9f%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DEOfUA2yFqrRyJXldNflrzvNgKeI%253D)
+![MaxHeapImg1](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fb2oRsc%2FbtqZZUAq5OE%2FAAAAAAAAAAAAAAAAAAAAACCMkxcdCyO5YnEVdeMMEtSYZOvSxZNki3w_rfjlisRi%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DttSlZ4m6Ulnzf6QVOo7%252BG9%252FSIns%253D)
+![MaxHeapImg2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FYKTQv%2FbtqZYl6oJFd%2FAAAAAAAAAAAAAAAAAAAAAKfM-3GZRYm0wte6HXHVRlFnibBIa6B97i2zCiW4p-9f%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3Dm3XcFVYzfCOAR%252BN7jDZwWp5krQI%253D)
 
 우선 순위 큐
 우선 순위가 높은 데이터부터 먼저 처리하는 큐이다.

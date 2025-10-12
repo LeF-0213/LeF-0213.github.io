@@ -13,49 +13,59 @@ description: >
 * toc
 {:toc .large-only}
 
+# 정렬이란?
 정렬 -> 모든 데이터를 나열하는 것을 의미(사용자가 정의한 순서대로)
 -> 오른차순/ 내림차순
--> 데이터를 쉽게 탐색하기 위해서
+### 정렬이 필요한 이유
+데이터를 쉽게 탐색하기 위해서 사용한다.
 
-### 삽입 정렬(Insertion Sort) 
-=> 데이터의 전체 영역에서 정렬된 영역과 정렬되지 않은 영역을
+## 삽입 정렬(Insertion Sort) 
+데이터의 전체 영역에서 정렬된 영역과 정렬되지 않은 영역으로 나눈다.     
+데이터가 정렬되어 있을 때는 최고의  발휘한다.
 ![InsertionSort](https://miro.medium.com/v2/resize:fit:1326/format:webp/1*GzjS6_EJkOcHkdwJdzS8oQ.png)
 
-### 병합 정렬(분할 정렬)
-오름차순 기준으로 정렬
-![MergeSortImg](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FyPTS3%2FbtrIseBpDC3%2FAAAAAAAAAAAAAAAAAAAAANHWEYdT7KzY7r6aiGmEz52q8AxePIqk6dvyfyjPTklC%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D%252BvHsVKCKdn2CpDPC1zAJuljH09c%253D)
+## 병합 정렬(분할 정렬)
+정렬되지 않은 영역을 쪼개서 각각의 영역을 정렬하고 이를 다시 합치는 과정을 하면서 정렬한다.     
+병합 과정을 거치기 때문에 추가적으로 메모리가 필요하다.(100% 시간 초과에 걸린다.) 
+![MergeSortImg](https://velog.velcdn.com/images/gawgjiug/post/b5c57bc7-9517-4d9c-aa96-6db8cc1ccdb5/image.png)
+키 값에 의해서 움직인다.
+![MergeSort](https://velog.velcdn.com/images/gawgjiug/post/3218bbfa-7798-4645-be70-a2e483aece69/image.png)
 
-![MergeSort](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FtgijT%2FbtrItuxkweb%2FAAAAAAAAAAAAAAAAAAAAAN0573M9idS_pWAXNLhUcpmZLWU92hPSy0687NUMzHpv%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DyR7PnlKAV4oZ6wj2A6vaQ963FeE%253D)
+## 위상정렬(Topology Sort)
+진행하는 순서에 따라 정렬하는 방식
+작업의 순서가 존재할 때 사용되는 알고리즘(진입 차수를 이용)
+![TopologySort](https://velog.velcdn.com/images%2Fkimdukbae%2Fpost%2F8ffd7323-fd31-4969-a052-3463ea4abe40%2Fimage.png)
 
-### 위상정렬
-![](https://i.namu.wiki/i/tT6qrk-SMO0AWqodFY5xp_uB34oIwXpgwyWXVsW3F8A4TjGAu3qf58eQww3VBOoH2cVZLBer9s4OME-Yw67BEikkH16_oyU75fZuDvXz-PdqejmM1MyhPhd5GOc5clb_LqT4MLSd7JGdD4s4j_8sJA.webp)
-일의 순서가 있는 작업을 순서에 맞춰 정렬하는 방식
-
+### 진입 차수와 진출 차수
+* **진입 차수(Indegree)**: 특정한 노드로 들어오는 간선의 개수
+* **진출 차수(Outdegree)**: 특정한 노드에서 나가는 간선의 개수
+![Indegree&Outdegree](https://velog.velcdn.com/images%2Fkimdukbae%2Fpost%2Fb78282f8-5082-4221-99cb-853383ad66ec%2Fimage.png)
 위상 정렬은 자신을 향한 화살표의 개수를 진입차수로 정의하여 진행
 
 진입 차수가 0이라고 하면 자신을 향한 화살표가 (X)
 이 의미는 선행 작업이 필요 없다.
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbNIvtI%2FbtsHbs2o1NQ%2FAAAAAAAAAAAAAAAAAAAAAEjvKF5unz3WURsvRpkr2y5NXpIcqD6UK7vO0Wz0n_CJ%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DLyKJaREmwJjqeCwtRAmLIyQNsf0%253D)
+![TopologySort1](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbNIvtI%2FbtsHbs2o1NQ%2FAAAAAAAAAAAAAAAAAAAAAEjvKF5unz3WURsvRpkr2y5NXpIcqD6UK7vO0Wz0n_CJ%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DyfQkxd4mMC5BZ7W%252FT%252BvEU3UJxrU%253D)
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FrSlwE%2FbtsHaWQxjoh%2FAAAAAAAAAAAAAAAAAAAAAMXqW8KsGHnVohcTneMO98PKIgiuqeM2RaxJ-3hzED1p%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DzLEl%252BLfCZbUdvjRMEey%252BjrBT7nY%253D)
+![TopologySort2](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FrSlwE%2FbtsHaWQxjoh%2FAAAAAAAAAAAAAAAAAAAAAMXqW8KsGHnVohcTneMO98PKIgiuqeM2RaxJ-3hzED1p%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DzLEl%252BLfCZbUdvjRMEey%252BjrBT7nY%253D)
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FsXtfx%2FbtsHbeDlL0v%2FAAAAAAAAAAAAAAAAAAAAAIXjMXE_f03P1p9tM5ry0jzj5BGv-wSoCv2rXl4ws25J%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DoIR6MlSNuO7FMMe3Led9YEQkVe4%253D)
+![TopologySort3](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FsXtfx%2FbtsHbeDlL0v%2FAAAAAAAAAAAAAAAAAAAAAIXjMXE_f03P1p9tM5ry0jzj5BGv-wSoCv2rXl4ws25J%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DoIR6MlSNuO7FMMe3Led9YEQkVe4%253D)
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbeG1ln%2FbtsHd8aiRYn%2FAAAAAAAAAAAAAAAAAAAAABOfp0yKMnkyszWkT6tiDeQP37daVGgJatG2LgWtfiDg%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D8nt0Rfrf5HkHx48MfmuGacONHDc%253D)
+![TopologySort4](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbeG1ln%2FbtsHd8aiRYn%2FAAAAAAAAAAAAAAAAAAAAABOfp0yKMnkyszWkT6tiDeQP37daVGgJatG2LgWtfiDg%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D8nt0Rfrf5HkHx48MfmuGacONHDc%253D)
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbvwhzi%2FbtsHa0L8sTi%2FAAAAAAAAAAAAAAAAAAAAAHH4SV5F3rNMSau3Aj6Qh-k0wm6JHTJAxPXv9BG2qDlG%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D9w%252B22%252BfIrbu%252B6Me6w24prhcBM7I%253D)
+![TopologySort5](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbvwhzi%2FbtsHa0L8sTi%2FAAAAAAAAAAAAAAAAAAAAAHH4SV5F3rNMSau3Aj6Qh-k0wm6JHTJAxPXv9BG2qDlG%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3D9w%252B22%252BfIrbu%252B6Me6w24prhcBM7I%253D)
 
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbh2MyI%2FbtsHdvwOhme%2FAAAAAAAAAAAAAAAAAAAAAMl4YuokvLILNadkUxDgB7rBnwdPbm6ISpeq-YMdN3kM%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DtjbvYeZItjPPMKGEp9gdUcwbvRs%253D)
+![TopologySort6](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbh2MyI%2FbtsHdvwOhme%2FAAAAAAAAAAAAAAAAAAAAAMl4YuokvLILNadkUxDgB7rBnwdPbm6ISpeq-YMdN3kM%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3D2JJyVRgXP6viq2Xz7J%252F0MCYpeiA%253D)
 
-### 계수 정렬
-데이터에 의존하는 정렬 방법(데이터와 빈도수)    
+## 계수 정렬(Counting Sort)
+데이터의 빈도의 수를 세어 빈도수 배열에 저장(데이터에 의존하는 정렬 방법)
 * **특징**: 시간복잡도
-* **딘점**:
+* **딘점**: 데이터에 의존적임으로 항상 사용할 수 있는 기능은 아니다.
 
-![](https://velog.velcdn.com/images%2Fluvlik207%2Fpost%2F0f5454ab-b88d-4e1f-8a49-80b5d88e6f30%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-24%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.03.27.png)
 
-![](https://velog.velcdn.com/images%2Fluvlik207%2Fpost%2Fc7b1d9e9-c8ad-4f95-a786-b378c36c5f38%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-24%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.05.11.png)
+![CountingSort1](https://velog.velcdn.com/images%2Fluvlik207%2Fpost%2F0f5454ab-b88d-4e1f-8a49-80b5d88e6f30%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-24%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.03.27.png)
+
+![CountingSort2](https://velog.velcdn.com/images%2Fluvlik207%2Fpost%2Fc7b1d9e9-c8ad-4f95-a786-b378c36c5f38%2F%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202021-09-24%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.05.11.png)
 
 문제1]
 정렬된 두 배열 arr1, arr2가 존재한다.
@@ -142,3 +152,7 @@ def solution(arr, i, j, k):
 print(solution(arr, i, j, k))
 ```
 
+문제] 정렬이 완료된 두 배열 arr1, arr2를 받아서 병합 정렬하는 함수(solution())를 구하는 코드를 작성하시오
+```python
+입력 예] arr1 = [1, 3, 5] arr2 = [2, 4, 6] 
+```
