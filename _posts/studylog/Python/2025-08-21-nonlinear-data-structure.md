@@ -2,8 +2,8 @@
 layout: post
 related_posts:
     - /studylog/python
-title:  "Tree"
-date:   2025-09-14
+title:  "자료 구조(비선형 자료구조)"
+date:   2025-08-21
 categories:
   - studylog
   - python
@@ -13,34 +13,69 @@ description: >
 * toc
 {:toc .large-only}
 
-Tree
-비선형 자료구조(나무를 거꾸로 뒤집어 놓은 형태)
+# 비선형 자료구조(Nonelinear-DataStructure)
+**데이터의 저장방식**: 데이터를 계층적 또는 네트워크 형태로 저장 및 탐색
+
+# 트리(Tree)
 ![Tree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbbNRYk%2FbtqV36qaJux%2FAAAAAAAAAAAAAAAAAAAAAC_HRAtZ-SvslOfJ3Hv65XJYG2RMy2PWuROMQIjjcVLo%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DqQQSZD3fVwc8O5cgjl90LNsLgf8%253D)
+* 계층적 구조로 데이터를 저장하는 자료구조
+* **노드(Node)**와 **간선(Edge)**로 구성
+* **특징**: 사이클이 없는 연결 그래프
+
+## 트리의 기본 용어
+* **루트 노드(root node)**: 루트 노드는 하나의 트리에서 하나밖에 존재하지 않고, 부모노드가 없다.(ex. 녹색 노드)
 * **부모 노드(parent node)**: 자기 자신(노드)와 연결 된 노드 중 자신보다 높은 노드를 의미 (ex. F의 부모노드 : B)
-* **자식 노드(child node)**: 자기 자신(노드)와 연결 된 노드 중 자신보다 낮은 노드를 의미 ()
+* **자식 노드(child node)**: 자기 자신(노드)와 연결 된 노드 중 자신보다 낮은 노드를 의미 (ex. C의 자식노드: G, F)
+* **단말 노드(leaf node)**: 리프 노드라고도 불리며 자식 노드가 없는 노드를 의미(ex. 주황색 노드)
+* **내부 노드(internal node)**: 단말 노드가 아닌 노드
+* **형제 노드(sibling node)**: 부모가 같은 노드를 말한다.(ex. D, E, F는 모두 부모노드가 B이므로 형제 노드이다.)
+* **깊이(depth)**: 특정 노드에 도달하기 위해 거쳐가야 하는 **간선의 개수**를 의미(ex. F의 깊이: A -> B -> F 이므로 깊이는 2가 된다.)
+* **레벨(level)**: 특정 깊이에 있는 노드들의 집합을 말하며, 루트를 0으로 하는 깊이이다.
+* **차수(degree)**: 특정 노드가 하위(자식) 노드와 연결된 개수(ex. B의 차수 = 3)
 
-단말 노드(leaf node)
-더 이상의 자식 노드가 없는 노드
+## 이진 트리(Binary Tree)
+* 각 노드가 **최대 2개의 자식**을 가지는 트리
+* 왼쪽 자식(left)과 오른쪽 자식(right)로 구성
+### 노드 구조
+```python
+class TreeNode:
+	def __init__(self, item, left=None, right=None):
+		self.item = item
+		self.left = left
+		self.right = right
+```
+### 이진 트리의 종류
+![KindsOfBinaryTree](https://blogfiles.pstatic.net/MjAyMzAzMDhfMjkg/MDAxNjc4MjY1MTM1NTk5.4VVtF8d3_8Gy_2EcqQQqG2i5oaRUW8lgosk-OxkuxBgg.VUGWDRxLVtXkZC0Slej-5wJodQV4P2nQUB9wko7UnNkg.PNG.taeyang95/image.png?type=w1)
+* **포화 이진 트리(Perfect Binary Tree)**: 모든 레벨이 완전히 채워진 트리
+* **완전 이진 트리(Complete Binary Tree)**: 마지막 레벨을 제외하고 모두 채워지고, 왼쪽부터 채워진 트리
+* **편향 트리(Skewed Tree)**: 한쪽으로만 치우친 트리
+### 이진 트리의 배열 표현
+* 이진 트리를 배열로 표현할 수 있으며, 인덱스 계산으로 부모-자식 관계를 파악할 수 있다.
+* **장점**: 포인터 없이 인덱스 계산만으로 트리 구조 표현 가능
+* **단점**: 편향 트리의 경우 메모리 낭비가 심함
+1. 인덱스 1부터 시작 (인덱스 0 미사용)
+```python
+# 배열: [None, 3, 4, 7, 2, 8, 9, 1]
+# 인덱스 0은 사용하지 않음
 
-이진 트리를 배열화 시키기
-트리를 배열로 표현할 때 배열의 인덱스 0은 사용하지 않는다.
+# 부모 노드의 인덱스가 i일 때
+left_child = i * 2			# 왼쪽 자식
+right_child = i * 2 + 1	# 오른쪽 자식
+parent = i // 2					# 부모 노드
+```
+2. 인덱스 0부터 시작(루트 노드가 0)
+```python
+# 배열: [3, 4, 7, 2, 8, 9, 1]
+# 인덱스 0부터 사용
 
-왼쪽 자식 노드 => 부모 노드의 배열 인덱스 x 2
-오른쪽 자식 노드 => 부모 노드의 배열 인덱스 x 2 + 1
-
-루트 노드를 배열 인덱스 0으로 하고 왼쪽 자식 노드는 부모 노드의 배열 인덱스 x 2 + 1 
-루트 노드를 배열 인덱스 0으로 하고 오른쪽 자식 노드는 부모 노드의 배열 인덱스 x 2 + 2
-
-이진 트리 탐색 방법(순회 방법) => 3개 방법이 존재
-1. 전위 현재 노드를 부모 노드로 생각하고 부모노드 -> 왼쪽 자식 노드 -> 오른쪽 자식 노드
-2. 중위 현재 노드를 부모 노드로 생각하고 왼쪽 자식 노드 -> 부모 노드 -> 오른쪽 자식 노드
-3. 후위 현재 노드를 부모 노드로 생각하고 왼쪽 자식 노드 -> 오른쪽 자식 노드 -> 부모 노드
-
-일반적으로 노드를 "방문"한다
-전위순회
-
-3 - 4 - 2 - 8 - 9 - 7 - 1 
-
+# 부모 노드의 인덱스가 i일 때
+left_child = i * 2 + 1    # 왼쪽 자식
+right_child = i * 2 + 2   # 오른쪽 자식
+parent = (i - 1) // 2     # 부모 노드
+```
+### 이진트리의 배열 사용 예시(전위 순회)
+* 이진 트리로 되어있는 것을 배열로 표현하려고 하면 인덱스는 0이 아니라 1부터 시작(루트 노드)
+* 루트를 기준으로 왼쪽 노드부터 시작
 ```python
 def preorder(nodes, idx):
   if idx < len(nodes):
@@ -52,33 +87,147 @@ def preorder(nodes, idx):
     return ""
 ```
 
-## 트리(Tree)
-* 데이터를 저장하고 탐색하기에 가장 유용한 구조를 가지고 있다.
-### 계층적 구조
+## 이진 탐색 트리(Binary Search Tree, BST)
+* **특징**: 왼쪽 자식 < 부모 < 오른쪽 자식
+* **탐색 시간복잡도**: 평균 O(log n), 최악 O(n)
+### BST의 ADT
+* 속성:
+  * `TreeNode root`: 트리의 루트 노드
+* 주요 연산:
+  * `insert(item)`:노드 삽입
+  * `search(item)`:노드 탐색
+  * `delete(item)`:노드 삭제
+### 구현 예시
+```python
+class TreeNode:
+	def __init__(self, item):
+		self.item = item
+		self.left = None
+		self.right = None
 
-### 종류
-* 이진 트리(Binary Tree)
+class BST:
+	def __init__(self):
+		self.root = None
 
-노드 
-root 
-간선
-차수 => 노드의 수
-단말 노드(리프 노드) => 더 이상의 자식 노드가 없는 노드
+	def insert(self, item):
+		if not self.root:
+			self.root = TreeNode(item)
+		else:
+			self._insert_recursive(self.root, item)
+	
+	def _insert_recursive(self, node, item):
+		if item < node.item:
+			if node.left is None:
+				node.left = TreeNode(item)
+			else:
+				self._insert_recursive(node.left, item)
+		else:
+			if node.right is None:
+				node.right = TreeNode(item)
+			else:
+				self._insert_recursive(node.right, item)
 
-일반적으로 트리라고 이야기 하는 것은 => 거의 99.9% 이진트리를 사용한다.
-이진 트리로 되어있는 것을 배열로 표현하려고 하면 인덱스는 0이 아니라 1부터 시작(루트 노드)
-루트를 기준으로 왼쪽 노드부터 우선
+	def search(self, item):
+		return self._search_recursive(self.root, item)
 
-부모노드의 배열 인덱스 값 * 2
-부모 노드의 배열 인덱스 값 * 2 + 1
+	def _search_recursive(self, node, item):
+		if node is None:
+			return False
+		if node.item == item:
+			return True
+		elif item < node.item:
+			return self._search_recursive(node.left, item)
+		else:
+			return self._search_recursive(node.right, item)
+```
+## 트리 순회(Tree Traversal)
+트리의 모든 노드를 방문하는 방법
+### 전위 순회(Preorder): 부모노드 -> 왼쪽 자식노드 -> 오른쪽 자식노드
+```python
+def preorder(node):
+	if node:
+		print(node.item, end='')
+		preorder(node.left)
+		preorder(node.right)
+```
+### 중위 순회(Inorder): 왼쪽 자식노드 -> 부모노드 -> 오른쪽 자식노드
+```python
+def inorder(node):
+	if node:
+		inorder(node.left)
+		print(node.item, end='')
+		inorder(node.right)
+```
+### 후위 순회(Postorder): 왼쪽 자식노드 -> 오른쪽 자식노드 -> 부모노드
+```python
+def postorder(node):
+	if node:
+		postorder(node.left)
+		postorder(node.right)
+		print(node.item, end='')
+```
+### 레벨 순회(Level Order): 레벨별로 왼쪽에서 오른쪽
+```python
+from collections import deque
 
-트리의 순회 방향
-1. 전위 순회(preorder)
-현재 노드를 부모로 생각했을 때 부모 노드 -> 왼쪽 노드 -> 오른쪽 노드
-2. 중위 순회(inorder)
-현재 노드를 부모로 생각했을 때 왼쪽 노드 -> 부모 노드 -> 오른쪽 노드
-3. 후위 순회(postorder)
-현재 노드를 부모로 생각했을 대 왼쪽 노드 -> 오른쪽 노드 -> 왼쪽 노드
+def levelorder(root):
+	if not root:
+		return
+
+	queue = deque([root])
+	while queue:
+		node = queue.popleft()
+		print(node.item, end='')
+
+		if node.left:
+			queue.append(node.left)
+		if node.right:
+			queue.append(node.right)
+```
+### 사용 예시 - 이전 트리의 깊이 구하기
+```python
+def maxDepth(root):
+	if not root:
+		return 0
+
+	left_depth = maxDepth(root.left)
+	right_depth = maxDepth(root.right)
+
+	return max(left_depth, right_depth) + 1
+```
+
+## 힙(Heap)
+* **완전 이진 트리** 기반의 자료구조
+* **특징**: 부모 노드가 자식 노드보다 항상 크거나(최대 힙) 작음(최소 힙)
+### 힙의 종류
+![MaxHeap&MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FlR7aO%2FbtqZSuVD2vb%2FAAAAAAAAAAAAAAAAAAAAAP4RP2moe9XAe3MSmP4fO98kxAr9SJZxiLWgCrSM97cU%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DuBAXwZEON8THrpfzJZDoaCH%252F%252F%252BA%253D)
+* 최대 힙: 부모 노드의 값(key 값) >= 자식 노드의 값(key 값)
+* 최소 힙: 부모 노드의 값(key 값) <= 자식 노드의 값(key 값)
+### 힙의 ADT
+* 속성:
+  * `list heap`: 힙을 저장하는 리스트
+* 주요 연산:
+  * `insert(item)`: 원소 삽입
+  * `delete()`: 루트 노드 삭제(최댓값 또는 최솟값)
+  * `heapify()`: 힙 속성 유지
+### 구현 예시(최소 힙)
+  
+이진 트리를 배열화 시키기
+트리를 배열로 표현할 때 배열의 인덱스 0은 사용하지 않는다.
+
+왼쪽 자식 노드 => 부모 노드의 배열 인덱스 x 2
+오른쪽 자식 노드 => 부모 노드의 배열 인덱스 x 2 + 1
+
+루트 노드를 배열 인덱스 0으로 하고 왼쪽 자식 노드는 부모 노드의 배열 인덱스 x 2 + 1 
+루트 노드를 배열 인덱스 0으로 하고 오른쪽 자식 노드는 부모 노드의 배열 인덱스 x 2 + 2
+
+
+
+3 - 4 - 2 - 8 - 9 - 7 - 1 
+
+
+
+
 
 이진 트리에서 가장 중요한 점은 탐색을 효율적으로 할 수 있도록 트리를 구축하는 방법
 (데이터를 잘 정리하면 탐색이 빠르고 쉽다)
