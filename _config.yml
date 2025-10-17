@@ -67,6 +67,8 @@ menu:
         url:           /ai/
       - title:         ErrorLog
         url:           /errorlog/
+      - title:         Web
+        url:           /web/
   - title:             Programmers
     url:               /programmers/
     submenu:
