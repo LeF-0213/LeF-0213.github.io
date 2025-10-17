@@ -48,27 +48,31 @@ author:
 
 # Add links to the sidebar.
 menu:
-  - title:             Study Log
-    url:               /studylog/
-    submenu:
+  - title:             Baekend
+    url:               /baekend/
+     submenu:
       - title:         Java
         url:           /java/
-      - title:         Python
-        url:           /python/
-      - title:         Frontend
-        url:           /frontend/
       - title:         Spring
         url:           /spring/
       - title:         DB
         url:           /db/
-      - title:         Alogorithm
-        url:           /algorithm/
-      - title:         AI
-        url:           /ai/
-      - title:         ErrorLog
-        url:           /errorlog/
+  - title:             Frontend
+    url:               /Frontend/ 
+    submenu:
+      - title:         Python
+        url:           /python/
       - title:         Web
         url:           /web/
+      - title:         Vue
+        url:           /vue/
+  - title:         AI
+    url:           /ai/
+  - title:         ETC
+    url:           /etc/
+    submenu:
+      - title:             ErrorLog
+        url:               /errorlog/
   - title:             Programmers
     url:               /programmers/
     submenu:

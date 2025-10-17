@@ -3,14 +3,14 @@
 layout: list
 
 # The title of the tag's page.
-title: Algorithm
+title: Baekend
 
 # The name of the tag, used in a post's front matter (e.g. tags: [<slug>]).
-slug: algorithm
+slug: Baekend
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-  This is a Algorithm Study Log.
+  This is a Baekend Study Log.
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
