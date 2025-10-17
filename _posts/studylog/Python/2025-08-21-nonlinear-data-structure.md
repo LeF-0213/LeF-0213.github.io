@@ -33,7 +33,7 @@ description: >
 * **레벨(level)**: 특정 깊이에 있는 노드들의 집합을 말하며, 루트를 0으로 하는 깊이이다.
 * **차수(degree)**: 특정 노드가 하위(자식) 노드와 연결된 개수(ex. B의 차수 = 3)
 
-## 이진 트리(Binary Tree)
+# 이진 트리(Binary Tree)
 * 각 노드가 **최대 2개의 자식**을 가지는 트리
 * 왼쪽 자식(left)과 오른쪽 자식(right)로 구성
 ### 노드 구조
@@ -87,7 +87,7 @@ def preorder(nodes, idx):
     return ""
 ```
 
-## 이진 탐색 트리(Binary Search Tree, BST)
+# 이진 탐색 트리(Binary Search Tree, BST)
 * **특징**: 왼쪽 자식 < 부모 < 오른쪽 자식
 * **탐색 시간복잡도**: 평균 O(log n), 최악 O(n)
 ### BST의 ADT
@@ -196,7 +196,7 @@ def maxDepth(root):
 	return max(left_depth, right_depth) + 1
 ```
 
-## 힙(Heap)
+# 힙(Heap)
 * **완전 이진 트리** 기반의 자료구조
 * **특징**: 부모 노드가 자식 노드보다 항상 크거나(최대 힙) 작음(최소 힙)
 ### 힙의 종류
@@ -210,20 +210,48 @@ def maxDepth(root):
   * `insert(item)`: 원소 삽입
   * `delete()`: 루트 노드 삭제(최댓값 또는 최솟값)
   * `heapify()`: 힙 속성 유지
-### 구현 예시(최소 힙)
-  
-이진 트리를 배열화 시키기
-트리를 배열로 표현할 때 배열의 인덱스 0은 사용하지 않는다.
+## 힙의 동작 원리
+힙은 **완전 이진 트리**이므로 배열로 표현하며, 부모-자식 관계는 인덱스로 계산한다.
+### 직접 구현 시 인덱스 1부터 시작(구현의 용이함을 위해서)
+* 부모 인덱스: `i // 2`
+* 왼쪽 자식: `i * 2`
+* 오른쪽 자식: `i * 2 + 1`
+### heapq 모듈은 인덱스 0부터 시작
+* 부모 인덱스: `(i - 1) // 2`
+* 왼쪽 자식: `i * 2 + 1`
+* 오른쪽 자식: `i * 2 + 2`
+## 최소 힙(min heap)
+![MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FWDMjZ%2FbtqV8GEMhcb%2FAAAAAAAAAAAAAAAAAAAAAF8CXqJXA3SMYhN20A22zI607t2-bLJRXWq9VGPHaFLK%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3Dr%252FAK72NiGxQBd5%252FtfLRJjzSURSU%253D)
+### 최소 힙 삽입(Heapify Up)
+1. 새 원소를 배열의 **맨 끝**에 추가
+2. 부모 노드와 비교하여 **부모보다 작으면 교환**
+3. 루트에 도달하거나 힙 속성을 만족할 때까지 반복
+### 최소 힙 삭제(Heapify Down)
+1. **루트 노드(최솟값)**를 삭제하고 반환
+2. 배열의 **마지막 원소**를 루트로 이동
+3. 자식 노드들과 비교하여 **더 작은 자식과 교환**
+4. 리프에 도달하거나 힙 속성을 만족할 때까지 반복
+### 직접 구현 예시(최소 힙) - 인덱스 1부터 시작
+```python
+class MinHeap:
+	def __init__(self):
+		self.heap = [None] # 인덱스 0은 사용하지 않음
 
-왼쪽 자식 노드 => 부모 노드의 배열 인덱스 x 2
-오른쪽 자식 노드 => 부모 노드의 배열 인덱스 x 2 + 1
+	def push(self, item):
+		self.heap.append(item) # 1. 맨 끝에 추가
+		self._heapify_up(len(self.heap) - 1) # 2. Heapify Up
 
-루트 노드를 배열 인덱스 0으로 하고 왼쪽 자식 노드는 부모 노드의 배열 인덱스 x 2 + 1 
-루트 노드를 배열 인덱스 0으로 하고 오른쪽 자식 노드는 부모 노드의 배열 인덱스 x 2 + 2
+	def _heapify_up(self, idx):
+		if idx <= 1:	# 루트에 도달하면 종료
+			return
 
+		parent = idx // 2
 
+		# 부모보다 작으면 교환
+		if self.heap[idx] < self.heap[parent]:
+			self.heap[idx],
+```
 
-3 - 4 - 2 - 8 - 9 - 7 - 1 
 
 
 
