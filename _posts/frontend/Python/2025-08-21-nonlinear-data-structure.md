@@ -232,11 +232,12 @@ def maxDepth(root):
 3. 자식 노드들과 비교하여 **더 작은 자식과 교환**
 4. 리프에 도달하거나 힙 속성을 만족할 때까지 반복
 ### 직접 구현 예시(최소 힙) - 인덱스 1부터 시작
+* **초기 상태**: [None, 3, 10, 35, 23, 19, 47, 60, 35, 80, 44]
 ```python
 class MinHeap:
 	def __init__(self):
 		self.heap = [None] # 인덱스 0은 사용하지 않음
-
+# push 메소드 구현
 	def push(self, item):
 		self.heap.append(item) # 1. 맨 끝에 추가
 		self._heapify_up(len(self.heap) - 1) # 2. Heapify Up
@@ -249,8 +250,52 @@ class MinHeap:
 
 		# 부모보다 작으면 교환
 		if self.heap[idx] < self.heap[parent]:
-			self.heap[idx],
+			self.heap[idx], self.heap[parent] = self.heap[parent], self.heap[idx]
+			self._heapiy_up(parent)
+# pop메서드 구현	
+	def pop(self):
+		# 경우 1: 힙이 비어있음 (None만 있음)
+		if len(self.heap) <= 1:
+			return None
+
+		# 경우 2: 원소가 1개만 있음 [None, 5]
+		if len(self.heap) == 2:
+			return self.heap.pop() # 5를 반환하고 제거
+
+		# 경우 3: 원소가 2개 이상 [None, 3, 10, 35, ...] 위의 그림 참조
+		# 1. 루트(최솟값) 저장
+		root = self.heap[1]		# 3을 저장
+		# 2. 마지막 원소를 루트 위치로 이동(마지막 원소 44를 꺼내서 루트에 넣음)
+		self.heap[1] = self.heap.pop() # [None, 44, 10, 35, 23, 19, 47, 60, 35, 80]
+		# 3. Heapify Down
+		self._heapify_down(1)
+
+		return root
+
+	def _heapify_down(self, idx):
+		smallest = idx # 1 (값: 44)
+		left = idx * 2 # 1 * 2 = 2 (값 : 10)
+		right = idx * 2 + 1 # 1 * 2 = 1 = 3 (값 : 35)
+
+		# 왼쪽 자식과 비교
+		# left < len(self.heap): 왼쪽 자식이 존재하는 지 확인
+		#	self.heap[left] < self.heap[smallest]: 왼쪽 자식이 더 작은지 확인(10 < 44)
+		if left < len(self.heap) and self.heap[left] < self.heap[smallest]:
+			smallest = left # 2
+
+		# 오른쪽 자식과 비교
+		if right < len(self.heap) and self.heap[right] < self.heap[smallest]:
+			smallest = right
+
+		# 교환이 필요하면 재귀
+		if smallest != idx:
+			self.heap[idx], self.heap[samllest] = self.heap[smallest], self.heap[idx]
+			self._heapify_down(smallest) 
+
+# 사용 예시
+
 ```
+
 
 
 
@@ -728,4 +773,51 @@ graph = []
 
 visited = [Fasle] * 9
 ```
+
+# 집합(그래프에서 아주 많이 활용하는 것)
+순서 및 중복이 없는 원소들을 갖는 자료구조
+예를 들어 A = {1, 6, 6, 6, 4, 3} ==> 집합으로 생각할 때
+A = {1, 6, 4, 3} => 중복 제거
+A = {6, 4, 1, 3} => 순서 X
+
+### 집합은 특성에 따라 부르는 형태가 다양하게 존재
+- 원소의 개수가 유한 => 유한 집합(반대 개념으로는 무한 집합)
+- 아무런 원소를 가지고 있지 않으면 => 공집합
+- 코테에서 출제되는 집합 => 상호베타적 집합(교집합이 없는 집합 관계)
+
+교집합이란?
+위의 상호배타적 집합을 사용하여 코딩하는
+- 최소 신장 트리(노드의 개수가 간선의 개수보다 하나 작고, 순환이 안 됨)
+- 네트워크
+- 게임 개발
+
+### 집합의 연산
+집합은 트리로 표현하며 대표적인 연산 합치기와 탐색이 존재한다.
+
+### 트리를 배열로 표현하기(빈 값이 생김) -> 인접 리스트 표현
+
+### 표현
+집합은 배열을 활용한 트리로 구현된다
+**각각의 집합에는 대표 원소가 있어야 한다**
+
+집합을 배열로 표현한다는 의미는 하나의 배열로 상호 배타적 관계를 가지는 집합을 모두 표현하게 된다
+- **배열의 인덱스는 현재 노드의 값을 의미하고, 배열 값은 부모 노드를 의미한다.**
+
+예를 들어보면 a[3] = 10
+-> 노드 3의 부모 노드는 10이다.
+루트 노드는 집합의 대표이므로 부모가 없다. 부모 노드가 자기 자신이다.
+(루트 노드는 값 자체가 배열의 인덱스와 동일하다)
+
+(배열의 인덱스는 0부터 시작하는데 집합을 배열로 표현할 때에는 0을 사용하지 않는다)
+
+부모 노드의 값을 배열의 값으로 저장
+
+현재 노드의 값을 배열의 인덱스로 활용
+
+# 유니온-파인드 알고리즘
+### 파인드 연산 
+특정 노드와 루트 노드가 무엇인지 탐색하는 연산
+(특징으로는 특정 노드가 같은 집합에 있는지 확인할 때 사용한다)
+
+
 
