@@ -115,8 +115,9 @@ for i in range(10):
 
 print(sum) # 0.9999999999999999 (예상: 1.0)
 ```
+
 ### 오차 발생의 구체적인 매커니즘
-```
+```python
 # 263.3을 IEEE 754로 저장하는 과정
 263.3 (10진수)
 ↓ 2진수 변환
@@ -133,41 +134,23 @@ print(sum) # 0.9999999999999999 (예상: 1.0)
 
 ## 부동소수점 오차 해결 방법
 ### Decimal 모듈 사용(정확한 10진 연산)
-#### 나쁜 예
-```python
-# 부동소수점 연산
-print(0.1 + 0.2) # 0.30000000000000004
-```
-#### 좋은 예
 ```python
 from decimal import Decimal
 # Decimal 연산
 print(Decimal('0.1') + Decimal('0.2')) # 0.3
 ```
 ### 정수 연산으로 변환
-#### 나쁜 예
-```python
-price = 0.1 + 0.2 # 오차 발생
-```
-#### 좋은 예
 ```python
 price_cents = 10 + 20 # 정수 연산
 price = price_cents / 100 # 0.3
 ```
 ### 비교 시 epsilon 사용
-#### 나쁜 예
-```python
-if 0.1 + 0.2 == 0.3: # False
-  print("같다")
-```
-#### 좋은 예
 ```python
 epsilon = 1e-10
 if abs((0.1 + 0.2) - 0.3) < epsilon: # True
   print("같다")
 ```
 ### math.isclose() 메소드 사용
-#### 좋은 예
 ```python
 import math
 
