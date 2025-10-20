@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorlog
+    - /etc/errorlog
 title:  "error: no suitable method found for sort(int[],Comparator<Object>)"
 date:   2025-09-05
 categories:
-  - studylog
+  - etc
   - errorlog
   - java
 description: >

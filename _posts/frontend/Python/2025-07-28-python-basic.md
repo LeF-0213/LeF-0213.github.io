@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "파이썬 기본 개념"
 date:   2025-07-29
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   파이썬의 기초 개념부터 변수, 함수, 연산자, 조건문, 반복문 등 예시를 활용한 기본 내용 정리
@@ -35,7 +35,6 @@ description: >
 * **주 버전(Major Version)**: 구조적 변경, 기존 코드가 작동하지 않을 수 있다.
 * **부 버전(Minor Version)**: 새 기능 추가, 개선사항 포함 (기존 코드 호환)
 * **패치 버전(Patch Version)**: 버그 수정, 보안 취약점 패치 (기능 변경 없음)
-
 ### 자동형변환(동적타이핑)
 * 파이썬은 변수 선언 시 자료형을 지정하지 않아도 되고,
 * 실행 중에 자동으로 형이 결정된다.
@@ -45,12 +44,20 @@ description: >
   a = 'A'
 ```
 
-### 인터프리터 언어
-* 컴파일 과정 없이 `.py`파일을 직접 실행한다
-* 장점: 실행이 간단하다
-* 단점: 실행 속도가 느리다
+# print 함수
+콘솔에 출력을 표시하는 가장 기본적인 함수
+```
+print(값1, 값2, ..., sep='구분자', end='끝 문자')
+```
+### escape 문자
+* \n: 줄바꿈을 나타냅니다.
+* \t: 탭 문자를 나타냅니다.
+* \\\\: 백슬래시 자체를 나타냅니다.
+* \\" 또는 \\': 큰따옴표나 작은따옴표를 나타냅니다. 문자열을 감싸는 따옴표와 구분하기 위해 사용됩니다.
+* \r: 캐리지 리턴을 나타냅니다. 문자열을 출력한 후 커서를 줄의 처음으로 이동시킵니다.
+* \b: 백스페이스를 나타냅니다. 문자열 내에서 한 글자를 삭제합니다.
 
-### 함수란?
+# 함수란?
 * `모든 프로그램은 함수의 집합`이다.
 * 함수는 특정 **기능을 수행하는 코드 블록**이다.
 ```python
@@ -92,13 +99,6 @@ print(b)
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbnojEK%2FbtsJ9njyXf2%2FAAAAAAAAAAAAAAAAAAAAAADUZKeupRfBbZWCOOT_JVOURYE2KlaiCeXC3M4srYSy%2Fimg.webp%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DC6VexxEJr8YlEAXNvXYIXh009qo%253D)
 
 # 츌력 형식
-## f-string
-```python
-name = "banana"
-age = 25
-height = 160.123
-print(f"이름: {name}, 나이: {age}, 키: {height:.1f}")
-```
 ## 출력서식지정자(%)
 파이썬은 변수를 선언할 때 자료형을 명시하지 않아도 되지만,
 출력할 때 `%`연산자를 이용하면 **자료형에 맞는 출력 형식**을 지정할 수 있다.
@@ -113,12 +113,12 @@ print(f"이름: {name}, 나이: {age}, 키: {height:.1f}")
 | `%c`   | 문자 (유니코드 값 가능)  | `print("%c" % 65)` → `A`            |
 | `%s`   | 문자열             | `print("%s" % "Python")` → `Python` |
 ### 출력서식지정자 예시
-1. 정수 출력
+#### 정수 출력
 ```python
 print("%5d" % 123)   # 전체 5칸 확보, 오른쪽 정렬 → "  123"
 print("%05d" % 123)  # 전체 5칸 확보, 왼쪽 빈칸을 0으로 채움 → "00123"
 ```
-2. 실수 출력
+#### 실수 출력
 `%m.nf`에서
 `m` → 전체 출력 칸 수 (소수점 포함)
 `n` → 소수점 자리수
@@ -126,10 +126,31 @@ print("%05d" % 123)  # 전체 5칸 확보, 왼쪽 빈칸을 0으로 채움 → "
 print("%7.3f" % 123.45)  # 전체 7칸 확보, 소수점 3자리 → "123.450"
 print("%07.2f" % 123.45) # 전체 7칸 확보, 소수점 2자리, 왼쪽 빈칸 0으로 채움 → "0123.45"
 ```
-3. 주의 사항
+#### 주의 사항
 전체 칸(`m`)이 실제 출력 폭보다 작으면 무시된다.
 ```python
 print("%3.3f" % 123.45)  # 전체 3칸 지정은 무시되고 소수점 3자리만 적용 → "123.450"
+```
+```python
+print('%.2f' % 2.675) # 2.67
+print('%.2f' % 2.677) # 2.68
+```
+> 파이썬 내부적으로 부동소수점 오차 때문에 2.675가 정확히 표현되지 않아서 아래와 같은 현상이 생깁니다. 실제로는 2.6749999999...처럼 저장되어 있어서 반올림이 2.67로 됩니다.
+## str.format() 메서드
+* {}: 중괄호 안에 변수나 표현식을 넣어 값을 출력.
+* {:d}: 정수를 출력.
+* {:f}: 부동 소수점 숫자를 출력.
+* {:s}: 문자열을 출력.
+* {:x}: 정수를 16진수로 출력.
+* {:0n}: n 자리의 정수를 0으로 채워서 출력.
+* {:n.mf}: 전체 길이 n과 소수점 이하 자리수 m을 지정하여 부동 소수점 숫자를 출력.
+## f-string
+```python
+name = "banana"
+age = 25
+height = 160.123
+print(f"이름: {name}, 나이: {age}, 키: {height:.1f}")
+# 이름: banana, 나이: 25, 키: 160.1
 ```
 
 # 연산자
@@ -515,7 +536,7 @@ for li in zip(li1, li2):
 ### 부동소수점 오차
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FdIvD5n%2FbtsKpllrAUz%2FAAAAAAAAAAAAAAAAAAAAAPyW2WWUgkEBN3AMLucwS24KXgcBV79-0_GFRUjKYhhC%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DtD03NE3kMe%252BIAXe8AFhe9kgmlwY%253D)
 ```python
-print(1.1 + 0.1 == 1.2)  # False
+print(1.1 + 0.1 == 1.2)  # False, 1.2000000000000002
 ```
 * 컴퓨터는 10진수를 2진수로 변환하여 계산한다.
 * 하지만 `0.1`, `1.1` 같은 값은 2진수로 무한 소수가 되기 때문에, 메모리에 근사값으로 저장된다.

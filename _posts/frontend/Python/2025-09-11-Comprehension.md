@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "컴프리헨션 Comprehension(List, Set, Dictionary)"
 date:   2025-09-11
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   예시를 통해 파이썬 컴프리헨션(List, Set, Dict)을 정리

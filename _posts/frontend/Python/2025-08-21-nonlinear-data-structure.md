@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "자료 구조(비선형 자료구조)"
 date:   2025-08-21
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   예시를 통해 
@@ -293,43 +293,225 @@ class MinHeap:
 			self._heapify_down(smallest) 
 
 # 사용 예시
-
+min_heap = MinHeap()
+for num in [23, 10, 35, 19, 47, 60, 35, 80, 44]:
+	min_heap.push(num)
+print(min_heap.heap[1:])	# [3, 10, 35, 23, 47, 60, 35, 80, 44]
 ```
 
+### 직접 구현(최대 힙)
+```python
+class MaxHeap:
+	def __init__(self):
+		self.heap = [None] # 인덱스 0은 사용하지 않음
+
+	def push(self, item):
+		self.heap.append(item)
+		self._heapify_up(len(self.heap) - 1)
+
+	def _heapify_up(self, idx):
+		if idx <= 1:
+			return
+
+		parent = idx // 2
+
+		# 부모보다 크면 교환
+		if self.heap[idx] > self.heap[parent]:
+			self.heap[idx], self.heap[parent] = self.heap[parent], self.heap[idx]
+			self._heapify_up(parent)
+
+	def pop(self):
+		if len(self.heap) <= 1:
+			return None
+
+		if len(self.heap) == 2:
+			return self.heap.pop()
+
+		root = self.heap[1]
+		self.heap[1] = self.heap.pop()
+		self._heapify_down(1)
+
+		return root
+
+	def _heapify_down(self, idx):
+		largest = idx
+		left = idx * 2
+		right = idx * 2 + 1
+
+		# 왼쪽 자식과 비교
+		if left < len(self.heap) and self.heap[left] > self.heap[largest]:
+			largest = left
+
+		# 오른쪽 자식과 비교
+		if right < len(self.heap) and self.heap[right] > self.heap[largest]:
+			largest = right
+
+		if largest != idx:
+			self.heap[idx], self.heap[largest] = self.heap[largest], self.heap[idx]
+			self._heapify_down(largest)
+
+# 사용 예시
+max_heap = MaxHeap()
+for num in [23, 10, 35, 19, 47, 60, 35, 80, 44]:
+	max_heap.push(num)
+print(max_heap.heap[1:])	# [80, 60, 47, 44, 35, 35, 19, 23, 10]
+```
+
+### heapq 모듈 사용
+```python
+import heapq
+
+# 최소 힙
+min_heap = []	# 빈 리스트 생성
+heapq.heappush(min_heap, 5) # [5]
+heapq.heappush(min_heap, 3) #	[3, 5]
+heapq.heappush(min_heap, 7) # [3, 5, 7]
+heapq.heappush(min_heap, 1) # [1, 3, 7, 5]
+min_value = heapq.heappop(min_heap) # 1
+
+# 최대 힙: 음수로 변환
+max_heap = []
+heapq.heappush(max_heap, -5) # [-5]
+heapq.heappush(max_heap, -3) # [-5, -3]
+heapq.heappush(max_heap, -7) # [-7, -3, -5]
+heapq.heappush(max_heap, -1) # [-7, -3, -5, -1]
+max_value = -heapq.heappop(max_heap) # 7
+```
+### 사용 예시 - 최소 힙으로 K번째 작은 수 찾기
+```python
+import heapq
+
+def kthSmallest(nums, k):
+	heapq.heapify(nums)
+
+	for _ in range(k - 1):
+		heapq.heappop(nums)
+
+	return heapq.heappop(nums)
+```
+
+# 그래프(Graph)
+* **노드(정점, Vertex)**와 **간선(Edge)**로 구성된 네트워크 구조
+* **특징**: 사이클이 있을 수 있음(순환 가능)
+## 그래프의 종류
+* **무방향 그래프(Undirected Graph)**: 간선에 방향이 없음
+* **방향 그래프(Directed Graph)**: 간선에 방향이 있음
+* **가중치 그래프(Weighted Graph)**: 간선에 가중치(비용)가 있음
+## 그래프 표현 방법
+### 인접 행렬(Adjacency Matrix, 2차원 배열)
+* 무방향 그래프
+```python
+graph[0][1] = graph[1][0] = 1 # 0 -> 1, 1 -> 0 모두 가능
+```
+* 방향 그래프
+```python
+graph[0][1] = 1 # 0 -> 1만 가능
+```
+#### 구현 예시(가중치 X)
+```python
+# 정점 4개인 그래프
+n = 4
+graph = [[0] * n for _ in range(n)]
+"""
+graph = [
+	[0, 0, 0, 0],
+	[0, 0, 0, 0],
+	[0, 0, 0, 0],
+	[0, 0, 0, 0]
+]
+"""
+
+# 간선 추가 (0-1, 0-2, 1-3)
+graph[0][1] = graph[1][0] = 1
+graph[0][2] = graph[2][0] = 1
+graph[1][3] = graph[3][1] = 1
+"""
+graph = [
+	[0, 1, 1, 0],
+	[1, 0, 0, 0],
+	[1, 0, 0, 0],
+	[0, 0, 0, 0]
+]
+"""
+```
+#### 구현 예시(가중치 O)
+```python
+n = 4
+INF = float('inf') # 연결되지 않은 경우를 표현
+graph = [[0] * n for _ in range(n)]
+
+# 자기 자신으로 가능 비용은 0
+for i in range(n):
+	graph[i][i] = 0
+
+# 간선 추가 (점점1, 점정2, 가중치)
+graph[0][1] = graph[1][0] = 5
+graph[0][2] = graph[2][0] = 3
+graph[1][3] = graph[3][1] = 7
+
+"""
+graph = [
+	[0, 5, 3, INF],
+	[5, 0, INF, 7],
+	[3, INF, 0, INF],
+	[INF, 7, INF, 0]
+]
+"""
+```
+### 인접 리스트(Adjacency List, Linked List)
+* 무방향 그래프
+```python
+graph[0].append(1)
+graph[1].append(0)
+```
+* 방향 그래프
+```python
+graph[0].append(1)
+```
+#### 구현 예시(가중치 X)
+```python
+n = 4
+graph = [[] for _ in range(n)]
+"""
+graph = [
+	[],
+	[],
+	[],
+	[]
+]
+"""
+
+# 간선 추가(0-1, 0-2, 1-3)
+graph[0].append(1)
+graph[1].append(0)
+graph[0].append(2)
+graph[2].append(0)
+graph[1].append(3)
+graph[3].append(1)
+"""
+graph = [
+	[1, 2], # 0번 정점: 1, 2와 연결
+	[0, 3],
+	[0],
+	[1]
+]
+"""
+```
+#### 구현 예시(가중치 O)
+```python
+n = 4
+graph = [[] for _ in range(n)]
+
+# 간선 추가: (도착 정점, 가중치) 튜플로 저장
+graph[0].append((1, 5))
+graph[1].append((0, 5))
+graph[0].append((2, 3))
+
+```
+## 그래프 탐색
+### 깊이 우선 탐색(DFS, Depth First Search)
 
 
-
-
-
-
-이진 트리에서 가장 중요한 점은 탐색을 효율적으로 할 수 있도록 트리를 구축하는 방법
-(데이터를 잘 정리하면 탐색이 빠르고 쉽다)
-예를 들어 데이터가 3 -> 4 -> 2 -> 8 -> 9 -> 7 -> 1
-
-이진 탐색 트리
-
-기준 => root
-종료 기준 => 찾고자하는 데이터를 찾으면 종료
-
-작으면 왼쪽 크면 오른쪽
-
-평양 이진 트리 
-균형 이진 트리 => 레드-블랙, AVL 트리
-
-그래프, 트리 => 비선형 자료구조 공통점이다.
-그래프 => 순회, 트리 => 순회(X)
-
-방향 그래프, 무방향 그래프(양방향)
-노드(vertex), 간선(Edge), 가중치
-
-데이터를 담고 있는 저장소 -> 노드(정점)
-노드를 잇는 것 -> 간선(Edge)
-간선의 방향 -> 무방향(양방향), 단방향
-노드와 노드 사이의 값 -> 가중치
-
-그래프의 구현 방식
-1. 인접 행렬(2차원 배열)
-2. 인접 리스트(linked)
 
 그래프 탐색
 깊이 우선 탐색

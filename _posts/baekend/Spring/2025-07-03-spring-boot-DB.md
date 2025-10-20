@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/spring
+    - /baekend/spring
 title:  "spring boot에 DB 연결하기(MySQL)"
 date:   2025-06-25
 categories:
-  - studylog
+  - baekend
   - spring
   - db
 description: >

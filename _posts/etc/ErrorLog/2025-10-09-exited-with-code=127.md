@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorlog
+    - /etc/errorlog
 title:  "exited with code=127 오류"
 date:   2025-10-09
 categories:
-  - studylog
+  - etc
   - errorlog
   - python
 description: >

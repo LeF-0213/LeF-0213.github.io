@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /studylog/algorithm
+  - /baekend/algorithm
 title:  "정렬 알고리즘"
 date:   2025-03-22
 categories:
-  - studylog
+  - baekend
   - algorithm
 description: >
   정렬 알고리즘(삽입 정렬, 병합 정렬, Heap 정렬)

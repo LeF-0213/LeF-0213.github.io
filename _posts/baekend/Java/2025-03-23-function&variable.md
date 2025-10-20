@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "함수와 변수"
 date:   2025-03-23
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   

@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "추상클래스 vs 인터페이스 vs 구현체"
 date:   2025-06-19
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   추상클래스와 인터페이스 개념과 사용목적에 대해 이해, 구현체와의 차이

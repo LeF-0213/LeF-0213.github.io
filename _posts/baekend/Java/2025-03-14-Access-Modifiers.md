@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "자바 접근 제어자(Access Modifiers)"
 date:   2025-03-14
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   Java의 접근 제어자의 종류와 개념

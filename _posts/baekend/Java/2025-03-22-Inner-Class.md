@@ -1,13 +1,13 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
-    - /studylog/java/2025-03-14-Access-Modifiers
-    - /studylog/java/2025-03-29-Outer-Class
+    - /baekend/java
+    - /baekend/java/2025-03-14-Access-Modifiers
+    - /baekend/java/2025-03-29-Outer-Class
 title:  "자바 내부 클래스"
 date:   2025-03-22
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   Java의 내부 클래스의 종류와 특징

@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "Web Socket이란?"
 date:   2025-07-28
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   웹소켓의 개념과 활용법

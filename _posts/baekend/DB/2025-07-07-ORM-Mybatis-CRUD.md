@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/db
+    - /baekend/db
 title:  "MyBatis CRUD와 동적쿼리 작성"
 date:   2025-07-02
 categories:
-  - studylog
+  - baekend
   - spring
   - db
 description: >

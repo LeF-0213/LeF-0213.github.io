@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "파이썬 컬렉션 자료형 정리(List, Tuple, dictionary, Set)"
 date:   2025-07-31
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   파이썬의 기본 컬렉션 자료형(리스트, 튜플, 딕셔너리, 집합)에 대해 정리

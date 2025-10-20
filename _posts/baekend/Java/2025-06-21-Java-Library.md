@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "자바 라이브러리에 대한 이해"
 date:   2025-06-21
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   자바의 대표적인 라이브러리 및 활용 예시

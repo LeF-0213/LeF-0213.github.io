@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "그리드 알고리즘"
 date:   2025-08-28
 categories:
-  - studylog
+  - frontend
   - python
   - algorithm
 description: >

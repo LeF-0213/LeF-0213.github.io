@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorlog
+    - /etc/errorlog
 title:  "TypeError: Object of type dict_values is not JSON serializable"
 date:   2025-09-17
 categories:
-  - studylog
+  - etc
   - errorlog
   - python
 description: >

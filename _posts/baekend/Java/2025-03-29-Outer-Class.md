@@ -1,13 +1,13 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
-    - /studylog/java/2025-03-14-Access-Modifiers
-    - /studylog/java/2025-03-29-Inner-Class
+    - /baekend/java
+    - /baekend/java/2025-03-14-Access-Modifiers
+    - /baekend/java/2025-03-29-Inner-Class
 title:  "자바 외부 클래스"
 date:   2025-03-29
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   Java의 외부 클래스의 종류와 특징

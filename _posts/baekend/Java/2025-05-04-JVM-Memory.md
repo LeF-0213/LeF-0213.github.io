@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
-    - /studylog/java/2025-03-08-data-structures
+    - /baekend/java
+    - /baekend/java/2025-03-08-data-structures
 title:  "JVM 메모리 영역(JVM Runtime Data Area)"
 date:   2025-05-04
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   JVM의 메모리 영역 즉, 메모리, Heap, Stack의 특징과 생성 및 소멸 시기

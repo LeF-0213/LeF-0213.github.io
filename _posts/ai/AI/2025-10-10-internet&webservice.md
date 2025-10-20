@@ -1,11 +1,10 @@
 ---
 layout: post
 related_posts:
-  - /studylog/ai
+  - /ai
 title:  "인터넷과 웹서비스"
 date:   2025-10-10
 categories:
-  - studylog
   - ai
 description: >
   

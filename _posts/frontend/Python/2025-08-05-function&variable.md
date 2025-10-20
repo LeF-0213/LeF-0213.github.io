@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "함수와 변수"
 date:   2025-08-05
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   함수의 정의와 종류, 활용방식

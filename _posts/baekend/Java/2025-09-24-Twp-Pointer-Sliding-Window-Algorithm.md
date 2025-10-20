@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "투 포인터 & 슬라이딩 윈도우 알고리즘(Two Poiter & Sliding Window Algorithm)"
 date:   2025-09-24
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   

@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "Exception 타입 예외처리 방법 try catch구문과 thorws 비교"
 date:   2025-06-25
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   Generic의 개념과 List, Set, Map에서의 활용

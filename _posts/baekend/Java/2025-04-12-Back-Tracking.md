@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /studylog/algorithm
+  - /baekend/algorithm
 title:  "[JAVA] 백트래킹 알고리즘"
 date:   2025-04-12
 categories:
-  - studylog
+  - baekend
   - algorithm
 description: >
   백트래킹 알고리즘에 대해

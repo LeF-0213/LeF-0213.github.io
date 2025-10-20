@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "자료구조(선형 자료구조)"
 date:   2025-08-20
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   Python 3 자료구조(선형 자료구조) 구현 방법 설명

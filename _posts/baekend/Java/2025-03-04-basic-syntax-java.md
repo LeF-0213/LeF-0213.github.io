@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /studylog/java
+  - /baekend/java
 title:  "자바 기본 문법"
 date:   2025-03-04
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   Java의 기본 문법

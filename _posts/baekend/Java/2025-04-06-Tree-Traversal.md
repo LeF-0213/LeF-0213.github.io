@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /studylog/algorithm
+  - /baekend/algorithm
 title:  "[JAVA]이진 트리 순회 방법"
 date:   2025-03-22
 categories:
-  - studylog
+  - baekend
   - algorithm
 description: >
   이진 트리 순회 방법인 전위 순회, 중위 순회, 후위 순회

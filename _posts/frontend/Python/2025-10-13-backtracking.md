@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "백트래킹 알고리즘"
 date:   2025-10-13
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   예시를 통해 

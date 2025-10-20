@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/spring
+    - /baekend/spring
 title:  "spring Model 객체 VS DTO"
 date:   2025-07-05
 categories:
-  - studylog
+  - baekend
   - spring
 description: >
   Model 객체와 DTO에 대한 개념과 두 객체의 차이점에 대한 이해

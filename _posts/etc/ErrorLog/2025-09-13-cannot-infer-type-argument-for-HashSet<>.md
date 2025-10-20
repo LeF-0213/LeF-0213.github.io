@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorlog
+    - /etc/errorlog
 title:  "error: cannot infer type arguments for HashSet<>"
 date:   2025-09-13
 categories:
-  - studylog
+  - etc
   - errorlog
   - java
 description: >

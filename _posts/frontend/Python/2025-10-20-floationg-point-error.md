@@ -2,8 +2,8 @@
 layout: post
 related_posts:
     - /frontend/python
-title:  "우선 순위 큐"
-date:   2025-10-12
+title:  "부동소수점 오차(Floating-point Error)"
+date:   2025-10-20
 categories:
   - frontend
   - python

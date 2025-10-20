@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/python
+    - /frontend/python
 title:  "정렬 알고리즘"
 date:   2025-08-27
 categories:
-  - studylog
+  - frontend
   - python
 description: >
   

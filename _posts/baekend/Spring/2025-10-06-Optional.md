@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/spring
+    - /baekend/spring
 title:  "spring boot에서 사용하는 annotaion"
 date:   2025-07-04
 categories:
-  - studylog
+  - baekend
   - spring
   - db
 description: >

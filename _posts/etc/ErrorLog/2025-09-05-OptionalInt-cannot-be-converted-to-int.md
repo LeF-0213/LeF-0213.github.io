@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/errorlog
+    - /etc/errorlog
 title:  "incompatible types: OptionalInt cannot be converted to int"
 date:   2025-09-05
 categories:
-  - studylog
+  - etc
   - errorlog
   - java
 description: >

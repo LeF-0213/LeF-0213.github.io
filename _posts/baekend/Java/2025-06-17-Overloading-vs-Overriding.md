@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/java
+    - /baekend/java
 title:  "오버로딩(+ 생성자) VS 오버라이딩(업캐스팅 VS 다운캐스팅, Wrapper 클래스)"
 date:   2025-06-17
 categories:
-  - studylog
+  - baekend
   - java
 description: >
   오버로딩과 오버라이딩의 차이를 생성자, 업캐스팅과 다운캐스팅의 활용예시를 통해 이해
