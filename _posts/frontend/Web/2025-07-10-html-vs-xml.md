@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/etc
+    - /frontend/etc
 title:  "HTML VS XML의 사용목적과 특징"
 date:   2025-07-10
 categories:
-  - studylog
+  - frontend
   - spring
   - db
 description: >

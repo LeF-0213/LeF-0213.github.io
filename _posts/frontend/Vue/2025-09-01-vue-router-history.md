@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-    - /studylog/frontend
+    - /frontend/frontend
 title:  "VUE Router의 History 모드"
 date:   2025-09-01
 categories:
-  - studylog
+  - frontend
   - spring
   - vue
 description: >
