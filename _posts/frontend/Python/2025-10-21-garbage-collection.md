@@ -8,7 +8,7 @@ categories:
   - frontend
   - python
 description: >
-  파이썬의 기초 개념부터 변수, 함수, 연산자, 조건문, 반복문 등 예시를 활용한 기본 내용 정리
+  가비지 컬렉션 과정과 Python의 자동 메모리 관리 시스템 개념 정리
 ---
 * toc
 {:toc .large-only}
