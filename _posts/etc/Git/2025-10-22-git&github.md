@@ -79,7 +79,8 @@ git init
 # 기존 프로젝트 복제
 cd 프로젝트 생성할 곳
 git init
-git clone https://github.com/username/repo.git # repository에 생성한 주소 복사해서 붙여넣기
+ # repository에 생성한 주소 복사해서 붙여넣기
+git clone https://github.com/username/repo.git
 ```
 ### 상태 확인
 

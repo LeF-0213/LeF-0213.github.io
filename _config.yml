@@ -76,7 +76,6 @@ menu:
     submenu:
       - title:             ErrorLog
         url:               /errorlog/
-    submenu:
       - title:             Git
         url:               /git/
   - title:             Programmers
