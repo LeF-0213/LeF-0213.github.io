@@ -61,16 +61,17 @@ git commit -m "기능 B 추가"
 
 # Git 기본 명령어
 ### repository 생성하는 법
-![gitnewrepo1]](Image" src="https://github.com/user-attachments/assets/ee8dd1fd-9a2b-4407-b010-430df35f9c17)
 **GitHub**에서 내 **repository 카테고리**로 들어가 **new 버튼** 클릭 
+![gitnewrepo1](https://github.com/user-attachments/assets/ee8dd1fd-9a2b-4407-b010-430df35f9c17)
 
-![gitnewrepo1](Image" src="https://github.com/user-attachments/assets/16cda2d4-ad4e-4466-b9ff-6f500ebc8f5b)
 **Repository name**에 원하는 이름 적고 **README**가 필요할 경우 키고 **Create repository 버튼** 클릭
+![gitnewrepo1](https://github.com/user-attachments/assets/16cda2d4-ad4e-4466-b9ff-6f500ebc8f5b)
 
 ### 저장소 생성
 **repository에 생성한 주소 혹은 clone할 주소**
 ![gitaddress](https://github.com/user-attachments/assets/adcf4a9f-f60c-46e0-b6c6-75efd1f3c1ca)
 
+**그 후**
 ```bash
 # 새 프로젝트 시작
 cd 프로젝트명
@@ -236,7 +237,7 @@ print("feature 브랜치의 코드")
 * `git add .` 또는 `git add file.txt`
 * `git commit -m "[Conflict] 무슨 충돌 해결"`
 
-## 팁
+## Conflict 발생 시 Tip
 **내가 작업한 것을 모두 저장하여 내 브랜치에 올리기**
 
 ```bash
