@@ -1,3 +1,18 @@
+---
+layout: post
+related_posts:
+    - /frontend/python
+title:  "TK-interface"
+date:   2025-08-12
+categories:
+  - frontend
+  - python
+description: >
+  
+---
+* toc
+{:toc .large-only}
+
 window = TK()
 
 from tkinter import
