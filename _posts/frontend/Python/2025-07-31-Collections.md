@@ -27,6 +27,37 @@ description: >
 * 변수: 오직 하나의 데이터만 저장  
 * 컬렉션: 여러 데이터를 하나의 변수에 저장
 
+## Iterable & Iterator
+### Iterable(이터러블)
+* for문에서 **반복 가능한 객체**를 의미
+* 리스트, 튜플, 문자열, 딕셔너리, 세트(set) 등이 모두 이터러블
+* 특징: `iter()`를 적용할 수 있다.
+* 모든 순서 있는 컬렉션은 이터러블이다. 하지만 모든 이터러블이 순서 있는 것은 아니다
+* **순서가 있는 것**(list, tuple, str)도 있고, **순서 없는 것**(set, dict.keys())도 있다.
+
+```python
+numbers = [10, 20, 30]  # 리스트는 이터러블
+for n in numbers:
+    print(n)
+```
+
+### Iterator(이터레이터)
+* 이터러블 객체를 `iter()` 함수로 변환하면 만들어지는 객체
+* `next()` 함수를 사용해 값을 하나씩 꺼낼 수 있다.
+* 값을 다 꺼낸 후 더 `next()` 를 호출하면
+* **Stoplteration 예외**가 발생한다. 
+
+```python
+numbers = [10, 20, 30]
+# 이터러블 → 이터레이터로 변환
+iterator = iter(numbers)
+
+print(next(iterator))  # 10
+print(next(iterator))  # 20
+print(next(iterator))  # 30
+# print(next(iterator))  # StopIteration 발생
+```
+
 # List `[]`
 * **수정이 가능(mutable, 동적 개념)**
 * 여러 데이터 타입을 함께 저장 가능
@@ -35,7 +66,7 @@ description: >
 ## PyObject_HEAD
 ![list](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FrbbGS%2FbtsNlJ3pII6%2FAAAAAAAAAAAAAAAAAAAAADZ_4vWsTlsb7UDjjXvI68BXsS1bijEAnOMx_1PO2yF8%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3D1JlxIGO35BdjtPMnwOSGbGwqy0I%253D)
 
-* `PyObject_HEAD`는 `C언어`로 구현된 `파이썬 인터프리터(CPython)` 의 `구조체(struct)`에 포함된 매크로이다.[Python 리스트의 메모리 동작 상세 설명]()
+* `PyObject_HEAD`는 `C언어`로 구현된 `파이썬 인터프리터(CPython)` 의 `구조체(struct)`에 포함된 매크로이다.[Python 리스트의 메모리 동작 상세 설명](https://lef-0213.github.io/frontend/python/2025-10-21-Python-List-Memori-Allocation/)
 * 파이썬 객체라면 반드시 가져야 하는 공통 필드를 정의 합니다.
 
 ```c

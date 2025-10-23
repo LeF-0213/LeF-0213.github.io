@@ -14,43 +14,96 @@ description: >
 {:toc .large-only}
 
 # 컴프리헨션(Comprehension)
-컴프리헨션(Comprehension)은 파이썬에서 리스트, 세트, 딕셔너리 등의 컬렉션을 간단하게 생성하거나 변형하는 방법이다. 컴프리헨션은 반복문과 조건문을 사용하여 간결하게 컬렉션을 생성하는 기법으로, **간결하고 가독성 좋은 코드**를 작성할 수 있다.
+* 컴프리헨션(Comprehension)은 파이썬에서 리스트, 세트, 딕셔너리 등의 컬렉션을 간단하게 생성하거나 변형하는 방법이다.
+* 컴프리헨션은 반복문과 조건문을 사용하여 간결하게 컬렉션을 생성하는 기법으로, 
+* **간결하고 가독성 좋은 코드**를 작성할 수 있다.
+  
 ## 리스트 컴프리헨션
-리스트 컴프리헨션은 반복문을 사용하여 새로운 리스트를 만드는 방법이다.
-### 기본문법
+* 리스트 컴프리헨션은 새로운 리스트를 생성하는데 사용된다. 
+* 기존 리스트의 각 요소를 반복하면서 조건을 적용하여 새로운 리스트를 생성할 수 있다.
+
 ```python
 [표현식 for 변수 in 반복가능객체 if 조건식]
 ```
-### 예시 - 제곱수 리스트
+### 예시 - 리스트 생성
+
 ```python
-squares = [x**2 for x in range(5)]
+n = 10
+result = [0 for i in range(n)]
+print(result) # [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+result = [i for i in range(n)]
+print(result) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+### 예시 - 제곱수 리스트
+
+```python
+squares = [x ** 2 for x in range(5)]
 print(squares)  # [0, 1, 4, 9, 16]
 ```
 ### 예시 - 짝수만 필터링
+
 ```python
 evens = [x for x in range(10) if x % 2 == 0]
 print(evens)  # [0, 2, 4, 6, 8]
 ```
+### 예시 - 음수 필터링
+
+```python
+li = [-1, 0, -4, 24, 5, -10, 2, 20]
+
+result = [x if x > 0 else 0 for x in li]
+print(result) # [0, 0, 0, 24, 5, 0, 2, 20]
+```
+
+### 얘시 - 중첩
+
+```python
+li = [i * j for i in range(1, 4) for j in range(1, 3)]
+print(li) # [1, 2, 2, 4, 3, 6]
+```
+
 ## 세트 컴프리헨션
-세트 컴프리헨션은 리스트 컴프리헨션과 거의 같지만, **중복을 허용하지 않고** 집합 자료형을 만든다.
+* 세트 컴프리헨션은 리스트 컴프리헨션과 거의 같지만, **중복을 허용하지 않고** 집합 자료형을 만든다.
+* 즉, 새로운 세트를 생성하는데 사용된다. 
+* 기존 세트의 각 요소를 반복하면서 조건을 적용하여 새로운 세트를 생성할 수 있다.
+
+### 예시 - 기본
+
+```python
+li = [1, 2, 3, 4, 5, 2, 3, 4]
+unique_numbers = {x for x in li}
+print(unique_numbers)
+```
 ### 예시 - 모음 추출
+
 ```python
 text = "hello python"
 vowels = {ch for ch in text if ch in "aeiou"}
 print(vowels) # {'o', 'e'}
 ```
 ## 딕셔너리 컴프리헨션
-딕셔너리 컴프리헨션은 반복문을 사용하여 키-값 쌍을 생성하는 방법이다.
-### 기본 문법
+* 딕셔너리 컴프리헨션은 새로운 딕셔너리를 생성하는데 사용된다. 
+* 기존 딕셔너리의 키와 값을 반복하면서 조건을 적용하여 새로운 딕셔너리를 생성할 수 있다.
+
 ```python
 {key_expr: value_expr for 변수 in 반복가능객체 if 조건식}
 ```
+### 예시 - 문자:문자길이 매핑
+```python
+names = ['apple', 'banana', 'orange']
+name_lengths = {name:len(name) for name in names}
+print(name_lengths) # {'apple': 5, 'banana': 6, 'orange': 6}
+```
+
 ### 예시 - 숫자:제곱값 매핑
+
 ```python
 squares = {x: x**2 for x in range(5)}
 print(squares)  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 ```
 ### 예시 - 문자:아스키코드 매핑
+
 ```python
 chars = {ch: ord(ch) for ch in "abc"}
 print(chars)  # {'a': 97, 'b': 98, 'c': 99}

@@ -909,6 +909,61 @@ for li in zip(li1, li2):
 """
 ```
 
+## continue
+* continue문은 파이썬의 반복문(for나 while) 안에서 사용되며, 
+* 현재 반복을 즉시 건너뛰고 다음 반복으로 넘어가도록 하는 제어문이다. 
+* 즉, continue 아래에 있는 코드는 실행하지 않고 반복문의 처음으로 돌아가 다음 조건을 검사하거나 다음 요소를 처리한다.
+* 예를 들어, 리스트를 순회하면서 특정 값만 건너뛰고 싶을 때 if문과 함께 사용하면 효율적이다. 
+* 이를 통해 불필요한 코드 실행을 피하고, 조건에 따라 반복 흐름을 세밀하게 제어할 수 있다.
+
+#### 예시
+
+```python
+ogs = [
+    "INFO: 사용자 로그인 성공",
+    "DEBUG: 세션 생성 중",
+    "ERROR: 데이터베이스 연결 실패",
+    "INFO: 요청 처리 완료",
+    "ERROR: 파일 저장 실패",
+    "DEBUG: 응답 전송"
+]
+
+error_logs = []
+
+for log in logs:
+  # "ERROR: 데이터베이스 연결 실패"
+  if not log.startswith("ERROR"):
+    continue
+  error_logs.append(log)
+
+print('오류 로그만 출력: ')
+for e in error_logs:
+  print(e)
+```
+
+## break
+* break문은 파이썬의 반복문(for나 while) 안에서 사용되어, **반복을 즉시 종료시키는 제어문**이다. 
+* 즉, **break가 실행되면** 반복문의 조건과 상관없이 해당 **반복문을 완전히 빠져나온다.** 
+* 주로 특정 조건을 만족하면 더 이상 반복을 진행할 필요가 없을 때 사용하며, 
+* 예를 들어 사용자 입력에서 "종료"라는 단어를 입력받으면 프로그램을 멈추는 로직 등에 자주 활용된다. 
+* 이를 통해 불필요한 반복을 줄이고, 효율적인 프로그램 흐름 제어가 가능하다.
+
+#### 예시
+
+```python
+orders = ['마우스', '키보드', '모니터', '그래픽카드', '프린터']
+stock = {'마우스': 10, '키보드': 5, '모니터': 0, '그래픽카드': 2, '프린터': 3}
+
+print("주문 처리 시작")
+for item in orders:
+  if stock[item] == 0:
+    print(f'{item} 재고가 없습니다. 주문을 중단합니다.')
+    break
+  print(f'{item} 주문 완료')
+
+print('주문 프로세스 종료')
+```
+
 ## 알아두면 좋은 개념
 ### 부동소수점 오차
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FdIvD5n%2FbtsKpllrAUz%2FAAAAAAAAAAAAAAAAAAAAAPyW2WWUgkEBN3AMLucwS24KXgcBV79-0_GFRUjKYhhC%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1759244399%26allow_ip%3D%26allow_referer%3D%26signature%3DtD03NE3kMe%252BIAXe8AFhe9kgmlwY%253D)
