@@ -83,6 +83,23 @@ git init
  # repository에 생성한 주소 복사해서 붙여넣기
 git clone https://github.com/username/repo.git
 ```
+### 초기 설정
+
+```bash
+# 사용자 이름 설정
+git config --global user.name "홍길동"
+
+# 이메일 설정 (GitHub 이메일과 동일하게)
+git config --global user.email "hong@example.com"
+
+# 기본 브랜치 이름을 main으로 설정
+git config --global init.defaultBranch main
+
+# 설정 확인
+git config --list
+```
+
+
 ### 상태 확인
 
 ```bash
@@ -130,7 +147,7 @@ git log -5
 git log file.txt
 
 # 그래프로 보기
-git log --online --graph --all
+git log --oneline --graph --all
 ```
 
 # 원격 저장소 (Remote)
