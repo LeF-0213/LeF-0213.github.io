@@ -85,6 +85,10 @@ menu:
         url:           /lv1/
       - title:         Lv2
         url:           /lv2/
+      - title:         Lv3
+        url:           /lv3/
+      - title:         Lv4
+        url:           /lv4/
   - title:             Baekjoon
     url:               /baekjoon/
 
