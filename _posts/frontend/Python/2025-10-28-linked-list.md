@@ -23,6 +23,17 @@ description: >
 * 일반적으로 리스트의 맨 앞 노드를 **헤드(Head)**, 맨 마지막 노드를 **테일(Tail)**이라고 한다.
 * 배열과 달리 메모리 공간이 연속적이지 않아도 되며, 동적으로 크기 조절이 가능하다.(파이썬은 배열도 동적)
 
+## 배열 vs 연결 리스트
+
+| 특성 | 배열(Array) | 연결 리스트(Linked List) |
+|------|------------|------------------------|
+| 메모리 할당 | 연속적 | 비연속적 |
+| 크기 | 고정적 (정적) | 가변적 (동적) |
+| 접근 시간 | O(1) - 인덱스로 직접 접근 | O(n) - 순차 탐색 필요 |
+| 삽입/삭제 | O(n) - 요소 이동 필요 | O(1) - 포인터만 변경 |
+| 메모리 효율 | 데이터만 저장 | 포인터 추가 저장 필요 |
+| 캐시 효율성 | 높음 (연속 메모리) | 낮음 (분산 메모리) |
+
 # 단일 연결 리스트(Singly)와 이중 연결 리스트(양방향, Doubly)
 ![SingleVsDouble](https://velog.velcdn.com/images%2F717lumos%2Fpost%2Fb38d2c1e-7878-4b17-93b1-07cc0b99096a%2F%EB%A6%AC%EC%8A%A4%ED%8A%B82.png)
 
@@ -40,7 +51,7 @@ class Node:
     self.data = data    # 데이터 저장
     self.next = None    # 다음 노드를 가리키는 포인터
 ```
-### 주요 연산
+### 함수형 스타일 구현(개념 이해용)
 #### 삽입(Insert)
 **맨 앞에 삽입 - O(1)**
 
@@ -64,7 +75,7 @@ def insert_end(head, data):
   current.next = new_node
   return head
 ```
-**중간에 삽입 - O(n)**
+**특정 노드 뒤에 삽입 - O(n)**
 ![중간 삽입 이미지](https://velog.velcdn.com/images%2F717lumos%2Fpost%2F327827ab-8838-4b57-9ebc-4e98287793e5%2F%EA%B7%B8%EB%A6%BC6.png)
 
 ```python
@@ -127,6 +138,117 @@ def search(head, value):
   return None
 ```
 
+### 클래스 기반 구현(실제 구현)
+
+```python
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.next = None
+
+class SiglyLinkedList:
+  def __init__(self):
+    self.head = None
+    self.size = 0
+
+  def is_empty(self):
+    return self.head is None
+
+  def get_size(self):
+    return self.size
+
+  # 맨 앞에 삽입 - O(1)
+  def insert_front(self, data):
+    new_node = Node(data)
+    new_node.next = self.head
+    self.head = new_node
+    self.size += 1
+
+  # 맨 뒤에 삽입 - O(n)
+  def insert_end(self, data):
+    new_node = Node(data)
+
+    if self.head is None:
+      self.head = new_node
+    else:
+      current = self.head
+      while current.next:
+        current = current.next
+      current.next = new_node
+
+    self.size += 1
+
+  # 특정 노드 뒤에 삽입 - O(1) (노드를 알고 있을 때)
+  def insert_after(self, prev_node, data):
+    if prev_node is None:
+      return
+    
+    new_node = Node(data)
+    new_node.next = prev.node.next
+    prev_node.next = new_node
+    self.size += 1
+
+  # 맨 앞 노드 삭제 - O(1)
+  def delete_front(self):
+    if self.head is None:
+      return None
+
+    deleted_data = self.head.data
+    self.head = self.head.next
+    self.size -= 1
+    return deleted_data
+
+  # 특정 값을 가진 노드 삭제 - O(n)
+  def delete_value(self, value):
+    if self.head is None:
+      return False
+
+    # 헤드 노드가 삭제 대상인 경우
+    if self.head.data == value:
+      self.head = self.head.next
+      self.size -= 1
+      return True
+
+    # 이전 노드 찾기
+    current = self.head
+    while current.next and current.next.data != value:
+      current = current.next
+
+    if current.next:
+      current.next = current.next.next
+      self.size -= 1
+      return True
+  
+  # 탐색 - O(n)
+  def search(self, value):
+    current = self.head
+    while current:
+      if current.data == value:
+        return current
+      current = current.next
+    return None
+
+  # 순회 출력
+  def print_list(self):
+    current = self.head
+    while current:
+      print(current.data, end="->")
+      current = current.next
+    print("None")
+
+# 결과
+sll = SinglyLinkedList()
+sll.insert_end(1)
+sll.insert_end(2)
+sll.insert_end(3)
+sll.insert_front(0)
+sll.print_list()  # 0 -> 1 -> 2 -> 3 -> None
+
+sll.delete_front()  # 0 삭제
+sll.delete_value(2)  # 2 삭제
+sll.print_list()  # 1 -> 3 -> None
+```
+
 ### 장단점
 
 | 단일 연결 리스트 장점 | 단일 연결 리스트 단점 |
@@ -155,7 +277,7 @@ class DoublyNode:
     self.next = None  # 다음 노드를 가리키는 포인터
 ```
 
-### 주요 연산
+### 함수형 스타일 구현 (개념 이해용)
 #### 삽입(Insert)
 **맨 앞에 삽입 - O(1)**
 ![맨 앞 삽입](https://user-images.githubusercontent.com/81945553/175528143-179b3a44-7d3b-4aca-a786-a9a9e51de382.png)
@@ -200,38 +322,242 @@ def insert_after(prev_node, data):
 #### 삭제(Delete)
 **노드가 하나일 때 삭제**
 ![하나 삭제](https://user-images.githubusercontent.com/81945553/175529004-1a86cd72-c3c6-44ca-a65f-1eefb7cf3242.png)
+```python
+def delete_one(head, tail):
+  if node is None:
+  return head, tail
+
+  if head == tail:
+    return None, None
+```
 
 **맨 앞 노드 삭제**
 ![맨 앞 삭제](https://user-images.githubusercontent.com/81945553/175529055-735184d5-e121-4b45-868f-8d7293d569a7.png)
 
+```python
+def delete_head(head, tail, node):
+  if node is None:
+    return head, tail
+
+  if node == head:
+    if head == tail:
+      return None, None
+    head = head.next
+    head.prev = None
+    return head, tail
+```
 **맨 뒤 노드 삭제**
 ![맨 뒤 삭제](https://user-images.githubusercontent.com/81945553/175529120-982ee5a0-c49e-423f-94ca-37aef0d1f0b2.png)
 
-**특정 노드 삭제** (노드를 알고 있을 때)
+```python
+def delete_tail(head, tail, node):
+  if node is None:
+    return head, tail
+
+  if node == tail:
+    tail = tail.prev
+    tail.next = None
+    return head, tail
+```
+**중간 노드 삭제**
 ![특정 노드 삭제](https://user-images.githubusercontent.com/81945553/175529200-72c98f9a-f301-4f3c-83d7-8ad6f9c33d89.png)
 
 ```python
-def delete_node(node):
+def delete_node(head, tail, node):
   if node is None:
-    return
+    return head, tail
 
-  # 이전 노드의 next 업데이트
-  if node.prev:
-    node.prev.next = node.next
-
-  # 다음 노드의 prev 업데이트
-  if node.next:
-    node.next.prev = node.prev
+  node.prev.next = node.next
+  node.next.prev = node.prev
+  return head,, tail
 ```
 #### 역방향 순회
 이중 연결 리스트는 역방향 순회가 가능하다.
 ![SingleVsDouble](https://velog.velcdn.com/images%2F717lumos%2Fpost%2Fb38d2c1e-7878-4b17-93b1-07cc0b99096a%2F%EB%A6%AC%EC%8A%A4%ED%8A%B82.png)
 
 ```python
-def print_reverse(tail):
+def print_backward(tail):
   current = tail
   while current:
+    print(current.data, end=" ")
     current = current.prev
+  print("None")
+```
+### 클래스 기반 구현(실제 구현)
+
+```python
+class DoublyNode:
+  def __init__(self, data):
+    self.data = data
+    self.prev = None
+    self.next = None
+
+class DoublyLinkedList:
+  def __init__(self):
+    self.head = None
+    self.tail = None
+    self.size = 0
+
+  def is_empty(self):
+    return self.head is None
+
+  def get_size(self):
+    return self.size
+
+  # 맨 앞에 삽입 - O(1)
+  def insert_front(self, data):
+    new_node = DoublyNode(data)
+
+    if self.head is None:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.next = self.head
+      self.head.prev = new_node
+      self.head = new_node
+
+    self.size += 1
+
+  # 맨 뒤에 삽입 - O(1)
+  def insert_end(self, data):
+    new_node = DoublyNode(data)
+
+    if self.tail is None:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.prev = self.tail
+      self.tail.next = new_node
+      self.tail = new_node
+
+    self.size += 1
+
+  # 특정 노드 뒤에 삽입 - O(1)
+  def insert_after(self, prev_node, data):
+    if prev_node is None:
+      return
+
+    new_node = DoublyNode(data)
+    new_node.next = prev_node.next
+    new_node.prev = prev_node
+
+    if prev_node.next:  # prev_node가 tail이 아닌 경우
+      prev_node.next.prev = new_node
+    else:
+      self.tail = new_node
+
+    prev_node.next = new_node
+    self.size += 1
+
+  # 맨 앞 노드 삭제 - O(1)
+  def delete_front(self):
+    if self.head is None:
+      return None
+
+    deleted_data = self.head.data
+
+    if self.head == self.tail: # 노드가 1개만 있는 경우
+      self.head = None
+      self.tail = None
+    else:
+      self.head = self.head.next
+      self.head.prev = None
+
+    self.size -= 1
+    return deleted_data
+
+  # 맨 뒤 노드 삭제 - O(1)
+  def delete_end(self):
+    if self.tail is None:
+      return None
+
+    deleted_data = self.tail.data
+
+    if self.head == self.tail:
+      self.head = None
+      self.tail = None
+    else:
+      self.tail = self.tail.prev
+      self.tail.next = None
+
+    self.size -= 1
+    return deleted_data
+
+  # 특정 노드 삭제 - O(1) (노드를 알고 있을 때)
+  def delete_node(self, node):
+    if node is None:
+      return
+
+    # 삭제할 노드가 head인 경우
+    if node == self.head:
+      self.delete_front()
+      return
+
+    # 삭제할 노드가 tail인 경우
+    if node == self.tail:
+      self.delete_end()
+      return
+
+    # 중간 노드 삭제
+    node.prev.next = node.next
+    node.next.prev = node.prev
+
+    # 메모리 누수 방지
+    node.prev = None
+    node.next = None
+
+    self.size -= 1
+
+  # 특정 값을 가진 노드 삭제 - O(n)
+  def delete_value(self, value):
+    current = self.head
+
+    while current:
+      if current.data == value:
+        self.delete_node(current)
+        return True
+      current = current.next
+
+    return False
+
+  # 탐색 - O(n)
+  def search(self, value):
+    current = self.head
+    while current:
+      if current.data == value:
+        return current
+      current = current.next
+    return None
+
+  # 정방향 순회
+  def print_forward(self):
+    current = self.head
+    while current:
+      print(crrent.data, end=" ")
+      current = current.next
+    print("None")
+
+  # 역방향 순회
+  def print_backward(self):
+    current = self.tail
+    while current:
+        print(current.data, end="  ")
+        current = current.prev
+    print("None")
+
+# 결과
+dll = DoublyLinkedList()
+dll.insert_end(1)
+dll.insert_end(2)
+dll.insert_end(3)
+dll.insert_front(0)
+
+dll.print_forward()   # 0  1  2  3  None
+dll.print_backward()  # 3  2  1  0  None
+
+dll.delete_front()    # 0 삭제
+dll.delete_end()      # 3 삭제
+dll.print_forward()   # 1  2  None
 ```
 
 ### 장단점
@@ -262,21 +588,26 @@ def print_reverse(tail):
 \* 삽입/삭제할 위치를 알고 있을 때  
 \** 삭제할 노드만 알고 있을 때 (이전 노드 탐색 필요)
 
-## 엣지 케이스 처리
-* 빈 리스트 (head가 None인 경우)
-* 노드가 1개인 리스트
-* 헤드 또는 테일 노드를 삭제하는 경우
+### 시간 복잡도 조건 설명
 
-## 더미 노드(Dummy Node) 활용
-엣지 케이스를 단순화하기 위해 실제 데이터를 갖지 않는 **더미 헤드/테일 노드**를 사용할 수 있다.
-
+**\* 삽입/삭제할 위치를 알고 있을 때 - O(1)**
+- 이미 **특정 노드의 포인터**를 가지고 있는 경우
+- 그 노드 바로 다음에 삽입하거나, 그 노드를 삭제할 때
+- 포인터만 바꾸면 되므로 O(1) 시간 소요
 ```python
-class DoublyLinkedList:
-  def __init__(self):
-    self.head = DoublyNode(None)  # 더미 헤드
-    self.head = DoublyNode(None)  # 더미 테일
-    self.head.next = self.tail
-    self.tail.prev = self.head
+# 위치를 알고 있는 경우 - O(1)
+current_node.next = new_node  # 바로 삽입 가능
+```
+
+**\*\* 삭제할 노드만 알고 있을 때 (이전 노드 탐색 필요) - O(n)**
+- **단일 연결 리스트**의 경우
+- 삭제할 노드는 알지만, **이전 노드의 포인터를 끊어야** 하는데
+- 이전 노드를 찾으려면 처음부터 탐색해야 해서 O(n) 시간 소요
+```python
+# 단일 연결 리스트에서 노드 삭제
+# delete_node를 삭제하려면
+# 1. head부터 시작해서 delete_node의 이전 노드를 찾아야 함 - O(n)
+# 2. prev_node.next = delete_node.next로 연결 끊기 - O(1)
 ```
 
 ## 실제 사용 사례
@@ -294,3 +625,59 @@ class DoublyLinkedList:
 - **음악 플레이어의 재생목록**
 - **텍스트 에디터의 Undo/Redo**
 - **덱(Deque) 구현**: 양쪽 끝에서 삽입/삭제
+
+## 순환 연결 리스트(Circular Linked List)
+마지막 노드가 null 대신 첫 번째 노드를 가리키는 변형입니다.
+
+### 단일 순환 연결 리스트
+
+```python
+# 마지막 노드
+tail.next = head  # null 대신 head를 가리킴
+```
+### 양방향 순환 연결 리스트
+
+```python
+# 마지막 노드와 첫 노드 연결
+tail.next = head
+head.prev = tail
+```
+### 사용 사례
+- 라운드 로빈 스케줄링
+- 멀티플레이어 게임의 턴 관리
+- 순환 버퍼 구현
+
+## 주의사항 및 팁
+### 메모리 누수 방지
+
+```python
+# 노드 삭제 시 명시적으로 참조 해제
+def delete_node(self, node):
+    if node.prev:
+        node.prev.next = node.next
+    if node.next:
+        node.next.prev = node.prev
+    
+    # 메모리 누수 방지
+    node.prev = None
+    node.next = None
+```
+
+### 엣지 케이스 처리
+* 빈 리스트 (head가 None인 경우)
+* 노드가 1개인 리스트
+* 헤드 또는 테일 노드를 삭제하는 경우
+
+### 더미 노드(Dummy Node) 활용
+엣지 케이스를 단순화하기 위해 실제 데이터를 갖지 않는 **더미 헤드/테일 노드**를 사용할 수 있다.
+
+```python
+class DoublyLinkedList:
+  def __init__(self):
+    self.head = DoublyNode(None)  # 더미 헤드
+    self.head = DoublyNode(None)  # 더미 테일
+    self.head.next = self.tail
+    self.tail.prev = self.head
+```
+
+
