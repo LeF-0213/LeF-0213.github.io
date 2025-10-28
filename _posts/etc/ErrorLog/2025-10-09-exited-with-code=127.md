@@ -27,7 +27,7 @@ python3 --version
 ```
 ### Code Runner 설정 수정
 VSCode 설정에서 파이썬 경로를 직접 지정:
-1. Ctrl + , (설정 열기)
+1. command + shift + p (설정 열기)
 2. "code-runner.executorMap" 검색
 3. settings.json에서 직접 편집:
 ```json
