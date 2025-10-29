@@ -1,13 +1,13 @@
 ---
 layout: post
 related_posts:
-    - /baekend/db
+    - /baekend/dbms
 title:  "MyBatis CRUD와 동적쿼리 작성"
 date:   2025-07-02
 categories:
   - baekend
   - spring
-  - db
+  - dbms
 description: >
   Mybatis의 매핑구문
 ---

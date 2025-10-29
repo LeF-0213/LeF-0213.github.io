@@ -55,8 +55,8 @@ menu:
         url:           /java/
       - title:         Spring
         url:           /spring/
-      - title:         DB
-        url:           /db/
+      - title:         DBMS
+        url:           /dbms/
   - title:             Frontend
     url:               /Frontend/ 
     submenu:
