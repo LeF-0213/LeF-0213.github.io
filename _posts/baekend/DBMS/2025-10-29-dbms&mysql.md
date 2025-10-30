@@ -13,6 +13,8 @@ description: >
 * toc
 {:toc .large-only}
 
+![DBMS](https://miro.medium.com/v2/resize:fit:1400/format:webp/0*sS0ry8CtQ7WwFeE3.png)
+
 # 데이터(Data)란?
 * **가공되지 않은 사실이나 값의 집합**
 * 측정을 통해 얻은 사실, 수치, 문자, 기호, 이미지 등
@@ -62,36 +64,32 @@ create table 테이블명(
 * 문자형: CHAR, VARCHAR(최대 65535byte), BINARY, VARBINARY, TEXT
 * 날짜형: DATE, TIME, DATETIME, TIMESTAMP
 
-### 제약 조건
+## 제약 조건
 데이터의 무결성을 지키기 위해 데이터를 입력받을 때 실행 되는 검사 규칙
-> NOT NULL: null 값을 허용하지 않음
-> UNIQUE: 중복값을 허용하지 않음. null 값은 허용
 
-#### DEFAULT
-null 값을 삽입할 때 기본이 되는 값을 설정
-
-#### PRIMARY KEY
-* null 값을 허용하지 않음     
-* 중복값을 허용하지 않음        
-* 테이블에 단 하나의 컬럼에만 설정(MySQL에서만)       
-* 인덱싱 설정       
-* 참조키와 쌍으로 연결
-
-#### FOREIGN KEY
-기본키와 쌍으로 연결
+> **NOT NULL**: null 값을 허용하지 않음       
+**UNIQUE**: 중복값을 허용하지 않음. null 값은 허용        
+**DEFAULT**: null값을 삽입할 때 기본이 되는 값을 설정           
+**기본키(PRIMARY KEY, PK)**:
+  * null 값을 허용하지 않음       
+  * 중복값을 허용하지 않음        
+  * 테이블에 단 하나의 컬럼에만 설정(MySQL에서만)       
+  * 인덱싱 설정         
+  * 참조키(FOREIGN KEY)와 쌍으로 연결      
+>     
+**참조키(FOREIGN KEY, FK)**: 기본키와 쌍으로 연결
 
 ## 명령어
 ```sql
-show database;
-```
+SHOW DATABASE;
 
-#### 데이터 베이스 생성하기
-```sql
-create database [데이터베이스명];
-```
+CREATE DATABASE [데이터베이스명];
 
-#### 데이터베이스 선택하기
+USE [데이터베이스명];
 
-```sql
-use [데이터베이스명];
+CREATE TABEL ();
+
+DROP TABLE [테이블명];
+
+
 ```

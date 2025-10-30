@@ -8,7 +8,7 @@ categories:
   - frontend
   - python
 description: >
-  
+  해시 테이블의 개념과 해시 충돌이 왜 발생하는지 그 해결방안은 무엇인지에 대한 정리
 ---
 * toc
 {:toc .large-only}
@@ -257,21 +257,71 @@ print(uh.hash(100)) # 매번 다른 결과
 > 위의 사과와 배처럼 해시 함수를 돌렸을 때 나온 해시 값이 늘 다를 수는 없다.      
 > 즉, 입력 데이터의 특성에 따라 충돌 발생이 가능하다.
 
-**충돌을 해결하기 위한 방법을 알아보기전, 정확히 충돌과 오버플로우의 차이를 짚고 넘어가자.**
 ## 충돌 VS 오버플로우
-### 충돌(Collision)이란?
+**충돌을 해결하기 위한 방법을 알아보기전, 정확히 충돌과 오버플로우의 차이를 짚고 넘어가자.**    
 
-### 오버플로우(Overflow)란?
+**충돌(Collision)이란?**    
+* 서로 다른 키가 같은 인덱스로 매핑되는 현상(같은 집을 구매한 주민)
+ 
+**오버플로우(Overflow)란?**
+* 테이블이 가득 차서 더 이상 저장할 공간이 없는 상태(집에 방이 없을 때 상태)
+
+### 충돌이 먼저, 오버플로우는 나중
+**충돌은 있지만 오버플로우는 없음**
+
+```python
+table = [None] * 10
+table[3] = 'apple'  # 1/10 사용
+
+# banana도 해시값 3 -> 충돌
+# 하지만 다른 슬롯은 비어있음 (9개 남음)
+# -> 다른 곳에 저장 가능 (개반 주소법)
+
+table[4] = 'banana' # 2/10 사용
+# 충돌은 있었지만 오버플로우는 아님
+```
+**충돌이 쌓여서 오버플로우 발생**
+
+```python
+table = [None] * 3
+table[0] = 'apple'  # 1/3
+table[1] = 'banana' # 2/3
+table[2] = 'orange' # 3/3 (가득 찼지만 아직 OK)
+
+# melon의 해시값이 0이라면?
+# 0 -> 충돌 -> 1로 이동 -> 충돌 -> 2로 이동 -> 충돌
+# -> 모든 슬롯이 차있음 -> 오버플로우!
+```
+### 충돌 vs 오버플로우 차이표
+
+| 구분 | 충돌(Collision) | 오버플로우(Overflow) |
+|:------:|----------------|-------------------|
+| **정의** | 서로 다른 키가 같은 인덱스 | 테이블이 가득 참 |
+| **발생 원인** | 해시 함수의 특성 | 공간 부족 |
+| **발생 시점** | 언제든지 가능 | 테이블이 거의 찼을 때 |
+| **테이블 상태** | 빈 공간 있을 수 있음 | 빈 공간 없음 |
+| **해결 방법** | 체이닝, 개방 주소법 | 리사이징(확장) |
 
 ## Chaining 기법
 ![chaining](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fs61LS%2FbtrJ8ndq6mM%2FAAAAAAAAAAAAAAAAAAAAALGKB81xW9tZtcI1KONPwC2JCRqx87rR2bCS-AluYEZI%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DGKHW5AVzkIQ%252Fh4loUq9gG4Gsc%252FE%253D)
 
-## Linear Probing 기법
+> Chaining 기법은 Open Hashing 기법 중 하나로,    
+> **해쉬 테이블 저장공간 이외의 공간을 활용하는 기법**이다.     
+> 즉, 충돌이 일어나게 되면 해당 인덱스가 가리키는 해쉬 테이블 공간 뒤로 **연결 리스트**를 사용하여 추가적으로 연결시킨 다음 저장한다.(동일 버켓(주소)의 슬롯을 늘리는 것)
+
+## 개방주소법(Open Addressing)
+### 선형 조사법(Linear Probing)
 ![linearProbing](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fd0a1LP%2FbtrJ7Ool5g4%2FAAAAAAAAAAAAAAAAAAAAAEWnJNwmSCsDNievL13_s3uCdOBC55m_llIEkmbB3Svo%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DEegfE841N6EmP8IdPLKqLvewcfg%253D)
 
-제산법, 제곱법, 접지법, 
-체이닝 기법 충동이 일어난 상태에서 오버플로우가 일어날 경우, 동일 버켓(주소)의 슬롯을 늘려 연결리스트
-충돌이 일어났는데 방이 없을 때 -> 오버플로우
+> Linear
+
+### 이차 조사법(Quadratic Probing)
+
+### 이중 해싱법(Double Hashing)
+
+### 뻐꾸기 해싱(Cuckoo Hashing)
+
+## 재해싱(Rehashing)
 
 
 ### 좋은 해시 함수의 조건

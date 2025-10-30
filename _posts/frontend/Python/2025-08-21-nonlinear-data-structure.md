@@ -18,6 +18,7 @@ description: >
 
 # 트리(Tree)
 ![Tree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbbNRYk%2FbtqV36qaJux%2FAAAAAAAAAAAAAAAAAAAAAC_HRAtZ-SvslOfJ3Hv65XJYG2RMy2PWuROMQIjjcVLo%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DqQQSZD3fVwc8O5cgjl90LNsLgf8%253D)
+
 * 계층적 구조로 데이터를 저장하는 자료구조
 * **노드(Node)**와 **간선(Edge)**로 구성
 * **특징**: 사이클이 없는 연결 그래프
@@ -36,7 +37,9 @@ description: >
 # 이진 트리(Binary Tree)
 * 각 노드가 **최대 2개의 자식**을 가지는 트리
 * 왼쪽 자식(left)과 오른쪽 자식(right)로 구성
+
 ### 노드 구조
+
 ```python
 class TreeNode:
 	def __init__(self, item, left=None, right=None):
@@ -44,8 +47,10 @@ class TreeNode:
 		self.left = left
 		self.right = right
 ```
+
 ### 이진 트리의 종류
 ![KindsOfBinaryTree](https://blogfiles.pstatic.net/MjAyMzAzMDhfMjkg/MDAxNjc4MjY1MTM1NTk5.4VVtF8d3_8Gy_2EcqQQqG2i5oaRUW8lgosk-OxkuxBgg.VUGWDRxLVtXkZC0Slej-5wJodQV4P2nQUB9wko7UnNkg.PNG.taeyang95/image.png?type=w1)
+
 * **포화 이진 트리(Perfect Binary Tree)**: 모든 레벨이 완전히 채워진 트리
 * **완전 이진 트리(Complete Binary Tree)**: 마지막 레벨을 제외하고 모두 채워지고, 왼쪽부터 채워진 트리
 * **편향 트리(Skewed Tree)**: 한쪽으로만 치우친 트리
@@ -54,6 +59,7 @@ class TreeNode:
 * **장점**: 포인터 없이 인덱스 계산만으로 트리 구조 표현 가능
 * **단점**: 편향 트리의 경우 메모리 낭비가 심함
 1. 인덱스 1부터 시작 (인덱스 0 미사용)
+
 ```python
 # 배열: [None, 3, 4, 7, 2, 8, 9, 1]
 # 인덱스 0은 사용하지 않음
@@ -64,6 +70,7 @@ right_child = i * 2 + 1	# 오른쪽 자식
 parent = i // 2					# 부모 노드
 ```
 2. 인덱스 0부터 시작(루트 노드가 0)
+
 ```python
 # 배열: [3, 4, 7, 2, 8, 9, 1]
 # 인덱스 0부터 사용
@@ -76,6 +83,7 @@ parent = (i - 1) // 2     # 부모 노드
 ### 이진트리의 배열 사용 예시(전위 순회)
 * 이진 트리로 되어있는 것을 배열로 표현하려고 하면 인덱스는 0이 아니라 1부터 시작(루트 노드)
 * 루트를 기준으로 왼쪽 노드부터 시작
+
 ```python
 def preorder(nodes, idx):
   if idx < len(nodes):
@@ -90,6 +98,7 @@ def preorder(nodes, idx):
 # 이진 탐색 트리(Binary Search Tree, BST)
 * **특징**: 왼쪽 자식 < 부모 < 오른쪽 자식
 * **탐색 시간복잡도**: 평균 O(log n), 최악 O(n)
+
 ### BST의 ADT
 * 속성:
   * `TreeNode root`: 트리의 루트 노드
@@ -97,7 +106,9 @@ def preorder(nodes, idx):
   * `insert(item)`:노드 삽입
   * `search(item)`:노드 탐색
   * `delete(item)`:노드 삭제
+
 ### 구현 예시
+
 ```python
 class TreeNode:
 	def __init__(self, item):
@@ -142,7 +153,9 @@ class BST:
 ```
 ## 트리 순회(Tree Traversal)
 트리의 모든 노드를 방문하는 방법
+
 ### 전위 순회(Preorder): 부모노드 -> 왼쪽 자식노드 -> 오른쪽 자식노드
+
 ```python
 def preorder(node):
 	if node:
@@ -151,6 +164,7 @@ def preorder(node):
 		preorder(node.right)
 ```
 ### 중위 순회(Inorder): 왼쪽 자식노드 -> 부모노드 -> 오른쪽 자식노드
+
 ```python
 def inorder(node):
 	if node:
@@ -159,6 +173,7 @@ def inorder(node):
 		inorder(node.right)
 ```
 ### 후위 순회(Postorder): 왼쪽 자식노드 -> 오른쪽 자식노드 -> 부모노드
+
 ```python
 def postorder(node):
 	if node:
@@ -167,6 +182,7 @@ def postorder(node):
 		print(node.item, end='')
 ```
 ### 레벨 순회(Level Order): 레벨별로 왼쪽에서 오른쪽
+
 ```python
 from collections import deque
 
@@ -185,6 +201,7 @@ def levelorder(root):
 			queue.append(node.right)
 ```
 ### 사용 예시 - 이전 트리의 깊이 구하기
+
 ```python
 def maxDepth(root):
 	if not root:
@@ -199,10 +216,13 @@ def maxDepth(root):
 # 힙(Heap)
 * **완전 이진 트리** 기반의 자료구조
 * **특징**: 부모 노드가 자식 노드보다 항상 크거나(최대 힙) 작음(최소 힙)
+
 ### 힙의 종류
 ![MaxHeap&MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FlR7aO%2FbtqZSuVD2vb%2FAAAAAAAAAAAAAAAAAAAAAP4RP2moe9XAe3MSmP4fO98kxAr9SJZxiLWgCrSM97cU%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DuBAXwZEON8THrpfzJZDoaCH%252F%252F%252BA%253D)
+
 * 최대 힙: 부모 노드의 값(key 값) >= 자식 노드의 값(key 값)
 * 최소 힙: 부모 노드의 값(key 값) <= 자식 노드의 값(key 값)
+
 ### 힙의 ADT
 * 속성:
   * `list heap`: 힙을 저장하는 리스트
@@ -210,29 +230,37 @@ def maxDepth(root):
   * `insert(item)`: 원소 삽입
   * `delete()`: 루트 노드 삭제(최댓값 또는 최솟값)
   * `heapify()`: 힙 속성 유지
+
 ## 힙의 동작 원리
 힙은 **완전 이진 트리**이므로 배열로 표현하며, 부모-자식 관계는 인덱스로 계산한다.
+
 ### 직접 구현 시 인덱스 1부터 시작(구현의 용이함을 위해서)
 * 부모 인덱스: `i // 2`
 * 왼쪽 자식: `i * 2`
 * 오른쪽 자식: `i * 2 + 1`
+
 ### heapq 모듈은 인덱스 0부터 시작
 * 부모 인덱스: `(i - 1) // 2`
 * 왼쪽 자식: `i * 2 + 1`
 * 오른쪽 자식: `i * 2 + 2`
+
 ## 최소 힙(min heap)
 ![MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FWDMjZ%2FbtqV8GEMhcb%2FAAAAAAAAAAAAAAAAAAAAAF8CXqJXA3SMYhN20A22zI607t2-bLJRXWq9VGPHaFLK%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3Dr%252FAK72NiGxQBd5%252FtfLRJjzSURSU%253D)
+
 ### 최소 힙 삽입(Heapify Up)
 1. 새 원소를 배열의 **맨 끝**에 추가
 2. 부모 노드와 비교하여 **부모보다 작으면 교환**
 3. 루트에 도달하거나 힙 속성을 만족할 때까지 반복
+
 ### 최소 힙 삭제(Heapify Down)
 1. **루트 노드(최솟값)**를 삭제하고 반환
 2. 배열의 **마지막 원소**를 루트로 이동
 3. 자식 노드들과 비교하여 **더 작은 자식과 교환**
 4. 리프에 도달하거나 힙 속성을 만족할 때까지 반복
+
 ### 직접 구현 예시(최소 힙) - 인덱스 1부터 시작
 * **초기 상태**: [None, 3, 10, 35, 23, 19, 47, 60, 35, 80, 44]
+
 ```python
 class MinHeap:
 	def __init__(self):
@@ -300,6 +328,7 @@ print(min_heap.heap[1:])	# [3, 10, 35, 23, 47, 60, 35, 80, 44]
 ```
 
 ### 직접 구현(최대 힙)
+
 ```python
 class MaxHeap:
 	def __init__(self):
@@ -358,6 +387,7 @@ print(max_heap.heap[1:])	# [80, 60, 47, 44, 35, 35, 19, 23, 10]
 ```
 
 ### heapq 모듈 사용
+
 ```python
 import heapq
 
@@ -378,6 +408,7 @@ heapq.heappush(max_heap, -1) # [-7, -3, -5, -1]
 max_value = -heapq.heappop(max_heap) # 7
 ```
 ### 사용 예시 - 최소 힙으로 K번째 작은 수 찾기
+
 ```python
 import heapq
 
@@ -393,21 +424,26 @@ def kthSmallest(nums, k):
 # 그래프(Graph)
 * **노드(정점, Vertex)**와 **간선(Edge)**로 구성된 네트워크 구조
 * **특징**: 사이클이 있을 수 있음(순환 가능)
+
 ## 그래프의 종류
 * **무방향 그래프(Undirected Graph)**: 간선에 방향이 없음
 * **방향 그래프(Directed Graph)**: 간선에 방향이 있음
 * **가중치 그래프(Weighted Graph)**: 간선에 가중치(비용)가 있음
+
 ## 그래프 표현 방법
 ### 인접 행렬(Adjacency Matrix, 2차원 배열)
-* 무방향 그래프
+**무방향 그래프**
+
 ```python
 graph[0][1] = graph[1][0] = 1 # 0 -> 1, 1 -> 0 모두 가능
 ```
-* 방향 그래프
+**방향 그래프**
+
 ```python
 graph[0][1] = 1 # 0 -> 1만 가능
 ```
 #### 구현 예시(가중치 X)
+
 ```python
 # 정점 4개인 그래프
 n = 4
@@ -435,6 +471,7 @@ graph = [
 """
 ```
 #### 구현 예시(가중치 O)
+
 ```python
 n = 4
 INF = float('inf') # 연결되지 않은 경우를 표현
@@ -459,16 +496,19 @@ graph = [
 """
 ```
 ### 인접 리스트(Adjacency List, Linked List)
-* 무방향 그래프
+**무방향 그래프**
+
 ```python
 graph[0].append(1)
 graph[1].append(0)
 ```
-* 방향 그래프
+**방향 그래프**
+
 ```python
 graph[0].append(1)
 ```
 #### 구현 예시(가중치 X)
+
 ```python
 n = 4
 graph = [[] for _ in range(n)]
@@ -511,7 +551,7 @@ graph[0].append((2, 3))
 ## 그래프 탐색
 ### 깊이 우선 탐색(DFS, Depth First Search)
 
-
+여기부터 정리해야 함
 
 그래프 탐색
 깊이 우선 탐색
