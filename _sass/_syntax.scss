@@ -1,0 +1,146 @@
+.highlight {
+  background-color: #323436;
+  color: #adbac7;
+  padding: 1rem;
+  border-radius: 6px;
+
+  pre {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+  }
+  
+  code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  // Comments
+  .c, .c1, .cm, .cp, .cs { 
+    color: #768390;
+  }
+
+  // Keywords (def, class, if, else, return, import, etc.)
+  .k, .kc, .kd, .kn, .kp, .kr, .kt {
+    color: #5eb7f7;
+    font-weight: bold;
+  }
+
+  // Strings
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx {
+    color: #7dd3fc;
+  }
+
+  // Numbers
+  .m, .mb, .mf, .mh, .mi, .mo, .il {
+    color: #a5b4fc;
+  }
+
+  // Function names
+  .nf, .fm {
+    color: #6ee7b7;
+  }
+
+  // Class names
+  .nc, .nn {
+    color: #5eead4;
+  }
+
+  // Variables, attributes
+  .n, .na, .nb, .bp, .vc, .vg, .vi, .nv {
+    color: #d4d7e0;
+  }
+
+  // Built-in functions (print, len, etc.)
+  .nb {
+    color: #2dd4bf;
+  }
+
+  // Operators (+, -, *, /, =, etc.)
+  .o, .ow {
+    color: #60a5fa;
+  }
+
+  // Punctuation (brackets, parentheses, commas)
+  .p {
+    color: #94a3b8;
+  }
+
+  // Decorators (@property, @staticmethod)
+  .nd {
+    color: #14b8a6;
+  }
+
+  // Constants (True, False, None)
+  .kc {
+    color: #f47067;
+  }
+
+  // Self, cls
+  .bp {
+    color: #5eb7f7;
+  }
+
+  // Errors
+  .err {
+    color: #e5534b;
+    background-color: rgba(229, 83, 75, 0.1);
+  }
+
+  // Diff additions
+  .gi {
+    color: #57ab5a;
+    background-color: rgba(87, 171, 90, 0.15);
+  }
+
+  // Diff deletions
+  .gd {
+    color: #e5534b;
+    background-color: rgba(229, 83, 75, 0.15);
+  }
+
+  // Line numbers
+  .lineno {
+    color: #768390;
+    user-select: none;
+    padding-right: 1em;
+  }
+}
+
+// Inline code (not in code blocks)
+:not(pre) > code {
+  background-color: rgba(110, 118, 129, 0.4);
+  color: #adbac7;
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  font-size: 85%;
+}
+
+// Code block container
+// pre.highlight {
+
+// }
+
+// Rouge specific table layout (for line numbers)
+.highlight table {
+  margin-bottom: 0;
+  
+  td {
+    padding: 0;
+    border: none;
+  }
+  
+  pre {
+    margin: 0;
+  }
+}
+
+.rouge-table {
+  .lineno {
+    color: #768390;
+    padding-right: 1em;
+    border-right: 1px solid #30363d;
+    margin-right: 1em;
+  }
+}

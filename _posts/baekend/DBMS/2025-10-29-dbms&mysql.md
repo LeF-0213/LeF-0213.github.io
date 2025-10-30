@@ -64,12 +64,8 @@ create table 테이블명(
 
 ### 제약 조건
 데이터의 무결성을 지키기 위해 데이터를 입력받을 때 실행 되는 검사 규칙
-
-#### NOT NULL
-null 값을 허용하지 않음
-
-#### UNIQUE
-중복값을 허용하지 않음. null 값은 허용
+> NOT NULL: null 값을 허용하지 않음
+> UNIQUE: 중복값을 허용하지 않음. null 값은 허용
 
 #### DEFAULT
 null 값을 삽입할 때 기본이 되는 값을 설정
