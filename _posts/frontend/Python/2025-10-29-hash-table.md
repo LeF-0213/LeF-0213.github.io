@@ -310,19 +310,104 @@ table[2] = 'orange' # 3/3 (가득 찼지만 아직 OK)
 > 즉, 충돌이 일어나게 되면 해당 인덱스가 가리키는 해쉬 테이블 공간 뒤로 **연결 리스트**를 사용하여 추가적으로 연결시킨 다음 저장한다.(동일 버켓(주소)의 슬롯을 늘리는 것)
 
 ## 개방주소법(Open Addressing)
+
+> 추가적인 메모리 공간을 사용하지 않고 **이미 확보된 공간만 사용하는 방식**이다.      
+> 즉, 충돌이 발생했다면 인접한 비어있는 공간을 활용한다.      
+> 예시는 복잡합을 줄이기 위해 전부 key값과 value값이 같다고 가정한다.
+
 ### 선형 조사법(Linear Probing)
-![linearProbing](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fd0a1LP%2FbtrJ7Ool5g4%2FAAAAAAAAAAAAAAAAAAAAAEWnJNwmSCsDNievL13_s3uCdOBC55m_llIEkmbB3Svo%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DEegfE841N6EmP8IdPLKqLvewcfg%253D)
+![lp](https://github.com/user-attachments/assets/f1f3cade-feff-4824-bd64-f51085885bd8)
 
-> Linear
+```python
+hf_lp(key, i) = (hf(key) + i)
+# i는 충돌 횟수로 1씩 증가한다, m은 해시 테이블 크기
+```
 
-### 이차 조사법(Quadratic Probing)
+> 선형 조사법은 **충돌이 발생했을 때, 그 다음 빈공간을 찾아 순차적으로 이동하는 것**이다.     
+> 만약 해시 함수를 수행한 값이 2가 나오면 이미 50이 들어있어 충돌이 일어나기에,      
+> 2 + 1 = 3이 되고, 또 55와 충돌이 일어나게 되기에      
+> 3 + 1 = 4에 값을 집어넣는다.        
+> 이런식으로 순차적으로 빈공간을 찾아가기에       
+> 값들이 뭉쳐있는 **군집화(Clustering)**가 발생한다.
+
+### 이차 조사법(Quadratic Probing, 제곱 함수법)
+![qp](https://github.com/user-attachments/assets/60d3e863-ec41-4346-a905-78ab4dafe2a1)
+
+```python
+hf_qp(key, i) = hf(key) + i^2 
+# i^은 더 복잡하게 c*i^ 혹은 c1*i^2 + c2*i로 바꿀 수 있다. 
+# 여기서 c는 상수를 의미한다.
+```
+
+> 충돌이 되면 다시 해시 함수를 수행하고 충돌이 나지 않는 해시 값에 해당하는 버켓에 넣어준다.      
+> 예를 들면, 위의 이미지의 초기상태에서 35를 삽입하고자 한다.     
+> hf(35)의 값이 9가 나왔다.         
+> 그러나 9에는 이미 22가 들어있어 다시 충돌횟수를 1 늘려 이차 조사법을 수행한다.       
+> 9 + 1^2 = 10이 된다. 10 % 12 = 10이고, 10은 빈 버켓이므로 35를 넣어준다.      
+> 이런 식으로 반복해 빈 버켓을 찾아 반복하여 값을 넣어준다.       
+> 군집현상이 발생한 공간에 빠졌을 때 빨리 탈출하기 위해서 제곱수를 사용한다.
 
 ### 이중 해싱법(Double Hashing)
+![dh](https://github.com/user-attachments/assets/2d89a649-3b87-4635-ae30-97b70876fb8b)
+
+```python
+hf_dh(key, i) = hf(key) + i * 2nd_hf(key)
+# ⚠️ 주의점: 2nd_hf(key)의 값이 map 사이즈와 서로소여야 한다.
+# 그렇지 않으면 한번도 접근하지 못하는 공간(bucket) 발생한다.
+```
+
+> hf_dh(key, i) = hk(key)를 수행하게 되었을 때 충돌이 일어나면,       
+> 빈공간을 찾을 때 2nd_hf(key) 또 다른 해시함수를 사용하면 더 잘 퍼뜨릴 수 있기에 사용한다.         
+> 이차조사법(Quadratic Probing) 같은 경우는 해시 함수를 돌렸을 때,        
+> 나**오는 값이 같으면 아무리 충돌 횟수가 늘어나도 결국 같은 위치를 계속 확인할 수 밖에 없다**는 단점이 있다.       
+
+> 이런 부분을 해결하기 위해 이중 해싱법을 사용하는 것이다.        
+> 하지만 2nd_hf(key) 즉, **두번째 해시함수를 수행해서 나온 값이 map의 사이즈와 서로소야 한다.**
+> 만약 map_size가 10이고, 2nd_hf(key)가 4, hf(key)가 0이면,     
+> 결국 hf_dh(key, i) = 0 + i * 4이므로,         
+> 4의 배수값을 map_size로 나눈 4, 8, 2, 6, 0 만 출력하게 된다.
+> 때문에 **서로소이지 않으면 한번도 접근하지 못하는 공간이 발생**하는 것이다.
 
 ### 뻐꾸기 해싱(Cuckoo Hashing)
+<table>
+<tr>
+<td><img src="https://github.com/user-attachments/assets/dc43e497-be1a-42e0-a999-ee780b6b1bf5" width="330" height="300"/></td>
+<td><img src="https://github.com/user-attachments/assets/39940ca0-5e70-4cd9-8435-c5d47af4ae46" width="330" height="300"/></td>
+<td><img src="https://github.com/user-attachments/assets/a6635255-5081-4804-8bc3-56a1f5cc9271" width="330" height="300"/></td>
+</tr>
+</table>
 
-## 재해싱(Rehashing)
+### 재해싱(Rehashing)
 
+## Oppen addressing 주의점
+Oppen addressing은 **이미 있는 공간만으로 해시충돌을 해결하는 방식**이기에,     
+**중간 연결고리 역할을 하는 key의 삭제 시, 이미 있는 값도 없다고 판단할 수 있다.**
+
+![lpdelete](https://velog.velcdn.com/images%2Flacomaco%2Fpost%2F27497008-0d87-4062-8e9d-4335dc1f7970%2F%EC%84%A0%ED%98%95.png)
+
+> 위의 선형 조사법(Linear Probing) 이미지에 맞춰 이야기하면,    
+> 원래는 인덱스 2의 위치에 15가 들어있어 28은 충돌을 피해서 인덱스 4번에 위치해 있다.     
+> 그러나 만약 인덱스 2번의 값을 삭제하고,         
+> 다음에 28이 다시 입력이 되면 인덱스 2번에도 28, 인덱스 4번에도 28이 들어있게 된다.      
+> 즉, 다음 공간을 확인하지 않고 없을 것이라 가정하고 값을 집어넣는 버그가 발생할 수도 있다.     
+
+### 해결책
+**DELETE로 마킹하는 방식**
+
+> 삭제 시 DELETE 같은 상징적인 형태로 표시      
+> 따라서 DELETE 표시를 보고 다음 위치도 확인해봐야함을 알 수 있다.      
+> 그런데 문제는 DELETE를 만나면 내가 찾는 값이 들어있을 수 있기 때문에      
+> 무조건 다음 위치를 확인해 봐야 된다.    
+> 즉, 중복되는 값이 없을 때도 DELETE를 만나면 끝까지 확인하게 되기 때문에,      
+> 추가적인 오퍼레이션이 발생한다.
+
+**Open Addressing된 Key들을 한 단계씩 앞으로 옮겨주는 방식**
+
+> **삭제 위치 다음의 Open addressing된 key들은 한 단계씩 앞으로 옮겨준다.**     
+> 대신 **이동시키는 추가적인 비용이 발생**된다.       
+> 예를 들어 그림에서 인덱스 6번의 38을 삭제하면,      
+> 다음 위치에 있던 7과 20을 한 단계씩 끌어와      
+> 인덱스 6번에 7, 인덱스 7번에 20이 위치하게 된다.   
 
 ### 좋은 해시 함수의 조건
 > **계산이 빠를 것**
