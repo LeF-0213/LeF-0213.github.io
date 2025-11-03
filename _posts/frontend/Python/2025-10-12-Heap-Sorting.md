@@ -20,18 +20,55 @@ description: >
 
 데어터의 삽입과 동시에 빠르게 정렬할 수 있다.
 
-## Heap이란?
-**최솟값** 또는 **최댓값**을 **빠르게** 찾아내기 위해 **완전이진트리** 형태로 만들어진 자료구조이다.
-![BinaryTree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FrxtPo%2FbtqZTU0RtIB%2FAAAAAAAAAAAAAAAAAAAAAEa-CfsKNKQgwvwtoNYdYAZeHybI8cksKZHOjdCJK6wk%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DFdyJtn68ITsDnQlx3yg0U7FVP90%253D)
+# Heap이란?
+힙(Heap)은 **우선순위 큐**를 구현하기 위한 자료구조이다. 힙을 뜻을 살펴보면, "쌓아 올린 더미"라는 의미를 가진다. 힙은 **완전 이진 트리** 형태로 구성된다.
 
+## 완전 이진 트리(Complete Binary Tree)란?
+![CompleteBinaryTree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fbfi34R%2FbtqV2WnM4Jj%2FAAAAAAAAAAAAAAAAAAAAALd34KSANB_SeFQH5a5Vyzp66U-iBwLiBStH0ga-UBtQ%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3D%252F263QoK6Pewpc%252BB30vAv0FKbuh8%253D)
+#### 이진 트리(Binary Tree)
+
+> 트리 구조에서 특정한 형태로 제한을 하게 되는데, **모든 노드의 최대 차수를 2로 제한 하는 것이다.** 즉, 각 노드는 자식노드를 최대 2개까지 밖에 못 갖는 것인데, 이를 **이진 트리(Binary Tree)**라고 한다.    
+    
+#### 완전 이진 트리(Complete Binary Tree)
+
+> **완전 이진 트리**는 **마지막 레벨**을 제외한 모든 노드가 체외져 있으면 모든 노드가 왼쪽부터 채워져 있어야한다.     
+> 즉, 완전 이진 트리는 이진 트리에서 두가지 조건을 더 만족해야 한다.      
+
+> **규칙 1**: 노드를 왼쪽에서 오른쪽으로 하나씩 빠짐없이 채워나간다.(레벨 순서로 노드를 삽입한다.)      
+![heap1](https://wikidocs.net/images/page/194445/ds-059.png)
+* 위 그림 모두 이진트리인데, a는 힙이지만 b는 힙이 아니다.          
+* 왼쪽부터 채워야 한다는 규칙을 벗어났기 때문이다.
+
+> **규칙 2**: 최소 힙은 부모 노드가 자식 노드의 값보다 작거나 같아야 한다. 파이썬의 heapq 모듈은 최소 힙(min heap)이다. (최대 힙은 부모 노드가 자식 노드의 값보다 크거나 같다.)
+
+#### 포화 이진 트리(Perfect Binary Tree)
+
+> 추가적으로 완전 이진 트리에서 마지막 레벨을 제외한 모든 노드는 모두 두개의 자식을 갖는다는 조건을 덧붙이면, **포화 이진 트리(Perfect Binary Tree)**가 된다.
+
+> 즉, heap은 **최솟값** 또는 **최댓값**을 **빠르게** 찾아내기 위해 **완전이진트리** 형태로 만들어진 자료구조이다.
+
+## Heap의 종류
 ![MaxHeap&MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FlR7aO%2FbtqZSuVD2vb%2FAAAAAAAAAAAAAAAAAAAAAP4RP2moe9XAe3MSmP4fO98kxAr9SJZxiLWgCrSM97cU%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DuBAXwZEON8THrpfzJZDoaCH%252F%252F%252BA%253D)
-* 최대 힙: 부모 노드의 값(key 값) >= 자식 노드의 값(key 값)
-* 최소 힙: 부모 노드의 값(key 값) <= 자식 노드의 값(key 값)
 
+### 최소 힙(Min Heap)
+
+> **특징**: 부모 노드의 값(key 값) <= 자식 노드의 값(key 값)      
+> **루트 노드**: 가장 작은 값
+> **용도**: 최솟값을 빠르게 찾을 때 사용
+
+### 최대 힙(Max Heap)
+
+> **특징**: 부모 노드의 값(key 값) >= 자식 노드의 값(key 값)       
+> **루트 노드**: 가장 큰 값
+> **용도**: 최댓값을 빠르게 찾을 때 사용    
+
+## Heap을 배열로 구현하기 
 ![MaxHeap&MinHeap](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbaNi4n%2FbtqZ2csFHgz%2FAAAAAAAAAAAAAAAAAAAAABL6CYDeUa-Y5KmmgEwMQDXYxEwHLHG31Tpr_RgFltZ4%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DTGktBDy5FnF7TIcYVkyOIoOanH0%253D)
-특정 규칙이 있는 이진 트리, 이 규칙에 따라 최대 힙, 최소 힙으로 나누어진다.
-* 최대 힙: 부모 노드가 자식노드보다 크다.
-* 최소 힙: 부모노드가 자식노드보다 작다.
+
+### 특징
+
+> 구현의 용이함을 위해 시작 인덱스(root)는 1부터 시작한다.      
+> 각 노드와 대응되는 인덱스는 '불변한다'
 
 힙 구축 방법: 최대 힙
 정렬되지 않은 데이터를 통해 최대(최소) 합을 구축

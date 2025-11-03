@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /ai
+  - /ai/aiLog
 title:  "도함수의 역설"
 date:   2025-08-17
 categories:
-  - ai
+  - aiLog
 description: >
   도함수를 알 수 있다, 역설을 피할 수 있다
 ---

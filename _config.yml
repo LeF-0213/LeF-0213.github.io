@@ -69,7 +69,7 @@ menu:
   - title:         AI
     url:           /ai/
     submenu:
-      - title:         AILog
+      - title:         AI
         url:           /ailog/
   - title:         ETC
     url:           /etc/

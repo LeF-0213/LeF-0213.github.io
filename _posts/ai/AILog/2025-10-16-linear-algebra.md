@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /ai
+  - /ai/aiLog
 title:  "선형대수학"
 date:   2025-10-16
 categories:
-  - ai
+  - aiLog
 description: >
   
 ---

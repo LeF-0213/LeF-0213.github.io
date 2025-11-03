@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /ai
+  - /ai/aiLog
 title:  "미적분학의 본질"
 date:   2025-08-17
 categories:
-  - ai
+  - aiLog
 description: >
   미적분학의 본질
 ---
