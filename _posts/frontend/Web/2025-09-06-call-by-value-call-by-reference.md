@@ -1,12 +1,12 @@
 ---
 layout: post
 related_posts:
-    - /frontend/etc
+    - /backend/java
 title:  "Call by Value vs Call by Reference(얕은 복사, 깊은 복사)"
 date:   2025-09-06
 categories:
-  - frontend
-  - etc
+  - backend
+  - java
 description: >
   Call by Value와 Call by Reference, 얕은 복사와 깊은 복사, 값 타입과 참조 타입
 ---
