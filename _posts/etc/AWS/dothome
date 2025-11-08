@@ -1,0 +1,21 @@
+닷홈을 이용한 서버 무료 배포
+
+https://www.dothome.co.kr/
+
+https://altools.co.kr/product/ALDRIVE
+https://www.filezilla.kr/
+
+DOTHOME 웹서버 아이피 FTP 아이디
+Filezilla 클라이언트 다운로드
+
+Filezilla > File > SiteManager (command + s)
+Host -> dothom 아이피 적고
+FTP 아이디 비밀번호 -> connect
+
+vscode에서
+F1 키 누르고
+> file-simple: Config FTP connection setting
+
+설정 바꾸고 
+
+> ftp-simple: Remote directory open to worksapce

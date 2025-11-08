@@ -14,7 +14,7 @@ description: >
 {:toc .large-only}
 
 # 트리(Tree)란?
-![Tree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FbbNRYk%2FbtqV36qaJux%2FAAAAAAAAAAAAAAAAAAAAAC_HRAtZ-SvslOfJ3Hv65XJYG2RMy2PWuROMQIjjcVLo%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DqQQSZD3fVwc8O5cgjl90LNsLgf8%253D)
+![Tree](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FSIzoC%2FbtrLuxTB3aY%2FAAAAAAAAAAAAAAAAAAAAAFSbui17w2MnpjfSi6kA7TM8Wb1Xtf9thoDfUjWiFvDa%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3DvzDS94xRJVbUhW9u5Jrq15xr84Y%253D)
 
 > **계층적 구조**를 표현하는 **비선형 자료구조**이다.     
 > **노드(Node)들이 간선(Edge)으로 연결**되어 있으며,      
@@ -222,5 +222,30 @@ A B C D E F G H I J K
 * 게임 AI(결정 트리)
 
 ## 이진 트리 구현
+
+```python
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.left = None
+    self.right = None
+
+class BinaryTree:
+  def __init__(self):
+    self.root = None
+
+  # 레벨 순서로 노드 삽입(왼쪽부터 채움)
+  def insert(self, data):
+    new_node = Node(data)
+
+    if not self.root:
+      self.root = new_node
+      return
+
+    # 레벨 순서 탐색을 위한 큐
+    queue = [self.root]
+
+    
+```
 
 ## 이진 탐색 트리 구현

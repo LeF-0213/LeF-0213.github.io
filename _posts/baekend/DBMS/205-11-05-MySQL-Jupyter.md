@@ -10,8 +10,7 @@ categories:
   - python
 description: >
 ---
-
-- toc
+* toc
   {:toc .large-only}
 
 # 경험치를 통해 성장하는 루틴 관리 프로그램
