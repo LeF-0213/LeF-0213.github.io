@@ -245,7 +245,17 @@ class BinaryTree:
     # 레벨 순서 탐색을 위한 큐
     queue = [self.root]
 
-    
+    while queue:
+      node = queue.pop(0)
+
+      # 왼쪽 자식이 비어있으면 삽입
+      if not node.left:
+        node.left = new_node
+        return
+      else:
+        queue.append(node.left)
+
+      
 ```
 
 ## 이진 탐색 트리 구현
