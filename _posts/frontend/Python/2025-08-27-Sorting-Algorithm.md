@@ -16,8 +16,47 @@ description: >
 # 정렬이란?
 정렬 -> 모든 데이터를 나열하는 것을 의미(사용자가 정의한 순서대로)
 -> 오른차순/ 내림차순
+
 ### 정렬이 필요한 이유
 데이터를 쉽게 탐색하기 위해서 사용한다.
+
+## 정렬 알고리즘 이론 정리
+### 버블 정렬(Bubble Sort)
+#### 개념
+
+> 인접한 두 원소를 비교하여 정렬하는 가장 간단한 알고리즘
+> 큰 값이 물거품처럼 뒤로 이동하는 모습에서 이름이 유래됨
+
+#### 작동 방식
+![bubble_sorting](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FTP0ub%2FbtrYrob3DhR%2FAAAAAAAAAAAAAAAAAAAAAEvEps2l_4XnTODdvDlNjWa-tG-Y8ZyF62AUlgzQBORV%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3DxC%252BqDma9dIJic8%252BeNwL5UH3I2Ew%253D)
+
+> 1. 첫 번째 원소부터 인접한 원소와 비교
+> 2. 순서가 잘못되어 있으면 교환
+> 3. 한 번의 순회가 끝나면 가장 큰 값이 마지막에 위치
+> 4. 이 과정을 배열 크기만큼 반복
+
+#### 시간복잡도
+
+| 항목 | 내용 |
+|:----:|---------------|
+| **시간복잡도(최선)** | `O(n)` - 이미 정렬된 경우 |
+| **시간복잡도(평균)** | `O(n^2)` |
+| **시간복잡도(최악)** | `O(n^2)` |
+| **공간복잡도** | `O(1) (제자리 정렬, in-place)` |
+
+> 정리하면,         
+> **회전**은 **배열크기 - 1(n - 1)**번 수행하고,            
+> **비교연산**은 **배열크기 - 라운드 횟수(n)**번 수행한다.
+
+#### 장단점
+
+| 장점 | 단점 |
+|:---------:|:----------:|
+| 구현이 매우 간단 | 속도가 매우 느림
+| 추가 메모리가 필요없음(in-place 정렬)| 대량의 데이터에는 비효울적 |
+| 안정 정렬 (Stable Srot) | |
+
+
 
 ## 삽입 정렬(Insertion Sort) 
 데이터의 전체 영역에서 정렬된 영역과 정렬되지 않은 영역으로 나눈다.     
