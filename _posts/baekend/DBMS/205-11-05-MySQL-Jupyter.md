@@ -16,74 +16,62 @@ description: >
 # 경험치를 통해 성장하는 루틴 관리 프로그램
 
 ## 다이어그램
-
 ![diagram](https://github.com/user-attachments/assets/a5dafbdd-b2b4-4ab4-901d-74fccc7dca67)
 
 ## Object
 
 ### User
-
-![User](https://github.com/user-attachments/assets/d3a0202d-d897-4ee2-a2fc-61bfa460fbb0)
+<img width="729" height="173" alt="User" src="https://github.com/user-attachments/assets/a75c440e-671f-4aee-9228-ae7852dd8fff" />
 
 ### Routine
-
-![routine](https://github.com/user-attachments/assets/76af6d49-af08-4e0e-899a-468f073af508)
+<img width="730" height="138" alt="Routine" src="https://github.com/user-attachments/assets/533f8d57-1bbc-40f3-8734-e99bbbb02af8" />
 
 ### RoutineGroup
-
-![routinegroup](https://github.com/user-attachments/assets/fc8f4700-7c91-4fa8-b108-ae998b90cf7e)
+<img width="730" height="103" alt="RoutinesGroup" src="https://github.com/user-attachments/assets/5f0cbc3f-58ca-451a-aead-e9da4abcb63f" />
 
 ### RoutineLogs
-
-![routinelogs](https://github.com/user-attachments/assets/cc5c888b-7555-4346-821d-41fa0477d37b)
+<img width="730" height="137" alt="RoutineLogs" src="https://github.com/user-attachments/assets/e08452d5-54b0-4890-9310-20dd09db2b7f" />
 
 ### DailyStats
-
-![dailystats](https://github.com/user-attachments/assets/6b2e5a80-9842-4f7d-b686-4464df972a0c)
+<img width="729" height="114" alt="DailyStats" src="https://github.com/user-attachments/assets/bffce338-c4eb-44fe-8da3-8ca2cefe2b9a" />
 
 ## DAO
 
 ### UsersDAO
-
-![UsersDAO](https://github.com/user-attachments/assets/ceeda82f-e7ee-4395-8a6d-47c537aaf62a)
+<img width="730" height="624" alt="UsersDAO" src="https://github.com/user-attachments/assets/49e39f1a-ad0d-4d04-a871-f0c5833a3ec8" />
 
 ### GroupDAO
-
-![groupdao](https://github.com/user-attachments/assets/b44373f5-096f-41dd-a0eb-7bd183392b7b)
+<img width="730" height="559" alt="GroupDAO" src="https://github.com/user-attachments/assets/6a1466c0-0b3e-4268-bac2-be0dab8f6e56" />
 
 ### RoutineGroupItemsDAO
-
-![groupitemdao](https://github.com/user-attachments/assets/00701978-a938-4e9e-86f2-228d1a17ab26)
+<img width="729" height="356" alt="GroupItemDAO" src="https://github.com/user-attachments/assets/0c23c89a-1574-42bc-bfbf-72f6d35fde27" />
 
 ### RoutineDAO
-
-![routineDAO](https://github.com/user-attachments/assets/9f0fc42c-6b86-47fb-b603-470c184c66a3)
+<img width="730" height="531" alt="RoutineDAO" src="https://github.com/user-attachments/assets/f6d2683e-acea-43cb-969a-0b1bbf2c232a" />
 
 ### RoutineLogDAO
 
-![routinelogdao1](https://github.com/user-attachments/assets/b36f6de1-73b1-4812-9ebc-5fe1d158e170)
-
-![routinelogdao2](https://github.com/user-attachments/assets/bc9be49e-2a03-4148-8f4e-55428d7ebc2d)
-
-![routinelogdao3](https://github.com/user-attachments/assets/f3c6d695-96d9-404c-840a-b22a70f6c19a)
+<img width="729" height="586" alt="RoutineLogDAO1" src="https://github.com/user-attachments/assets/ba00eca0-b736-4398-9cb5-1e53063d339c" />
+<img width="730" height="449" alt="RoutineLogDAO2" src="https://github.com/user-attachments/assets/3f10f81e-7bef-4538-9acf-e26b4eb6f823" />
+<img width="729" height="432" alt="RoutineLogDAO3" src="https://github.com/user-attachments/assets/06824cd6-bbf3-4d89-9a6b-c61baf7f98a6" />
 
 ## Service
 
 ### UsersService
-
-![UsersService]https://github.com/user-attachments/assets/158a8f5e-1965-4ca3-b046-fdbdeb3a6473)
+<img width="731" height="357" alt="UsersService" src="https://github.com/user-attachments/assets/4f6494bb-cd5b-418d-a6da-a446540d2569" />
 
 ### GroupsService + GroupRoutineItemService
-
-![grouoproutineservice](https://github.com/user-attachments/assets/09d7536f-3b88-4939-8643-fb795c522eb7)
+<img width="729" height="331" alt="GroupRoutineService" src="https://github.com/user-attachments/assets/c0869bd3-bcd1-41aa-911d-c4a7c292ae53" />
 
 ### RoutinesService
+<img width="730" height="422" alt="RoutineService" src="https://github.com/user-attachments/assets/e67b2b67-9a6c-47b0-b465-e700abb2915a" />
 
-![routinesService](https://github.com/user-attachments/assets/2e34aab5-1295-4d2b-bd45-c6bddf62d558)
+### RoutineLogService
+<img width="730" height="231" alt="RoutineLogService
+" src="https://github.com/user-attachments/assets/ee7cae5f-b4ca-481f-b3cc-bbdd0d429813" />
 
 ## Session
-
-![session](https://github.com/user-attachments/assets/79398d5c-8624-400e-99a9-24c693887eaf)
+<img width="729" height="177" alt="Session" src="https://github.com/user-attachments/assets/bd56e51d-72fb-48f0-a4ae-35b2f8274234" />
 
 ## main
 
@@ -125,4 +113,20 @@ description: >
 
 <img width="439" height="524" alt="Image" src="https://github.com/user-attachments/assets/f3f2b913-c047-4dbe-924f-560a466dfb8a" />
 
-아직 마무리가 덜 되어 주말에 몰아서 할 예정입니다... ㅠ(이틀은 빡센 것 같습니다 ㅠ)
+### 오늘의 루틴
+<img width="974" height="465" alt="Image" src="https://github.com/user-attachments/assets/bffa67c2-500e-47f9-9ae7-dcb1a7a342c7" />
+
+#### 오늘의 루틴 보기
+<img width="978" height="250" alt="Image" src="https://github.com/user-attachments/assets/65f187bb-a4ff-47fd-ab97-452963b9c674" />
+
+#### 오늘의 진행도 보기
+<img width="967" height="145" alt="Image" src="https://github.com/user-attachments/assets/15514fad-354b-48f5-8e48-d41dc92dac6f" />
+
+#### 루틴 체크하기
+<img width="947" height="384" alt="Image" src="https://github.com/user-attachments/assets/439e46fb-c6f7-442a-82f4-e04a9ea7acbf" />
+
+#### 새 루틴 추가하기
+<img width="950" height="336" alt="Image" src="https://github.com/user-attachments/assets/47e7f4d9-c994-432d-947b-182be38812d6" />
+
+#### 루틴 수정하기
+<img width="960" height="354" alt="Image" src="https://github.com/user-attachments/assets/aae33a3f-cf00-4fcd-b8fc-545c876cc531" />
