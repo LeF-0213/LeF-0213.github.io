@@ -2,7 +2,7 @@
 layout: post
 related_posts:
     - /frontend/python
-title:  "[자료 구조]해시 테이블(Hash Table)"
+title:  "[자료 구조]해시 테이블(Hash Table)과 해시 함수"
 date:   2025-10-29
 categories:
   - frontend
@@ -13,10 +13,17 @@ description: >
 * toc
 {:toc .large-only}
 
-# 해싱(Hashing)이란?
+## 해시(Hash)란?
 
+> 임의의 길이의 데이터를 입력받아 **고정된 길이의 데이터**로 변환하여 출력한 **결과 값 자체**를 의미한다.     
+> 이 결과 값은 **해시 값(Hash Value), 해시 코드(Hash Code)** 또는 **다이제스트(Digest)**라고도 불린다.
+
+## 해싱(Hashing)이란?
+
+> **해싱(Hashing)**은 이 해시 값을 생성하는 **변환 과정 전체**를 의미하며, 이 과정을 수행하는 함수를 **해시 함수(Hash Function)**라고 한다.
 
 # 해시 테이블(Hash Table)이란?
+
 > 해시 테이블은 **키(Key)와 값(Value)을 매핑하여 저장하는 자료구조**이다.     
 > 해시 함수를 사용해 키를 배열의 인덱스로 변환하여, 평균적으로 **O(1) 시간복잡도**로 데이터를 저장하고 검색할 수 있다.      
 > (배열이 인덱스 번호로 O(1)만에 해당 위치의 값을 찾아낼 수 있는 것처럼 매우 큰 숫자 데이터나 문자열과 같이 임의의 길이를 가진 Key값을 고정된 작은 값으로 매핑하는 원리)
@@ -98,14 +105,22 @@ insert('watermelon', 7900)
 ```
 
 # 해쉬 함수(Hash Function)이란?
+
 > 해쉬 함수란, 주어진 데이터(Key)를 고유한 숫자 값인 해시 값(Hash Value)로 표현해 주는 함수
 > 모든 입력에 대해 고정된 크기(ex. K값 이하)의 데이터로 변경하는 함수   
 
-## 해시 함수의 특징
-* **일방향성**: H(x)를 통해 얻은 Y값으로 다시 X값을 얻을 수 없음
-* **결정론적**: 같은 입력은 항상 같은 출력을 생성
+### 해시 함수의 특징
+* **단방향성(One-way Function)**: H(x)를 통해 얻은 Y값으로 다시 X값을 얻을 수 없음
+* **결정론적(Deterministic)**: 같은 입력(M)은 항상 같은 해시 값(H) 출력을 생성
 * **충돌 가능성**: 다른 입력 X1, X2가 같은 출력 Y를 만들 수도 있음 
 -> **해시 충돌(Hash Collision)** 발생
+* **고정된 길이의 출력(Fixed-size-Output)**: 입력 데이터의 길이와 상관없이, 해시 함수를 통과하면 항상 **미리 정해진 길이**의 출력값(ex: SHA-256은 256비트)을 생성한다.
+  
+### 해싱의 주요 활용 분야
+
+> **비밀번호 저장(Password Storage)**: 사용자의 비밀번호를 해싱하여 저장함으로써, 데이터베이스가 해킹당해도 원본 비밀번호를 보호한다.       
+> **무결성 검증(Data Integrity)**: 데이터의 해시 값을 비교하여, 파일이나 메시지가 전송 또는 저장과정에서 **변조되지 않았음**을 확인한다. 블록체인 기술의 핵심 요소이다.     
+> **자료구조(Hash Table)**: **해시 테이블(Hash Table)**에서 키(Key)를 배열의 인덱스로 변환하여 데이터를 저장하고 검색함으로써 **매우 빠른 데이터 접근 속도(평균 O(1))**를 가능하게 한다.
 
 ## 해쉬 함수의 종류
 ### Division Method(나눗셈 법)
@@ -114,6 +129,8 @@ insert('watermelon', 7900)
 ```python
 h(k) = k mod m
 ```   
+**특징:**
+
 > 가장 간단하고 빠른 방법     
 > 테이블 크기 m은 **소수(prime number)**를 사용하는 것이 좋다.      
 > **2의 제곱수**는 피하는 것이 좋다.(비트 패턴에 의존하기 때문)
@@ -126,7 +143,7 @@ def hash_division(key, table_size):
 
 # table_size = 13(소수)
 print(hash_division(25, 13)) # 12
-print(hash_division(38, 13)) # 12 (❗️충돌 발생)
+print(hash_division(38, 13)) # 12 (충돌 발생)
 ```
 ### Digit Folding(자릿수 접기)
 * 키를 **동일한 크기의 부분(digit)으로 분할(folding)**하여 각 부분을 **더하거나 XOR 연산**하여 해시 값(결과 값 % 테이블 크기)을 생성한다.
@@ -174,6 +191,19 @@ print(hash_digit_folding_number(5551234567, 13))  # 241 % 13 = 7
 ```python
 h(k) = ⌊m × (k × A mod 1)⌋
 ```
+**예시**
+
+```python
+import math
+
+def hash_multiplication(key, table_size):
+  A = (math.sqrt(5) - 1) / 2 # 황금비율의 역수 ≈ 0.618
+  fractional_part = (key * A) % 1
+  return math.floor(table_size * fractional_part)
+
+print(hash_multiplication(123, 100))  # 18
+print(hash_multiplication(456, 100))  # 75
+```
 
 #### 바닥 함수 (`⌊x⌋`) & 천장 함수 (`⌈x⌉`)
 * 바닥 함수 (`⌊x⌋`)
@@ -187,20 +217,6 @@ h(k) = ⌊m × (k × A mod 1)⌋
 > A 값으로는 **황금비율의 역수** `(√5 - 1) / 2 ≈ 0.6180339887`를 주로 사용      
 > Division Method보다 충돌이 적다.
 
-**예시**
-
-```python
-import math
-
-def hash_multiplication(key, table_size):
-  A = (math.sqrt(5) - 1) / 2  # 황금비율의 역수
-  fractional_part = (key * A) % 1
-  return math.floor(table_size * fractional_part)
-
-# 결과
-print(hash_multiplication(123, 100)) # 18
-print(hash_multiplication(456, 100)) # 75
-```
 ### Univeral Hashing(보편 해싱)
 **해시 함수들의 집합(family) H**를 미리 정의하고, 실행 시점에 **무작위로 하나의 해시 함수를 선택**하여 충돌을 최소화하는 방법이다.
 
@@ -234,24 +250,33 @@ uh = UniversalHashing(13)
 # 결과
 print(uh.hash(100)) # 매번 다른 결과
 ```
+## 암호화 해시 함수
+일반 해시 함수와 달리, **보안이 강화된 특수 해시 함수**로 비밀번호 저장, 데이터 무결성 검증 등에 사용한다.
 
-# 해쉬 충돌(Hash Collision)이란?
+### SHA-256(Secure Hash Algorithm 2)
+
+> 출력: 256비트(64자 16진수)      
+> **매우 강력한 보안** -> 블록체인, 비밀번호 저장에 광범위하게 사용한다.      
+> 작은 입력 변화도 완전히 다른 출력 생성(눈사태 효과)
+
+
+## 해쉬 충돌(Hash Collision)이란?
 **서로 다른 키(Key)가 같은 해시 값(인덱스)을 가지는 경우**를 의미한다.
 
-## 충돌이 발생하는 이유
+### 충돌이 발생하는 이유
 ![Hash Collison](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fd0a1LP%2FbtrJ7Ool5g4%2FAAAAAAAAAAAAAAAAAAAAAEWnJNwmSCsDNievL13_s3uCdOBC55m_llIEkmbB3Svo%2Fimg.jpg%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1761922799%26allow_ip%3D%26allow_referer%3D%26signature%3DEegfE841N6EmP8IdPLKqLvewcfg%253D)
 
 > 그런데 만약 사과와 배를 해시 함수를 돌렸을 때 나온 해시 값이 동일하다면, 이때 **충돌**이 발생하게 된다.     
 > 이것을 해시 충돌(Hash Collison)이라고 말하며 이를 해결하기 위한 방법이 여러가지 있다.
 
-## 왜 충돌은 불가피할까?
-### 비둘기집 원리(Pigeonhole Principle)
+### 왜 충돌은 불가피할까?
+#### 비둘기집 원리(Pigeonhole Principle)
 "`n`개의 비둘기집에 `n + 1`마리 이상의 비둘기를 넣으면, 반드시 한 집에 2마리 이상이 들어간다."
 
 > 무한한 키 공간을 유한한 배열 크기로 매핑하기 때문에     
 > n개의 버킷에 n + 1개 이상의 키를 저장하면 오버플로우가 발생하여 반드시 충돌이 발생한다
 
-### 해시 함수의 한계
+#### 해시 함수의 한계
 "**완벽하게 균등 분포를 보장하는 해시 함수는 존재하지 않는다.**"
 
 > 위의 사과와 배처럼 해시 함수를 돌렸을 때 나온 해시 값이 늘 다를 수는 없다.      

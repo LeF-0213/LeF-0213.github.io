@@ -23,12 +23,12 @@ description: >
 데이터를 쉽게 탐색하기 위해서 사용한다.
 
 ## 버블 정렬(Bubble Sort)
-![bubble_sorting](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FTP0ub%2FbtrYrob3DhR%2FAAAAAAAAAAAAAAAAAAAAAEvEps2l_4XnTODdvDlNjWa-tG-Y8ZyF62AUlgzQBORV%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3DxC%252BqDma9dIJic8%252BeNwL5UH3I2Ew%253D)
 ### 개념
 
-> 인접한 두 원소를 비교하여 정렬하는 가장 간단한 알고리즘
+> 인접한 두 원소를 비교하여 정렬하는 가장 간단한 알고리즘                   
 > 큰 값이 물거품처럼 뒤로 이동하는 모습에서 이름이 유래됨
 
+![bubble_sorting](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FTP0ub%2FbtrYrob3DhR%2FAAAAAAAAAAAAAAAAAAAAAEvEps2l_4XnTODdvDlNjWa-tG-Y8ZyF62AUlgzQBORV%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3DxC%252BqDma9dIJic8%252BeNwL5UH3I2Ew%253D)
 ### 작동 방식
 
 > 1. 첫 번째 원소부터 인접한 원소와 비교
@@ -63,10 +63,11 @@ description: >
 * 거의 정렬된 데이터 
 
 ## 선택 정렬(Selection Sort)
-![selection_sort](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FcnZPBi%2FbtqARiSqsyd%2FAAAAAAAAAAAAAAAAAAAAAH8iKhbKaJ06nNyEMAXTX86XJ2mQ3ScLfd01wz_IFUvD%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3DrGa%252FHPLGH8NUtiR28yW7VgOrgI0%253D)
 ### 개념
-매번 가장 작은(또는 큰)원소를 선택하여 정렬하는 알고리즘
 
+> 매번 가장 작은(또는 큰)원소를 선택하여 정렬하는 알고리즘
+
+![selection_sort](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FcnZPBi%2FbtqARiSqsyd%2FAAAAAAAAAAAAAAAAAAAAAH8iKhbKaJ06nNyEMAXTX86XJ2mQ3ScLfd01wz_IFUvD%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1764514799%26allow_ip%3D%26allow_referer%3D%26signature%3DrGa%252FHPLGH8NUtiR28yW7VgOrgI0%253D)
 ### 작동 방식
 
 > 1. 배열에서 최솟값을 찾음
@@ -76,7 +77,7 @@ description: >
 ### 시간 & 공간복잡도
 
 | 항목 | 내용 |
-|:----:|---------------|
+|:----:|:--------------------------------:|
 | **시간복잡도(최선)** | `O(n^2)` |
 | **시간복잡도(평균)** | `O(n^2)` |
 | **시간복잡도(최악)** | `O(n^2)` |
@@ -95,16 +96,89 @@ description: >
 * 교환 비용이 큰 경우
 
 ## 삽입 정렬(Insertion Sort) 
-데이터의 전체 영역에서 정렬된 영역과 정렬되지 않은 영역으로 나눈다.     
-데이터가 정렬되어 있을 때는 최고의  발휘한다.
-![InsertionSort](https://miro.medium.com/v2/resize:fit:1326/format:webp/1*GzjS6_EJkOcHkdwJdzS8oQ.png)
 
-## 병합 정렬(분할 정렬)
-정렬되지 않은 영역을 쪼개서 각각의 영역을 정렬하고 이를 다시 합치는 과정을 하면서 정렬한다.     
-병합 과정을 거치기 때문에 추가적으로 메모리가 필요하다.(100% 시간 초과에 걸린다.) 
-![MergeSortImg](https://velog.velcdn.com/images/gawgjiug/post/b5c57bc7-9517-4d9c-aa96-6db8cc1ccdb5/image.png)
-키 값에 의해서 움직인다.
-![MergeSort](https://velog.velcdn.com/images/gawgjiug/post/3218bbfa-7798-4645-be70-a2e483aece69/image.png)
+### 개념
+
+> 각 원소를 적절한 위치에 삽입하여 정렬하는 알고리즘          
+> 카드 게임에서 카드를 정렬하는 방식과 유사
+
+![InsertionSort](https://miro.medium.com/v2/resize:fit:1326/format:webp/1*GzjS6_EJkOcHkdwJdzS8oQ.png)
+### 작동 방식
+
+> 1. 두 번째 원소부터 시작
+> 2. 현재 원소를 이미 정렬된 부분과 비교
+> 3. 적절한 위치를 찾아 삽입
+> 4. 모든 원소에 대해 반복
+
+### 시간 & 공간복잡도
+
+| 항목 | 내용 |
+|:----:|:--------------------------------:|
+| **시간복잡도(최선)** | `O(n)` - 이미 정렬된 경우 |
+| **시간복잡도(평균)** | `O(n^2)` |
+| **시간복잡도(최악)** | `O(n^2)` |
+| **공간복잡도** | `O(1)` |
+
+### 장단점
+
+| 장점 | 단점 |
+|:---------:|:----------:|
+| 간단한 구현 | 대량의 데이터에는 비효율적 |
+| 안정 정렬 | |
+| 거의 정렬된 데이터에 효율적 | |
+| 온라인 알고리즘(데이터가 들어오는대로 정렬 가능) | |
+
+### 사용 사례
+* 소량의 데이터
+* 거의 정렬된 데이터
+* 온라인 정렬이 필요한 경우
+
+## 병합 정렬(Merge Sort, 분할 정렬)
+### 개념
+
+> 분할 정복(Divide and Conquer) 방식을 사용하는 효율적인 알고리즘               
+> 배열을 반으로 나누고, 각각을 정렬한 후 병합
+
+<img src="https://gmlwjd9405.github.io/images/algorithm-merge-sort/merge-sort-concepts.png" alt="merge_sort1" style="background-color: white;">
+
+### 작동 방식
+
+> 1. 배열을 절반으로 분할(재귀적으로 계속 분할)
+> 2. 더 이상 나눌 수 없을 때까지 분할(크기가 1이 될 때까지)
+> 3. 분할된 배열들을 정렬하며 병합
+
+<img src="https://gmlwjd9405.github.io/images/algorithm-merge-sort/merge-sort.png" alt="merge_sort1" style="background-color: white;">
+### 시간 & 공간복잡도
+
+| 항목 | 내용 |
+|:----:|:--------------------------------:|
+| **시간복잡도(최선)** | `O(n log n)` |
+| **시간복잡도(평균)** | `O(n log n)` |
+| **시간복잡도(최악)** | `O(n log n)` |
+| **공간복잡도** | `O(n)` |
+
+### 장단점
+
+| 장점 | 단점 |
+|:---------:|:----------:|
+| 안정적인 O(n log n)성능 | 추가 메모리 공간 필요 |
+| 안정 정렬 | 작은 데이터에는 오버헤드 |
+| 예측 가능한 성능 | |
+
+### Tip
+
+> 정렬되지 않은 영역을 쪼개서 각각의 영역을 정렬하고 이를 다시 합치는 과정을 하면서 정렬한다.               
+> 병합 과정을 거치기 때문에 추가적으로 메모리가 필요하다.(100% 시간 초과에 걸린다.)             
+
+### 사용 사례
+* 대량의 데이터 정렬
+* 안정 정렬이 필요한 경우
+* 외부 정렬(파일 정렬 등)
+
+## 퀵 정렬(Quick Sort)
+### 개념
+
+
 
 ## 위상정렬(Topology Sort)
 진행하는 순서에 따라 정렬하는 방식
