@@ -14,15 +14,18 @@ description: >
 {:toc .large-only}
 
 # 가비지 컬렉션(Garbage Collection)
+
 * 파이썬에서는 변수나 객체를 만들면, 그 값은 메모리의 힙(heap) 영역에 저장된다. 
 * 하지만 프로그램을 계속 실행하면서 더 이상 사용하지 않는 객체들이 쌓이면 메모리 낭비가 발생한다. 
 * 이때 가비지 컬렉터(GC)가 작동하여, 쓸모없는 객체를 찾아서 자동으로 메모리에서 제거한다.
 
 ## Python의 자동 메모리 관리 시스템
+
 * `del`은 `heap`이 아닌 `stack`의 변수명만 지운다.
 * `reference count`가 `0`인 것만 지운다.
 
 ![del&GC](https://github.com/user-attachments/assets/a92c17af-6557-49ba-a462-12b0e4765a08)
+
 ### 가비지 컬렉션 과정
 1. 초기 상태
   * `name1`과 `name2`가 같은 객체 참조
@@ -44,6 +47,7 @@ description: >
   * 메모리 공간 재활용 가능
 
 ## 🔑 핵심 포인트:
+
 * **`del`은 변수만 삭제**: 객체를 직접 삭제하지 않음
 * **참조 카운트(Reference Count)**: 객체를 가리키는 변수의 개수
 * **가비지 컬렉션(GC)**: `ref_count`가 `0`이 되면 **자동으로 메모리 해제**

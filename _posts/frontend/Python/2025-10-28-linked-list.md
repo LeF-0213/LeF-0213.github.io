@@ -14,10 +14,12 @@ description: >
 {:toc .large-only}
 
 # 연결 리스트(Linked List)
+
 ![linkedList](https://velog.velcdn.com/images%2F717lumos%2Fpost%2F260ef0bf-ba0a-4f9f-bea7-8f6f984509a1%2F%EB%A6%AC%EC%8A%A4%ED%8A%B8.png)
 연결 리스트는 하나의 객체를 이루는 노드가 연결되어 리스트를 이루는 자료구조이다.
 
 ## 연결 리스트의 특징
+
 * 노드에는 값을 담고 있는 **'데이터'**와 다음 노드를 가리키는 **'링크'**정보를 저장하고 있다.
 * **데이터**에는 숫자, 문자열, 또다른 연결리스트 등 다양한 형식을 가질 수 있다.
 * 일반적으로 리스트의 맨 앞 노드를 **헤드(Head)**, 맨 마지막 노드를 **테일(Tail)**이라고 한다.

@@ -259,6 +259,74 @@ print(uh.hash(100)) # 매번 다른 결과
 > **매우 강력한 보안** -> 블록체인, 비밀번호 저장에 광범위하게 사용한다.      
 > 작은 입력 변화도 완전히 다른 출력 생성(눈사태 효과)
 
+```python
+import hashlib
+
+text = "Hello World"
+sha246_hash = hashlib.sha256(text.encode()).hexidigest()
+print(sha256_hash)
+# a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad6f146e
+
+# 비교: 입력 변화가 출력을 완전히 변경
+text2 = "Hello World!"  # 느낌표 하나만 추가
+sha256_hash2 = hashlib.sha256(text2.encode()).hexdigest()
+print(sha256_hash2)
+# 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069
+```
+
+**활용**
+
+* 블록체인 (Bitcoin, Ethereum)
+* SSL/TLS 인증서
+* Git 커밋 검증
+
+### SHA-512(Secure Hash Algorithm 2-512)
+
+> 출력: 512qlxm (128자 16진수)        
+> SHA-256보다 더 긴 출력 → 극도로 강력한 보안       
+> 매우 민감한 정보 보호에 사용
+
+```python
+import hashlib
+
+text = "Hello World"
+sha512_hash = hashlib.sha512(text.encode()).hexdigest()
+print(sha512_hash)
+# f910d0ccd3d42ab0e2cdc5760245c4dd5b0a9ae7acb76c7b1bc8e989e005bca02
+# d87e1e43487b3c6e76dfbed69b51ae269dd2e6c5949faea2c282622faf553145
+
+# 512비트 = 매우 큰 공간 = 충돌 가능성 극히 낮음
+```
+**활용**
+
+* 매우 민감한 데이터 보호
+* 금융/보안 시스템
+* 보안 저장소
+
+### bcrypt - 🔐 비밀번호 전문
+
+> 범용 해시 함수가 아닌 **비밀번호 저장용 해시 함수**     
+> **Salt와 반복 횟수**를 포함 -> 브루트포스 공격 방어     
+> 계산이 의도적으로 느림(보안 강화)
+
+```python
+import bcrypt
+
+password = "password123"
+
+# 해시 생성 (자동으로 salt 포함)
+hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt(rounds=12))
+print(hashed)
+# b'$2b$12$abcdefg...'
+
+# 비밀번호 검증
+is_correct = bcrypt.checkpw(password.encode(), hashed)
+print(is_correct)  # True
+
+wrong_password = "wrongPassword"
+is_correct = bcrypt.checkpw(wrong_password.encode(), hashed)
+print(is_correct)  # False
+```
 
 ## 해쉬 충돌(Hash Collision)이란?
 **서로 다른 키(Key)가 같은 해시 값(인덱스)을 가지는 경우**를 의미한다.
