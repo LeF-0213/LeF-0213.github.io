@@ -72,6 +72,9 @@ menu:
     submenu:
       - title: AI
         url: /ailog/
+    submenu:
+      - title: DataAnalysis
+        url: /da/
   - title: ETC
     url: /etc/
     submenu:
@@ -117,8 +120,8 @@ paginate_path: /:num/
 # ---------------------------------------------------------------------------------------
 
 # This will use the gem `jekyll-theme-hydejack`, as defined in the sibling `Gemfile`.
-# theme: jekyll-theme-hydejack
-remote_theme: hydecorp/hydejack@v9
+theme: jekyll-theme-hydejack
+# remote_theme: hydecorp/hydejack@v9
 
 # You can uncomment `theme` above and replace it with `remote_theme` here iff you are using the
 # `jekyll-remote-theme` plugin (which is the case when using the legacy GitHub Pages pipeline).
