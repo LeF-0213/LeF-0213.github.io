@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /ai/aiLog
+  - /aiLog/ai
 title:  "구글 코랩(Google Colab)이란?"
 date:   2025-08-05
 categories:
-  - aiLog
+  - ai
 description: >
   Google Colab의 기본 개념 정리
 ---

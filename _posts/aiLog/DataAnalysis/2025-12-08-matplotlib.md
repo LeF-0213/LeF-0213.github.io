@@ -1,7 +1,7 @@
 ---
 layout: post
 related_posts:
-  - /ai/da
+  - /aiLog/da
 title:  "Matplolib"
 date:   2025-12-04
 categories:

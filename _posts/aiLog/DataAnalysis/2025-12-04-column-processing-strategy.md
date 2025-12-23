@@ -1,7 +1,7 @@
 ---
 layout: post
 related_posts:
-  - /ai/da
+  - /aiLog/da
 title:  "데이터 분석 및 머신러닝을 위한 컬럼 처리 전략"
 date:   2025-12-04
 categories:

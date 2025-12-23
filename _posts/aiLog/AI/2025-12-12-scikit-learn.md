@@ -1,27 +1,37 @@
 ---
 layout: post
 related_posts:
-  - /ai/aiLog
-title:  "사이킷런(scikit-learn)"
+  - /aiLog/ai
+title:  "머신러닝 - 지도학습"
 date:   2025-12-12
 categories:
-  - aiLog
+  - ai
 description: >
   
 ---
 * toc
 {:toc .large-only}
 
-# 사이킷런 (scikit-learn)
+## 사이킷런 (scikit-learn)
 
 사이킷런(scikit-learn)은 파이썬(Python)으로 작성된 오픈소스 머신러닝 라이브러리로, 데이터 분석과 예측 모델 구축을 위해 널리 사용된다. 간단하고 일관된 인터페이스를 제공하며, 지도 학습(Supervised Learning)과 비지도 학습(Unsupervised Learning) 알고리즘을 모두 지원한다. 
 
 주로 분류(Classification), 회귀(Regression)
 
 ```bash
-pip install sklearn
+pip install scikit-learn
 ```
 
+문제 정의
+
+데이터 수집
+데이터 전처리
+
+모델 설정
+
+학습
+
+결과 시각화
 
 ## Iris 데이터셋
 
@@ -156,3 +166,44 @@ Boxplot은 데이터의 중앙값, 사분위수, 이상치 등을 시각적으�
 ### ※ XGBoost
 
 과적합이 될 가능성이 높음.
+
+
+가로축 : 실제값(Data)
+세로축 : 회귀모델로 학습하여 예측한 값(Predicted)
+=> 가로 세로 비교 그래프의 점 하나가 테스트 데이터 한 개를 의미
+=> 점이 선형 선에 가까울 수록 모델이 실제값을 잘 예측한 것.
+
+## LogisticRegression
+
+사이킷런의 LogisticRegression은 **이진 분류(Binary Classification)**와 **다중 분류(Multiclass Classfication)** 문제를 해결하기 위한 머신러닝 알고리즘이다. 로지스틱 회귀는 **선형 모델**로, 입력 데이터에 대한 선형 결합을 통해 확률로 예측하고, 
+
+시그모이드 함수 => 모든 값을 0 ~ 1사이로 출력
+
+### ⚠️ 규제
+
+> **규제(Regularization)**는 머신러닝 모델이 **과적합(Overfitting) 되는 것을 방지**하기 위해 사용되는 기법이다.     
+> **과적합**은 모델이 **학습 데이터에 지나치게 맞춰져서, 새로운 데이터(테스트 데이터)에는 제대로 일반화하지 못하는 현상**이다.
+
+규제는 모델의 복잡도를 줄이고, 불필요한 가중치(Weignts)를 작게 만들어 과적합을 방지한다.
+
+| 규제 유형 | 설명 | 효과 | 활용 상황 |
+|:-----:|------|------|---------|
+| **L1 규제 (Lasso)** | 가중치 절댓값에 패널티 | 일부 특성 제거 | 변수 선택 필요할 때 |
+| **L2 규제 (Ridge)** | 가중치 제곱에 패널티 | 모든 특성 사용, 가중치 축소 | 다중공선성 문제 해결 |
+| **Elastic Net** | L1 + L2 결합 | 두 효과 결합 | 특성이 많고 다중공선성이 있을 때 |
+
+
+> * 반복 횟수가 부족하면 **Convergence Warning** 경고가 나타날 수 있다.
+> * 이는 알고리즘이 **최적해를 찾지 못했다**는 의미이다.
+> * max_iter=1000: 최대 1000번 반복하여 최적의 가중치를 찾는다.
+> * 기본 값: max_iter=100
+
+### ※ 데이터 스케일링
+
+데이터 스케일링은 서로 다른 범위와 단위를 가진 데이터를 일정한 범위로 변환하여 모델 학습을 더 효율적으로 수행할 수 있도록 만드는 전처리 과정이다.
+
+## 혼동 행렬 (Confusion Matrix)
+
+혼동 행렬은 분류 모델의 성능을 평가하기 위해 사용되는 도구로, 예측 결과와 실제 레이블 간의 관계를 요약하여 나타낸 행렬이다. 이 행렬은 이진 분류 문제에서 네 가지 값으로 구성된다. True Positiv (TP), True Negative (TN), False Positive (FP), False Negative (FN). TP와 TN은 
+
+## 클러스터

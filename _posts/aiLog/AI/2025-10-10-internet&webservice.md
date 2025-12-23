@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /ai/aiLog
+  - /aiLog/ai
 title:  "인터넷과 웹서비스"
 date:   2025-10-10
 categories:
-  - aiLog
+  - ai
 description: >
   
 ---
