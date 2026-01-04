@@ -2,53 +2,54 @@
 layout: post
 related_posts:
   - /aiLog/ai
-title:  "머신러닝 - 지도학습"
+title:  "머신러닝 시작, SVM으로 Iris 데이터 분류하기"
 date:   2025-12-12
 categories:
   - ai
 description: >
-  
+  Scikit-learn과 SVM(SVC)을 활용한 데이터 전처리 및 분류 파이프라인 최적화
 ---
 * toc
 {:toc .large-only}
 
 ## 사이킷런 (scikit-learn)
 
-사이킷런(scikit-learn)은 파이썬(Python)으로 작성된 오픈소스 머신러닝 라이브러리로, 데이터 분석과 예측 모델 구축을 위해 널리 사용된다. 간단하고 일관된 인터페이스를 제공하며, 지도 학습(Supervised Learning)과 비지도 학습(Unsupervised Learning) 알고리즘을 모두 지원한다. 
+[사이킷런(scikit-learn)](https://scikit-learn.org/stable/)은 파이썬(Python)으로 작성된 오픈소스 머신러닝 라이브러리로, 데이터 분석과 예측 모델 구축을 위해 널리 사용된다. 간단하고 일관된 인터페이스를 제공하며, 지도 학습(Supervised Learning)과 비지도 학습(Unsupervised Learning) 알고리즘을 모두 지원한다. 
 
-주로 분류(Classification), 회귀(Regression)
+주로 분류(Classification), 회귀(Regression), 클러스터링(Clustering), 차원 축소(Dimensionality Reduction), 모델 선택(Model Selection), 전처리(Preprocessing)와 같은 다양한 작업을 수행할 수 있다. 사이킷런은 효율적인 수치 계산이 가능하며, 다양한 머신러닝 알고리즘을 손쉽게 사용할 수 있는 API를 제공한다. 따라서 사이킷런은 데이터 과학과 인공지능 프로젝트에서 가장 많이 사용되는 라이브러리 중 하나이다.
 
 ```bash
 pip install scikit-learn
 ```
 
-문제 정의
+## Iris Dataset
 
-데이터 수집
-데이터 전처리
+아이리스(Iris) 데이터셋은 머신러닝과 통계학에서 가장 널리 사용되는 대표적인 샘플 데이터셋이다. 이 데이터셋은 불꽃(Iris)의 세 가지 품종(Setosa, Versicolor, Virginica)에 대한 정보를 포함하고 있다. 각 품종별로 꽃받침(Sepal)의 길이와 너비, 꽃잎(Petal)의 길이와 너비로 이루어진 4개의 특성(Features)이 제공되며, 총 150개의 샘플 데이터가 있다. 각 품종당 50개의 샘플이 균등하게 분포되어 있어 다중 클래스 분류 문제를 연습하기에 적합하다.
 
-모델 설정
+> - Classes 3 => 꽃 종류 3개
+> - Samples per class 50 => 꽃 총 150개
+> - Samples total 150
+> - Dimensionality 4 => 차원
+> - Features real, positive => 맞다 틀리다
 
-학습
+### 데이터셋 (Dataset)
 
-결과 시각화
+데이터셋(Dataset)은 머신러닝과 데이터 과학에서 학습, 검증, 테스트하기 위해 사용되는 데이터의 집합이다. 
 
-## Iris 데이터셋
+데이터셋은 일반적으로 **입력 데이터(Features)와 정답 레이블(Labels)**로 구성되며, **학습용 데이터셋(Training Dataset), 검증용 데이터셋(Validation Dataset), 테스트용 데이터셋(Test Dataset)**으로 나뉘어 사용한다. 또한 모델을 학습시키고, **하이퍼파라미터를 조정**하며, 최종 성능을 평가하는데 사용된다.
 
-아이리스(Iris) 데이터셋은 머신러닝과 통계학에서 가장 널리 사용되는 대표적인 샘플 데이터셋이다. 이 데이터셋은 불꽃(Iris)의 세 가지 품종(Setosa, Versicolor, Virginica)에 대한 정보를 포함하고 있다.
+> 예를 들어 데이터가 총 다섯개로 되어있고 이 데이터셋은 입력데이터로 쓸수 있는 꽃받침의 너비와 길이, 꽃잎의 너비와 길이 어떤 꽃인지 구별할 수 있는 특성 네 개가 총 150개가 들어있다. 
+> 이것을 컴퓨터 하드웨어에 학습을 시키려고 한다면, 머신러닝(또는 딥러닝)에 크게 세가지로 나누어 사용한다. 기계가 공부를 해야하는 학습용 데이터셋, 평가를 잘 하고 있는 지 중간중간 확인하기 위한 검증용 데이터셋, 150개 중에 일부는 학습을 하고(100개), 일부는 모의고사를 본다(단, 겹치지 않게, 30개), 그리고 잘 하고 있는 지 최종적으로 확인하는 테스트용 데이터셋(20개) 
+> 하이퍼파라미터를 조정하는 것은 제대로 검증이 이루어지지 않을 때 모델의 성능을 조절하는 것이다.
 
-### 데이터셋
+데이터 셋의 품질과 크기는 모델의 성능에 큰 영향을 미치기 때문에, 적절한 전처리(Preprocessing)와 특성 엔지니어링(Feature Engineering)이 중요하다.
 
-데이터셋(Dataset)은 머신러닝과 데이터 과학에서 학습, 검증, 테스트하기 위해 사용되는 데이터의 집합이다. 데이터셋은 일반적으로 **입력 데이터(Features)와 정답 레이블(Labels)**로 구성되며, 학습용 데이터셋(Training Dataset), 검증용 데이터셋(Validation Dataset), 테스트용 데이터셋
+```
+from sklearn.datasets import load_iris
 
-예를 들어 데이터가 총 다섯개로 되어있고 이 데이터셋은 입력데이터로 쓸수 있는 꽃이의 너비와 길이 어떤 꽃인지 네개가 들어있고, 총 150개가 들어있다. 이것을 컴퓨터 하드웨어에 학습을 시키려고 한다.
-머신러닝 딥러닝에 크게 세가지로 나누어 사용한다. 기계가 공부를 해야하는 학습용 데이터셋, 평가를 잘 하고 있는 지 중간중간 확인하기 위한 검증용 데이터셋, 105개 중에 일부는 학습을 하고(100개), 일부는 모의고사를 본다(단, 겹치지 않게!, 30개), 그리고 잘 하고 있는 지 최종적으로 확인하는 테스트용 데이터셋(20개) 하이퍼파라미터를 조정하는 것은 제대로 검증이 이루어지지 않을 때 모델의 성능을 조절하는 것이다.
-
-Classes 3 => 꽃 종류 3개
-Samples per class 50 => 꽃 총 150개
-Samples total 150
-Dimensionality 4 => 차원
-Features real, positive => 맞다 틀리다
+iris = load_iris()
+iris
+```
 
 ```m
 Returns:
@@ -91,15 +92,6 @@ X_test: 테스트 볼 데이터만 들어감
 y_train: 공부할 때 답안지
 y_test: 검증할 때 답안지
 
- X_train
-    - 공부할 데이터
-- X_test
-    - 테스트 볼 데이터
-- y_train
-    - 공부할 데이터의 답
-- y_test 
-    - 테스트할 데이터의 답
-
 변수는 다르게 해도 되지만 순서는 같아야함.
 관례로 matrix 즉, x축으로 y축으로 여러개가 있을 때는 대문자,
 한 개짜리 리스트는 소문자
@@ -111,17 +103,46 @@ random_state: 기본으로 true인데 값을 넣어주는 이유는, 주어진 �
 
 ## SVC (Support Vector Classifier)
 
+SVC 는 서포트 벡터 머신(SVM, Support Vector Machine)을 사용한 분류(Classification) 알고리즘이다. 사이킷런(`sklearn.svm.SVC`)에서 제공되며, **이진 분류(Binary Classification)와 다중 클래스 분류(Multi-Class Classification)** 문제를 해결할 수 있다. 
+
 ### 서포트 백터 머신 (Support Vector Machine, SVM)
 
-서포트 벡터 머신(SVM)은 두 개 이상의 클래스()
+서포트 벡터 머신(SVM)은 두 개 이상의 클래스(Class)를 구분하는 지도 학습(Supervised Learning) 알고리즘이다. 주로 분류(Classification) 문제를 해결하는데 사용되며, 일부 경우 회귀(Regression) 문제에도 사용된다. SVM의 목표는 두 클래스 간의 경계를 가장 잘 구분하는 최적의 초평면(Hyperplane)을 찾는 것이다.
 
-초평면(평면으로 나누어주는 것, 즉 공간을 나누는 것)
-여러번 반복 실행 epoch
-조금씩 수정 -> 순전파 역전파 기울기 보정
+### 최적의 초평면(Hyperplane)을 찾는 과정
+
+#### 1. 목표 설정
+
+SVM은 단순히 데이터를 나누는 것에 만족하지 않고, 두 집단 사이의 거리를 **최대로 넓히는 선**을 찾으려 한다.
+
+- **초평면(Hyperplane)**
+데이터를 나누는 결정 경계이다. 2차원 공간에서는 '선', 3차원에서는 '면', 그 이상의 고차원에서는 '초평명'이라고 부른다. 
+
+```m
+$$w \cdot x + b = 0$$
+```
+- **마진(Margin)**: 초평면과 가장 가까운 데이터(서포트 벡터)사이의 거리이다.
+
+> **핵심**: 마진이 넓을 수록 새로운 데이터가 들어왔을 때 틀릴 확률이 낮아진다.
+
+#### 2. 학습
+
+여러번 반복 실행하여 조금씩 수정하여 **손실 함수(Loss Function)**를 최소화하는 과정이다.
+
+- **힌지 손실 (Hinge Loss)**: SVM이 사용하는 특수한 오차 계산법이다. 데이터가 경계를 넘어오거나 마진 안에 들어오면 "벌점(Loss)"을 부여한다.
+- **반복 학습 (Epochs)**: 전체 학습 데이터셋을 모델이 한 번 다 훑는 과정 1 Epoch, Epoch 횟수만큼 반복합습.
+- **최적화 목표 (Optimization)**: 단순히 오차를 줄이는 것을 넘어, **마진을 최대화(일반화 성능 향상)하면서 힌지 손실을 최소화하는 균형점**을 찾는 것
+- **기울기 보정 (Gradient Descent)**: 데이터를 통해 예측값과 힌지 손실(Hinge Loss)을 계산하는 **순전파** 과정과, 목적함수를 미분하여 얻은 기울기를 통해 w(각도)와 b(위치)를 업데이트하는 **역전파** 과정을 반복하며 최적의 초평면을 완성하는 수단이다.
+
+![SVM](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2Fd8qcab%2FbtsO6YGAr0D%2FAAAAAAAAAAAAAAAAAAAAAHW_UqGuwBNqYmV0p5guqaiA8QRWab31i8P0T4hrqutc%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1767193199%26allow_ip%3D%26allow_referer%3D%26signature%3DvA7VE45smq%252FCbUU4N259b6ePjcg%253D)
 
 ### accuracy_score
 
-accuracy_score는 사이킷런(sklearn)
+accuracy_score는 사이킷런(sklearn)의 metrics 모듈에서 제공하는 성능 평가 지표로, **분류(Classification) 모델의 예측 정확도(Accuracy)를 측정하는 함수**이다. 이 함수는 **모델이 예측한 값과 실제 정답이 얼마나 일치하는지를 백분율**로 나타내며, 전체 샘플 중 올바르게 예측된 샘플의 비율을 계산한다.
+
+### Accuracy
+
+정확도(Accuracy)는 머신러닝과 통계학에서 모델의 성능을 평가하는 가장 기본적인 지표 중 하나로, **전체 예측 중에서 얼마나 많은 예측이 실제 정답과 일치했는지를 나타내는 비율**이다.
 
 ## 원-핫 인코딩 (One-Hot Encoding)
 
