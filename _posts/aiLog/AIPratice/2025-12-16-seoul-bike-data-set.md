@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /aiLog/da
+  - /aiLog/aiPratice
 title:  "서울시 자전거 공유 데이터셋(데이터 전처리 및 탐색적 데이터 분석)"
 date:   2025-12-16
 categories:
-  - da
+  - aiPratice
 description: >
   서울시의 공공자전거 대여 서비스인 ‘따릉이’의 대여 수요를 예측하는 문제에 사용되는 데이터셋. 
   특정 시간대와 날씨, 요일, 공휴일 여부, 기온, 습도 등 다양한 데이터를 활용하여 자전거 대여 수요를 예측한다.

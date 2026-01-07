@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /aiLog/ai
+  - /aiLog/aiPratice
 title:  "Santa vs 일반인 이미지 분류 (VGG19 직접 구현 & 전이학습)"
 date:   2025-12-24
 categories:
-  - ai
+  - aiPratice
 description: >
   VGG19 모델을 직접 구현하고, 사전 학습된 모델을 전이 학습과 성능 비교
 ---

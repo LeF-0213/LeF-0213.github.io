@@ -74,6 +74,8 @@ menu:
             url: /ai/
           - title: DataAnalysis
             url: /da/
+          - title: AI Practice
+            url: /aipractice/  
           - title: PaperReview
             url: /paperreview/  
     - title: ETC

@@ -1,11 +1,11 @@
 ---
 layout: post
 related_posts:
-  - /aiLog/ai
+  - /aiLog/AIPractice
 title:  "머신러닝 시작, SVM으로 Iris 데이터 분류하기"
 date:   2025-12-12
 categories:
-  - ai
+  - ai/aiPratice
 description: >
   Scikit-learn과 SVM(SVC)을 활용한 데이터 전처리 및 분류 파이프라인 최적화
 ---

@@ -14,7 +14,7 @@ description: >
 
 ## 🏷️ 논문 개요
 
-## 논문 제목의 의미
+### 논문 제목의 의미
 
 **Gradient-Based Learning Applied to Document Recognition**
 
@@ -99,8 +99,8 @@ Keywords - Neural Networks, OCR, Documnet Recognition, Machine Learning, Gradien
 1. **파라미터 수의 폭발 (Memory & Compute)**
     - **계산**: 32 x 32 픽셀 이미지를 100개의 뉴런이 있는 은닉층에 연결하면, 가중치(Weight)만 무려 **102,400개**(1,024 x 100)가 필요하다.
     - **결과**: 고해상도 이미지일수록 파라미터는 기하급수적으로 늘어나며, 이는 곧 메모리 부족과 학습 속도 저하로 이어진다.
-2. **공간적 구조(Topology)의 상실**
-    [Image showing a grid being flattened into a 1D vector, losing spatial relationships]
+2. **공간적 구조(Topology)의 상실**             
+[Image showing a grid being flattened into a 1D vector, losing spatial relationships]
     - **왜곡에 취약**: FC 레이어는 픽셀 간의 거리를 무시한다. 숫자 '7'이 이미지 왼쪽에 있든 오른쪽 아래에 있든, FC 레이어 입장에서는 완전히 다른데이터로 인식된다.
     - **변형에 취약**: 이미지를 1픽셀만 옆으로 밀거나(Translation), 살짝 비틀어도(Distortion) 입력 벡터 전체의 숫자가 바귀어버려 인식에 실패한다.
 
@@ -132,7 +132,7 @@ LeCun은 이 논문에서 **'이미지는 일반적인 데이터와 다르다'**
 <img alt="Image" src="https://github.com/user-attachments/assets/44cc9073-381a-4202-8b95-b50e47c5e54c" width='100%' />
 
 > 국소 수용 영역이란 신경망의 한 유닛(뉴런)이 입력 이미지 **전체(Global)**를 보는 것이 아니라, 아주 작은 **일부분(Local)에만 집중**하여 연결되는 구조를 말한다.
-> 이 덕분에 모델은 이미지 왜곡(Distortion)이나 위치 변화에 더 강인한(Robust) 특징을 할 수 있게 되었다.
+> 이 덕분에 모델은 이미지 왜곡(Distortion)이나 위치 변화에 더 견고한(Robust) 특징을 할 수 있게 되었다.
 
 #### 왜 필요한가?
 - **생물학적 근거 (고양이 시각 실험)**: 동물의 시각 피질 세포들은 이미지 전체가 아니라, **특정 위치와 방향의 선(Edge)**에만 반응
