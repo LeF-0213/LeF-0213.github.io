@@ -68,14 +68,14 @@ menu:
           - title: Vue
             url: /vue/
     - title: AI + DA
-      url: /aiLog/
+      url: /ailog/
       submenu:
           - title: AI
             url: /ai/
           - title: DataAnalysis
             url: /da/
           - title: PaperReview
-            url: /paperReview/  
+            url: /paperreview/  
     - title: ETC
       url: /etc/
       submenu:
