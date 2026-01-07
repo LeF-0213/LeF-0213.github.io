@@ -59,7 +59,7 @@ menu:
           - title: DBMS
             url: /dbms/
     - title: Frontend
-      url: /Frontend/
+      url: /frontend/
       submenu:
           - title: Python
             url: /python/
