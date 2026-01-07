@@ -279,7 +279,7 @@ MNIST의 기본 크기인 28 x 28보다 크게 설정한 이유는 **가장자�
 - 학습 파라미터: 1,516개
 - 연결 수: 151,600
 
-<img width="100%" alt="Image" src="https://github.com/user-attachments/assets/15ea00be-fd50-4319-8b89-af70f658256e" />
+<img width="100%" alt="Image" src="https://github.com/user-attachments/assets/e2516979-a806-447b-a9ac-c6ea31db55dd" />
 
 #### 특징
 C3의 S2의 feature map 전체에 **완전 연결되지 않는다.**
