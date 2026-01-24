@@ -75,9 +75,9 @@ menu:
           - title: DataAnalysis
             url: /da/
           - title: AI Practice
-            url: /aipractice/  
+            url: /aipractice/
           - title: PaperReview
-            url: /paperreview/  
+            url: /paperreview/
     - title: ETC
       url: /etc/
       submenu:
@@ -220,15 +220,21 @@ kramdown:
     hard_wrap: false
     syntax_highlighter: rouge
     math_engine: katex
-    math_engine_opts: {}
+    math_engine_opts:
+        input: TeX
+        include_display_math: true
+        common_math: true
     footnote_backlink: "&#x21a9;&#xfe0e;"
+    kramdown_default_fix: true
     parse_block_html: true
+    parse_span_html: true
 
 # Hydejack Settings
 # ----------------------------------------------------------------------------------------
 # These settings are specific to Hydejack.
 
 hydejack:
+    math: true
     # Configure the order of complementary content on blog posts
     post_addons: [about, newsletter, related, random, comments]
 
