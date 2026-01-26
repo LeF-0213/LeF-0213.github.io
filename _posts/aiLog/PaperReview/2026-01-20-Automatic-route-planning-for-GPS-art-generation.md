@@ -169,7 +169,7 @@ $$C_2(\vec{P}, \vec{N}) = |\vec{P} - \vec{N}|$$
 
 점 $\vec{S}$에서 시작하여 점 $\vec{E}$에서 끝나는 주어진 세그먼트에 대해, 점 $\vec{P}$와 각 이웃 노드 $\vec{N}$에 대한 거리 합을 다음 함수로 계산한다.
 
-$$C(\vec{P}, \vec{N}, \vec{S}, \vec{E}) = \alpha \cdot C_1(\vec{N}, \vec{E}) + \beta \cdot C_2(\vec{P}, \vec{N}) + \gamma \cdot C_3(\vec{P}, \vec{N}, \vec{S}, \vec{E})$$
+$$C_3(\vec{P}, \vec{N}, \vec{S}, \vec{E}) = \sum_{k=0}^{n} R(\vec{P}, \vec{N}, \vec{K})$$
 
 여기서 함수 $R$은 그래프의 엣지(edge)와 세그먼트 상의 동일한 간격의 점 $\vec{K}$ 사이의 거리를 나타낸다.
 
@@ -181,7 +181,7 @@ $$C(\vec{P}, \vec{N}, \vec{S}, \vec{E}) = \alpha \cdot C_1(\vec{N}, \vec{E}) + \
 
 $$\vec{K} = \vec{S} + k \cdot \frac{|\vec{N} - \vec{S}|}{n} \cdot (\vec{N} - \vec{S})$$
 
-- $(\vec{N} -> \vec{S})$: 세그먼트의 방향 벡터
+- $(\vec{N} - \vec{S})$: 세그먼트의 방향 벡터
 - $\frac{\|\vec{N} - \vec{S}\|}{n}$: 전체 세그먼트 길이를 n등분한 간격
 - $K$: 0부터 n까지의 인덱스 ($k = 0$일 때 $\vec{K} = \vec{S}, k = n$일 때 끝점 근처)
 
