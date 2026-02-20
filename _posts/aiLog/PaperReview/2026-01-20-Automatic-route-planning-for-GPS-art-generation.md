@@ -225,7 +225,7 @@ $$R(\vec{P}, \vec{N}, \vec{K}) = \begin{cases}
 
 <img width="100%" alt="Image" src="https://github.com/user-attachments/assets/6e968c97-2f8e-4276-bfee-f88e8599e4d8" />
 
-$$C(\vec{P}, \vec{N}, \vec{S}, \vec{E}) = \alpha \cdot C_1(\vec{N}, \vec{E}) + \beta \cdot C_2(\vec{P}, \vec{N}) + \gamma \cdot C_3(\vec{P}, \vec{N}, \vec{S}, \vec{E})$$
+$$C(\vec{P}, \vec{N}, \vec{S}, \vec{E}) = \alpha \cdot C_1(\vec{S}, \vec{E}) + \beta \cdot C_2(\vec{P}, \vec{N}) + \gamma \cdot C_3(\vec{P}, \vec{N}, \vec{S}, \vec{E})$$
 
 그 결과로 얻은 합계는 세그먼트와 현재 엣지 사이의 차이를 가장 잘 나타내는 지표를 제공하며, 근사화된 경로를 더 큰 정도로 개선한다.
 
