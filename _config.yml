@@ -52,6 +52,8 @@ menu:
       submenu:
           - title: Node.js
             url: /nodejs/
+          - title: Python
+            url: /python/
           - title: Java
             url: /java/
           - title: Spring
@@ -61,12 +63,10 @@ menu:
     - title: Frontend
       url: /frontend/
       submenu:
-          - title: Python
-            url: /python/
+          - title: JavaScript
+            url: /js/
           - title: Web
             url: /web/
-          - title: Vue
-            url: /vue/
     - title: AI + DA
       url: /ailog/
       submenu:
