@@ -26,11 +26,11 @@ description: >
 - **Object Detection (객체 탐지)**: 이미지 속 객체의 위치(바운딩 박스)와 클래스 레이블을 동시에 예측하는 컴퓨터 비전의 핵심 태스크.
 - **Transformers**: NLP에서 혁신을 일으킨 Transformer 아키텍처의 셀프 어텐션(Self-attention) 매커니즘을 도입하여, 이미지 내 요소들 간의 상호작용을 모델링하고 전역적인 문맥 정보를 탐지에 활용한다.
 
-즉, 제목 자체가 **객체 탐지를 Transformer 기반 구조로 재정의하고, 완전한 end-to-end 학습을 수행하겠다** 는 노문의 핵심 주장을 압축적으로 표현하고 있다.
+> 즉, 제목 자체가 **객체 탐지를 Transformer 기반 구조로 재정의하고, 완전한 end-to-end 학습을 수행하겠다** 는 노문의 핵심 주장을 압축적으로 표현하고 있다.
 
 ### 한 줄 요약
 
-> DETR(DEtection TRansformer)은 객체 탐지(Object Detection)를 "집합 예측(set prediction)" 문제로 재정의하고, CNN + Transformer Encoder-Decoder 아키텍처와 Hungarian 매칭 기반의 이분 매칭(Biparite Matching) 손실을 통해 NMS・앵커와 같은 수작업 구성 용소(Component) 없이 End-to-End로 학습을 가능하게 한 최초의 Transformer 기반 객체 탐지 모델이다.
+DETR(DEtection TRansformer)은 객체 탐지(Object Detection)를 "집합 예측(set prediction)" 문제로 재정의하고, CNN + Transformer Encoder-Decoder 아키텍처와 Hungarian 매칭 기반의 이분 매칭(Biparite Matching) 손실을 통해 NMS・앵커와 같은 수작업 구성 용소(Component) 없이 End-to-End로 학습을 가능하게 한 최초의 Transformer 기반 객체 탐지 모델이다.
 
 ### Abstract
 
@@ -79,7 +79,7 @@ Region Proposal Network(RPN)으로 후보 영역을 먼저 추출하고, 해당 
 - NMS 필요
 - heuristic이 매우 많음
 
-### Transformer 아키텍처
+### 2. Transformer 아키텍처
 
 Vaswani et al.(2017)이 제안한 Transformer는 Self-Attention 매커니즘을 핵심으로 하며, 시퀀스 내 모든 요소 간의 관계를 전역적으로 모델링한다. Encoder-Decoder 구조로 이루어져 있으며, NLP 분야의 번역・생성 태스크에서 혁신을 가져왔다.
 
@@ -91,7 +91,7 @@ Vaswani et al.(2017)이 제안한 Transformer는 Self-Attention 매커니즘을 
 - CNN과 달리 global context modeling 가능
 - NLO -> Vision Transfomer로 확장
 
-### 헝가리안 알고리즘과 이분 매칭
+### 3. 헝가리안 알고리즘과 이분 매칭
 
 헝가리안 알고리즘(Hungarian Algorithm)은 이분 그래프에서 최소 비용 완전 매칭을 다항 시간 내에 찾는 알고리즘이다. DETR에서는 N개의 예측과 M개의 Ground Truth(N > M) 사이에서 최적의 일대일 대응을 찾는데 사용된다. 이 매칭은 각 Ground Truth에 정확히 하나의 예측만 대응되도록 보장하여, 중복 예측 없이 집합 형태로 탐지 결과를 출력할 수 있게 한다.
 
