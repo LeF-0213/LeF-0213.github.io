@@ -76,15 +76,15 @@ menu:
             url: /da/
           - title: AI Practice
             url: /aipractice/
-          - title: PaperReview
-            url: /paperreview/
-    - title: ETC
-      url: /etc/
-      submenu:
-          - title: ErrorLog
-            url: /errorlog/
-          - title: Git
-            url: /git/
+        #   - title: PaperReview
+        #     url: /paperreview/
+    # - title: ETC
+    #   url: /etc/
+    #   submenu:
+    #       - title: ErrorLog
+    #         url: /errorlog/
+    #       - title: Git
+    #         url: /git/
     - title: Programmers
       url: /programmers/
       submenu:
@@ -92,10 +92,10 @@ menu:
             url: /lv1/
           - title: Lv2
             url: /lv2/
-          - title: Lv3
-            url: /lv3/
-          - title: Lv4
-            url: /lv4/
+        #   - title: Lv3
+        #     url: /lv3/
+        #   - title: Lv4
+        #     url: /lv4/
     - title: Baekjoon
       url: /baekjoon/
 

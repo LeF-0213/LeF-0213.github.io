@@ -1,65 +1,127 @@
 .dl-table {
-  a {
-    @supports ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
-      text-underline-offset: .8rem;
+    a {
+        @supports ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
+            text-underline-offset: 0.8rem;
+        }
+        @supports not ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
+            padding-bottom: 0.45rem;
+        }
     }
-    @supports not ((text-decoration-thickness: initial) and (text-underline-offset: initial)) {
-      padding-bottom: .45rem;
-    }
-  }
 
-  .btn, .gumroad-button  {
-    margin: 1rem 0;
-  }
+    .btn,
+    .gumroad-button {
+        margin: 1rem 0;
+    }
 }
 
-blockquote {
-  color: white;
-  border-left: 4px solid #667eea;
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  border-radius: 4px;
+.post {
+    body,
+    p,
+    li,
+    div {
+        color: white;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    h2 {
+        background-color: #5087b9;
+        color: white;
+        padding: 1.2rem;
+        display: block;
+    }
+
+    h2::before {
+        content: "📖  "; /* 아이콘 추가 */
+        margin-right: 5px;
+    }
+
+    h3 {
+        color: #5087b9;
+        margin-top: 0.5rem;
+    }
+
+    blockquote {
+        background-color: #4d4d4d;
+        color: white;
+        border-left: 4px solid #5087b9;
+        padding: 1rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+
+        p {
+            margin: 0;
+            display: inline;
+        }
+
+        p::before {
+            content: "📢  "; /* 아이콘 추가 */
+        }
+    }
+
+    .info-box {
+        background-color: #4d4d4d;
+        padding: 1.2rem;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    strong,
+    b {
+        color: #5087b9;
+        font-weight: bold;
+    }
+
+    ul.star-list {
+        list-style: "✦  ";
+
+        li::marker {
+            color: #5087b9;
+        }
+    }
 }
 
 .sidebar-sticky {
-  height: 100%;
-  padding-top: 5%;
-  position: absolute;
+    height: 100%;
+    padding-top: 5%;
+    position: absolute;
 }
 .sidebar-about {
-  padding-bottom:10%;
+    padding-bottom: 10%;
 }
-.spread-btn{
-  left: 7%;
-  position: absolute;
-  padding: 0;
-  padding-top: 5px;
-  border: none;
-  background: none;
-  color: white;
-  cursor: pointer;
-}
-
-.spread-btn:hover{
-  color: grey;
+.spread-btn {
+    left: 7%;
+    position: absolute;
+    padding: 0;
+    padding-top: 5px;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
 }
 
-.menu-wrapper{
-  display: flex;
-  text-align: left;
-  margin-left: 10%;
-  margin-bottom: 0%;
-  
-  input[type=checkbox]{
-    display: none;
-  }
-  
-  input[type=checkbox] ~ ul{
-    display: none;
-    list-style: none;
-  }
-  
-  input[type=checkbox]:checked ~ ul{
-    display: block;
-  }
+.spread-btn:hover {
+    color: grey;
+}
+
+.menu-wrapper {
+    display: flex;
+    text-align: left;
+    margin-left: 10%;
+    margin-bottom: 0%;
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    input[type="checkbox"] ~ ul {
+        display: none;
+        list-style: none;
+    }
+
+    input[type="checkbox"]:checked ~ ul {
+        display: block;
+    }
 }
