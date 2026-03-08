@@ -26,7 +26,7 @@ description: >
 - **Object Detection (객체 탐지)**: 이미지 속 객체의 위치(바운딩 박스)와 클래스 레이블을 동시에 예측하는 컴퓨터 비전의 핵심 태스크.
 - **Transformers**: NLP에서 혁신을 일으킨 Transformer 아키텍처의 셀프 어텐션(Self-attention) 매커니즘을 도입하여, 이미지 내 요소들 간의 상호작용을 모델링하고 전역적인 문맥 정보를 탐지에 활용한다.
 
-> 즉, 제목 자체가 **객체 탐지를 Transformer 기반 구조로 재정의하고, 완전한 end-to-end 학습을 수행하겠다** 는 노문의 핵심 주장을 압축적으로 표현하고 있다.
+> 즉, 제목 자체가 **객체 탐지를 Transformer 기반 구조로 재정의하고, 완전한 end-to-end 학습을 수행하겠다** 는 논문의 핵심 주장을 압축적으로 표현하고 있다.
 
 ### 한 줄 요약
 
@@ -36,11 +36,11 @@ DETR(DEtection TRansformer)은 객체 탐지(Object Detection)를 "집합 예측
 
 본 논문은 Object Detection을 **직접적인 집합 예측(Direct Set Prediction) 문제** 로 바라보는 새로운 방법론을 제안한다. 이 접근 방식은 탐지 파이프라인을 단순화하여, 기존에 사전 지식을 명시적으로 인코딩하는 Non-Maximum Suppression(NMS, 비최대 억제) 절차나 앵커 생성 같은 수많은 수작업 설계 구성 요소의 필요성을 효과적으로 제거한다.
 
-새로운 프레임워크인 **DERT(DEtection TRansformer)** 의 핵심 요소는 다음 두 가지이다.
+새로운 프레임워크인 **DETR(DEtection TRansformer)** 의 핵심 요소는 다음 두 가지이다.
 
 1. **이분 매칭(Biparite Matching)을 통한 집합 기반 전역 손실(Set-based Global Loss)**: 
 각 예측이 유일한 Ground Truth에 대응하도록 강제한다.
-2. **Transformer Encoder-Deocder 아키텍처**: 고정된 소규모의 학습된 Object Query들을 기반으로, 객체 간 관계와 전역 이미지 문맥을 추론하여 최종 예측 집합을 병렬로 직접 출력한다.
+2. **Transformer Encoder-Decoder 아키텍처**: 고정된 소규모의 학습된 Object Query들을 기반으로, 객체 간 관계와 전역 이미지 문맥을 추론하여 최종 예측 집합을 병렬로 직접 출력한다.
 
 DETR는 개념적으로 간단하며, 다른 많은 최신 탐지기들과 달리 특수 라이브러리를 필요로 하지 않는다. DETR 은 COCO Object Detection 데이터셋에서 잘 최적화된 Faster R-CNN 기준 모델과 비슷한 정확도 및 런타임 성능을 달성한다. 또한 범주형 분할(panoptic segmentation)을 통합된 방식으로 생성하도록 쉽게 일반화될 수 있고, 경쟁적인 기준 모델들을 크게 능가함을 보인다.
 
@@ -70,7 +70,7 @@ Region Proposal Network(RPN)으로 후보 영역을 먼저 추출하고, 해당 
 - 장점: 빠름
 - 단점: anchor 튜닝 필요
 
-> 두 방식 모두 **앵커** 와 **NMS** 라는 수작업 설계 요소에 읮ㄴ하며, 이 요소들의 설계 방식이 성능에 결정적인 영향을 미친다.
+> 두 방식 모두 **앵커** 와 **NMS** 라는 수작업 설계 요소에 의존하며, 이 요소들의 설계 방식이 성능에 결정적인 영향을 미친다.
 
 #### 기존 방식의 공통 특징
  
@@ -106,7 +106,7 @@ Vaswani et al.(2017)이 제안한 Transformer는 Self-Attention 매커니즘을 
 기존 Object Detection 방법들은 다음과 같은 **수작업 설계 요소(Hand-crafted Components)** 에 심하게 의존한다.
 
 1. **앵커(Anchor) 생성**: 객체가 있을 법한 위치와 크기를 미리 정의한 사각형들의 집합. 객체의 스케일, 종횡비, 개수를 사전에 설계해야 하며 이 설계에 따라 성능이 크게 달라진다.
-2. **Non-Maximum Suppression(NMS)**: 동일 객체에 대해 중복으로 생성된 예측 바운딩 박스 주 가장 신뢰도가 높은 것만 남기는 후처리 과정. NMS의 임계값(threshold)을 직접 조정해야 하며, 최적값이 데이터셋마다 다르다.
+2. **Non-Maximum Suppression(NMS)**: 동일 객체에 대해 중복으로 생성된 예측 바운딩 박스 중 가장 신뢰도가 높은 것만 남기는 후처리 과정. NMS의 임계값(threshold)을 직접 조정해야 하며, 최적값이 데이터셋마다 다르다.
 3. **복잡한 파이프라인**: 제안 영역 생성 -> 특징 추출 -> 분류 및 회귀라는 다단계 과정이 완전한 end-to-end 학습을 어렵게 만든다.
 
 > 이러한 요소들로 인해 학습 파이프라인이 복잡해지고, 각 구성 요소를 별도로 튜닝해야 하는 엔지니어링 부담이 크다.
