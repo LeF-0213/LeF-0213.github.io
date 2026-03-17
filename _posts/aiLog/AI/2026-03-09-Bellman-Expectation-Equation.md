@@ -7,7 +7,7 @@ date:   2026-03-09
 categories:
   - ai
 description: >
-  
+  현재 상태의 가치와 다음 상태 가치 사이의 관계를 '현재 보상과 할인된 미래 가치의 합'으로 나타낸 재귀 방정식
 ---
 * toc
 {:toc .large-only}
