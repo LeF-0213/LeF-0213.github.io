@@ -47,6 +47,17 @@ author:
 
 # Add links to the sidebar.
 menu:
+    - title: AI + DA
+      url: /ailog/
+      submenu:
+          - title: AI
+            url: /ai/
+          - title: DataAnalysis
+            url: /da/
+          - title: AI Practice
+            url: /aipractice/
+          - title: PaperReview
+            url: /paperreview/
     - title: Baekend
       url: /baekend/
       submenu:
@@ -67,17 +78,6 @@ menu:
             url: /js/
           - title: Web
             url: /web/
-    - title: AI + DA
-      url: /ailog/
-      submenu:
-          - title: AI
-            url: /ai/
-          - title: DataAnalysis
-            url: /da/
-          - title: AI Practice
-            url: /aipractice/
-        #   - title: PaperReview
-        #     url: /paperreview/
     # - title: ETC
     #   url: /etc/
     #   submenu:
@@ -92,10 +92,10 @@ menu:
             url: /lv1/
           - title: Lv2
             url: /lv2/
-        #   - title: Lv3
-        #     url: /lv3/
-        #   - title: Lv4
-        #     url: /lv4/
+          #   - title: Lv3
+          #     url: /lv3/
+          #   - title: Lv4
+          #     url: /lv4/
     - title: Baekjoon
       url: /baekjoon/
 
