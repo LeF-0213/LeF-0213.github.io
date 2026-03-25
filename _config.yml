@@ -63,8 +63,6 @@ menu:
             url: /python/
           - title: Java
             url: /java/
-          - title: Spring
-            url: /spring/
           - title: DBMS
             url: /dbms/
     - title: Programmers
