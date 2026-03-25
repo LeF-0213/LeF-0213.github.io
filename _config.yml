@@ -47,22 +47,18 @@ author:
 
 # Add links to the sidebar.
 menu:
-    - title: AI + DA
-      url: /ailog/
+    - title: AI
+      url: /ai/
       submenu:
-          - title: AI
-            url: /ai/
-          - title: DataAnalysis
-            url: /da/
-          - title: AI Practice
-            url: /aipractice/
+          - title: Basic
+            url: /basic/
+          - title: Practice
+            url: /practice/
           - title: PaperReview
             url: /paperreview/
-    - title: Baekend
-      url: /baekend/
+    - title: SW
+      url: /sw/
       submenu:
-          - title: Node.js
-            url: /nodejs/
           - title: Python
             url: /python/
           - title: Java
@@ -71,20 +67,6 @@ menu:
             url: /spring/
           - title: DBMS
             url: /dbms/
-    - title: Frontend
-      url: /frontend/
-      submenu:
-          - title: JavaScript
-            url: /js/
-          - title: Web
-            url: /web/
-    # - title: ETC
-    #   url: /etc/
-    #   submenu:
-    #       - title: ErrorLog
-    #         url: /errorlog/
-    #       - title: Git
-    #         url: /git/
     - title: Programmers
       url: /programmers/
       submenu:
