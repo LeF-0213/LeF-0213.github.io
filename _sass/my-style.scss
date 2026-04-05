@@ -39,14 +39,15 @@
     }
 
     h3 {
-        color: #5087b9;
-        margin-top: 0.5rem;
+        background-color: #161b22;
+        color: #79c1ff;
+        padding: 0.5rem;
     }
 
     blockquote {
-        background-color: #4d4d4d;
+        background-color: #161b22;
         color: white;
-        border-left: 4px solid #5087b9;
+        border-left: 4px solid #79c1ff;
         padding: 1rem 1.5rem;
         margin: 1.5rem 0;
         border-radius: 4px;
@@ -62,7 +63,7 @@
     }
 
     .info-box {
-        background-color: #4d4d4d;
+        background-color: #161b22;
         padding: 1.2rem;
         border-radius: 4px;
         margin: 1.5rem 0;
