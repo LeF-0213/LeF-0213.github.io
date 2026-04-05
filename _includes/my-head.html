@@ -13,15 +13,25 @@
         },
     });
 
-    function renderMermaid() {
-        document.querySelectorAll("pre code.language-mermaid").forEach((el) => {
+    async function renderMermaid() {
+        const nodes = document.querySelectorAll("pre code.language-mermaid");
+        if (nodes.length === 0) return;
+
+        nodes.forEach((el) => {
             const code = el.innerText;
-            const div = document.createElement("div");
-            div.className = "mermaid";
-            div.textContent = code;
-            el.parentElement.replaceWith(div);
+            const container = document.createElement("div");
+            container.className = "mermaid";
+            container.textContent = code;
+            
+            // pre 태그를 통째로 div로 교체
+            const pre = el.parentElement;
+            pre.parentNode.replaceChild(container, pre);
         });
-        mermaid.run();
+
+        // 비동기로 Mermaid 실행
+        await mermaid.run({
+            nodes: document.querySelectorAll('.mermaid'),
+        });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
