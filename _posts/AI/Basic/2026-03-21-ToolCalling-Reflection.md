@@ -391,6 +391,8 @@ def respond(state: State):
 에이전트가 **스스로 결과를 평가・비판** 한 뒤, 
 그 피드백을 상태에 기록하고 필요하면 수정 루프로 되돌아가 답을 개선하는 패턴이다.
 
+<img width="100%" alt="Image" src="https://github.com/user-attachments/assets/12c12af2-51ce-4106-8de5-186a66dd2cc7" />
+
 ```mermaid
 graph LR
     A[<b>생성 노드</b><br/>답변 작성] --> B[<b>리플렉션 노드</b><br/>자기평가]
@@ -413,5 +415,50 @@ graph LR
 ### 프롬프트 구성
 
 ```python
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_openai import ChatOpenAI
 
+# 생성 프롬프트
+# from_messages: 메시지 목록으로 프롬프트를 구성
+# ChatPromptTemplate: 채팅형 프롬프트를 만드는 툴(AIMessage, BaseMessage, HumanMessages 뿐만 아니라 System 메세지(지시문)도 가능)
+generate_prompt = ChatPromptTemplate.from_messages([
+  (
+    "system",
+    "당신은 5단락 노래 가사를 작성하는 작사 도우미입니다. "
+    "사용자가 피드백을 제공하면, 지적된 부분이 눈에 띄게 개선된 수정본을 작성하세요."
+  ),
+  # MessagesPlaceholder: 나중에 실제 대화 메시지들이 들어갈 자리
+  MessagesPlaceholder(variable_name="messages"),
+]) 
+
+# 평가 프롬프트
+reflection_prompt = ChatPromptTemplate.from_messages([
+  (
+    "system",
+    "당신은 노래 가사를 평가하는 작사 코치입니다. "
+    "응답은 반드시 1.잘된점 2.아쉬운점 3.수정 지시사항으로 작성하세요."
+  ),
+  MessagesPlaceholder(variable_name="messages"),
+])
+
+llm = ChatOpenAI(model='gpt-5.4-2026-03-05')
+generate = generate_prompt | llm
+reflect = reflection_prompt | llm
+```
+
+## 단계별 실행 (Graph 없이)
+
+```python
+from langchain_core.messages import HumanMessage, AIMessage
+
+request = HumanMessage(content='이별에 대한 가사를 작성해줘.')
+
+# 1. 초안 가사 생성
+draft_lyrics = ""
+for chunk in generate.stream({"messages": [request]}):
+  if chunk.content:
+    draft_lyrics += chunk.content
+
+# 2. 피드백 생성
+reflection_feedback = ""
 ```

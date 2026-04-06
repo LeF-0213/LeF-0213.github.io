@@ -14,23 +14,21 @@
     });
 
     async function renderMermaid() {
-        // kramdown은 ```mermaid를 <pre class="highlight"> 또는 <code class="language-mermaid">로 만듭니다.
-        const targets = document.querySelectorAll("code.language-mermaid, .language-mermaid code");
+        // kramdown/rouge가 만든 코드 블록 타겟팅
+        const targets = document.querySelectorAll('pre.highlight > code.language-mermaid, pre > code.language-mermaid');
 
         for (const el of targets) {
-            // 이미 변환된 것은 스킵
-            if (el.getAttribute("data-mermaid-processed")) continue;
+            const pre = el.closest('pre');
+            if (!pre || el.getAttribute("data-mermaid-processed")) continue;
 
-            // 가장 가까운 부모 pre 태그를 찾음
-            const pre = el.closest("pre");
-            if (!pre) continue;
-
-            const diagram = el.textContent;
+            // [핵심] textContent 대신 innerText를 사용하여 모든 span 태그를 무시하고 텍스트만 추출
+            const diagram = el.innerText || el.textContent;
+            
             const container = document.createElement("div");
             container.className = "mermaid";
-            container.textContent = diagram;
+            // trim()을 통해 앞뒤 공백 제거
+            container.textContent = diagram.trim();
 
-            // 기존 pre 태그를 새로 만든 mermaid div로 교체
             pre.parentElement.replaceChild(container, pre);
             el.setAttribute("data-mermaid-processed", "true");
         }
