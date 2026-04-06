@@ -13,6 +13,7 @@ description: >
 {:toc .large-only}
 
 # Tool Calling Agent란?
+---
 
 자신의 지식만 사용하는 것이 아니라, **외부 도구(API, DB 코드 실행기 등)를 직접 호출** 해 문제를 해결하는 에이전트이다.
 
@@ -77,6 +78,7 @@ tool.invoke({
 ```
 
 # 커스텀 도구 만들기
+---
 
 `@tool` 데코레이터로 일반 Python 함수를 LangChain 도구로 변환한다. **함수의 docstring** 이 LLM이 도구를 선택하는 근거가 된다.
 
@@ -148,6 +150,7 @@ llm_forced = llm.bind_tools(tools,
 > 도구 호출이 있으면 response.tool_calls에 [{'name': 도구명, 'args': {...}, 'id': '...', 'type': 'tool_call'}] 형태로 담긴다. content는 비어있을 수 있다.
 
 # ToolNode 구현
+---
 
 LangGraph에서 LLM의 tool_calls를 읽어 실제 도구를 실행하고 결과를 ToolMessage로 반환하는 노드이다.
 
@@ -296,6 +299,7 @@ Goodbye!
 ```
 
 # create_react_agent - ReAct 패턴
+---
 
 `ReAct(Reason + Act)` 패턴을 따르는 에이전트를 한 줄로 생성한다. 
 **"생각 -> 도구 호출 -> 관찰 -> 최종 답변"** 의 반복 루프를 자동으로 처리한다.
@@ -317,4 +321,97 @@ response = agent.invoke({
 ```
 
 > **REACT 루프 흐름**           
-> #161b22, #79c1ff, #878f9a, #e6edf3
+> Reason: "이 질문을 답하려면 LangGraph를 검색해야겠다" ->        
+> Act: TavilySearch 도구 호출 ->            
+> Observe: 검색 결과 확인 ->          
+> Reason: "결과가 충분하면 답변 생성" ->          
+> Final Answer 반환         
+
+# 구조화된 출력 (Structured Output)
+---
+
+LLM의 답변을 **미리 정의한 Pydantic 스키마 형태** 로 받아올 수 있다. 
+JSON 파싱 없이 바로 타입이 보장된 객체를 사용할 수 있다.
+
+```python
+from pydantic import BaseModel, Field
+from langchain_openai import ChatOpenAI
+
+class MovieResponse(BaseModel):
+  title: str = Field(description='영화제목')
+  director: str = Field(description='감독 이름')
+  genre: str = Field(description='장르')
+  release_year: int = Field(description='개봉 연도')
+
+model = ChatOpenAI(model='gpt-5.4-2026-03-05')
+structured_model = model.with_structured_output(MovieResponse)
+
+result = structured_model.invoke("메멘토 영화에 대해 설명해주세요")
+# MovieResponse(title='메멘토', director='크리스토퍼 놀란', genre='심리 스릴러, 미스터리', release_year=2000)
+print(result.title)     # 메멘토
+print(result.release_year) # 2000
+
+# 여러 응답 타입 지원 (Union)
+from typing import Union
+
+class ConversationalResponse(BaseModel):
+  response: str = Field(description="친절한 대화 답변")
+
+class FinalResponse(BaseModel):
+  final_output: Union[MovieResponse, ConversationalResponse]
+
+structured_llm = model.with_structured_output(FinalResponse)
+```
+
+## 구조화 출력을 그래프에 결합하기
+
+```python
+from langgraph.graph import MessagesState
+
+class State(MessagesState):
+  final_response: MovieResponse # 최종 구조화 결과 저장
+
+def should_continue(state: State):
+  last_message = state['messages'][-1]
+  if not last_message.tool_calls:
+    return "respond"      # 도구 필요 없음 -> 구조화 답변 생성
+  return "continue"       # 도구 필요 -> 도구 실행
+
+# respond 노드: 구조화된 출력으로 최종 답변 생성
+def respond(state: State):
+  response = model_with_structured_output.invoke(
+    [HumanMessage(content=state['messages'][-2].content)]
+  )
+  return {'final_response': response}
+```
+
+# Reflection 패턴이란?
+---
+
+에이전트가 **스스로 결과를 평가・비판** 한 뒤, 
+그 피드백을 상태에 기록하고 필요하면 수정 루프로 되돌아가 답을 개선하는 패턴이다.
+
+```mermaid
+graph LR
+    A[<b>생성 노드</b><br/>답변 작성] --> B[<b>리플렉션 노드</b><br/>자기평가]
+    B --> C[<b>라우터</b><br/>조건부 엣지]
+    C --> D[<b>미달 -> 재작성</b>]
+    E[<b>충족 -> 종료</b>]
+```
+
+> **무한 루프 방지**          
+> max_iters 같은 반복 한도를 반드시 설정.           
+> 메시지 수로 판단하는 방법:                     
+> if len(state['messages']) > 6:         
+>   return END  
+
+# Reflection 예시 - 가사 생성기
+---
+
+가사 생성 -> 평가 -> 수정을 반복하는 실제 예시이다.
+
+### 프롬프트 구성
+
+```python
+
+```

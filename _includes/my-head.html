@@ -14,24 +14,29 @@
     });
 
     async function renderMermaid() {
-        const nodes = document.querySelectorAll("pre code.language-mermaid");
-        if (nodes.length === 0) return;
+        // kramdown은 ```mermaid를 <pre class="highlight"> 또는 <code class="language-mermaid">로 만듭니다.
+        const targets = document.querySelectorAll("code.language-mermaid, .language-mermaid code");
 
-        nodes.forEach((el) => {
-            const code = el.innerText;
+        for (const el of targets) {
+            // 이미 변환된 것은 스킵
+            if (el.getAttribute("data-mermaid-processed")) continue;
+
+            // 가장 가까운 부모 pre 태그를 찾음
+            const pre = el.closest("pre");
+            if (!pre) continue;
+
+            const diagram = el.textContent;
             const container = document.createElement("div");
             container.className = "mermaid";
-            container.textContent = code;
-            
-            // pre 태그를 통째로 div로 교체
-            const pre = el.parentElement;
-            pre.parentNode.replaceChild(container, pre);
-        });
+            container.textContent = diagram;
 
-        // 비동기로 Mermaid 실행
-        await mermaid.run({
-            nodes: document.querySelectorAll('.mermaid'),
-        });
+            // 기존 pre 태그를 새로 만든 mermaid div로 교체
+            pre.parentElement.replaceChild(container, pre);
+            el.setAttribute("data-mermaid-processed", "true");
+        }
+
+        // 차트 그리기 실행
+        await mermaid.run();
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -90,7 +95,7 @@
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <script src="/assets/js/sidebar-folder.js"></script>
-<link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}" />
 
 <!-- KaTeX for Math Rendering -->
 <link
